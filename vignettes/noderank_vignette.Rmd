@@ -1,0 +1,25 @@
+---
+title: "noderank: A Node Prioritization Optimizer"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{noderank_vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+noderank maps differential gene expression results onto an established network 
+of protein-protein associations and employs network analysis methods to select 
+a prioritized list of important nodes. For data in which the mechanism of 
+perturbation is known, each ranked list result is scored by the position of 
+the causal gene. 
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(noderank)
+```
