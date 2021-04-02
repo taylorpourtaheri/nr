@@ -63,21 +63,30 @@ xref <- string_db$map(xref, "symbol", removeUnmappedRows=T, quiet=T)
 
 # calculate similarity of each node and slice out the causal gene
 sim <- igraph::similarity(ppi)
-index <- which(V(ppi)$name == xref$STRING_id)
+index <- which(igraph::V(ppi)$name == xref$STRING_id)
 causal_sim <- sim[index,]
 
 # make scores a named vector
-names(causal_sim) <- V(ppi)$name
+names(causal_sim) <- igraph::V(ppi)$name
 
 # get the scores associated with the subnetwork
-pred_scores <- causal_sim[V(ppi_painted_filt_giant)$name]
+pred_scores <- causal_sim[igraph::V(ppi_painted_filt_giant)$name]
 mean_pred_score <- mean(pred_scores)
 
+# create a key mapping STRING id to gene symbol for all genes
+key <- data.frame(symbol = deg$Symbol)
+key <- string_db$map(key, "symbol", removeUnmappedRows=T, quiet=T)
+
+# select top genes and annotate for readability
 top_genes <- sort(pred_scores, decreasing = TRUE)
+top_genes_df <- data.frame(score = top_genes,
+                           STRING_id  = names(top_genes))
+top_genes_df <- dplyr::left_join(top_genes_df, key)
+rownames(top_genes_df) <- NULL
 
 # estimate uncertainty with a random draw of the full ppi graph
 n_sim <- 9999
-n_draws <- length(V(ppi_painted_filt_giant)) #151
+n_draws <- length(igraph::V(ppi_painted_filt_giant)) #151
 samples <- lapply(1:n_sim, function(x) sample(causal_sim, n_draws))
 sample_means <- sapply(samples, mean)
 
