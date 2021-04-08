@@ -1,6 +1,8 @@
 
 # load relevant packages
 library(STRINGdb)
+library(ggnetwork)
+library(ggplot2)
 library(igraph)
 library(dplyr)
 library(glue)
@@ -100,6 +102,18 @@ final_results[['mean_score']] <- mean_pred_score
 final_results[['pvalue']] <- score_pval
 
 
+
+# plot results
+network <- ppi_painted_filt_giant
+
+ggplot(ggnetwork(network), aes(x = x, y = y, xend = xend, yend = yend)) +
+    geom_edges() +
+    geom_nodes(aes(color = logFC, size = betweenness), alpha = 0.65) +
+    geom_nodetext_repel(aes(label = Symbol)) +
+    scale_color_gradient(low = 'blue', high = 'red') +
+    scale_size_continuous(range = c(5, 25)) +
+    theme_blank()
+# ggsave('test.png', width = 15, height = 15)
 
 
 

@@ -22,6 +22,8 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(noderank)
+library(ggplot2)
+library(ggnetwork)
 library(knitr)
 library(kableExtra)
 
@@ -125,10 +127,21 @@ score_pval <- sum(sample_means > mean_pred_score) / n_sim
 
 #### Inspect Results
 
-```{r, out.width="90%"}
+```{r, out.width="100%"}
 
 # results 
-# plot(ppi_painted_filt_giant)
+network <- ppi_painted_filt_giant
+
+plot1 <- ggplot(ggnetwork(network), aes(x = x, y = y, xend = xend, yend = yend)) +
+    geom_edges(alpha = 0.7) + 
+    geom_nodes(aes(color = logFC, size = betweenness), alpha = 0.65) +
+    geom_nodetext_repel(aes(label = Symbol)) + 
+    scale_color_gradient(low = 'blue', high = 'red') +
+    scale_size_continuous(range = c(5, 25)) + 
+    theme_blank()
+
+ggsave(plot = plot1, filename = 'figure1.png', width = 20, height = 20)
+knitr::include_graphics('figure1.png')
 
 knitr::kable(head(network_df)) %>% 
   kableExtra::kable_styling(latex_options="scale_down")
@@ -142,7 +155,7 @@ knitr::kable(d)
 
 The workflow above can also be implemented in one step by calling the network_pipeline() wrapper function: 
 
-```{r, out.width='90%'}
+```{r, out.width='100%'}
 
 results <- network_pipeline(deg = myc_de,
                             edge_conf_score_min = 950,
@@ -155,7 +168,19 @@ results <- network_pipeline(deg = myc_de,
 
 names(results)
 
-# plot(results$network)
+# results 
+network <- results$network
+
+plot2 <- ggplot(ggnetwork(network), aes(x = x, y = y, xend = xend, yend = yend)) +
+    geom_edges(alpha = 0.7) + 
+    geom_nodes(aes(color = logFC, size = betweenness), alpha = 0.65) +
+    geom_nodetext_repel(aes(label = Symbol)) + 
+    scale_color_gradient(low = 'blue', high = 'red') +
+    scale_size_continuous(range = c(5, 25)) + 
+    theme_blank()
+
+ggsave(plot = plot2, filename = 'figure2.png', width = 20, height = 20)
+knitr::include_graphics('figure2.png')
 
 knitr::kable(head(results$top_genes)) %>% 
   kableExtra::kable_styling(latex_options="scale_down")
