@@ -30,3 +30,15 @@ View(results)
 top_genes <- results$top_genes
 
 
+# define plotting network
+ggn <- ggnetwork(resultsnetwork)
+
+ggplot(ggn, aes(x = x, y = y, xend = xend, yend = yend)) +
+    geom_edges() +
+    geom_nodes(aes(color = logFC, size = betweenness), alpha = 0.65) +
+    geom_nodetext_repel(aes(label = Symbol), size = 2.5) +
+    geom_nodelabel_repel(data=subset(ggn, Symbol == 'MYC'), aes(label=Symbol)) +
+    scale_color_gradient(low = 'blue', high = 'red') +
+    scale_size_continuous(range = c(5, 25)) +
+    theme_blank()
+# ggsave('test.png', width = 15, height = 15)

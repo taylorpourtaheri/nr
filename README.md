@@ -15,11 +15,10 @@ scored by the position of the causal gene.
 
 ## Installation
 
-You can install the released version of noderank from
-[CRAN](https://CRAN.R-project.org) with:
+You can install the released version of noderank from GitHub with:
 
 ``` r
-install.packages("noderank")
+devtools::install_github("hemoshear/noderank")
 ```
 
 ## A roadmap for noderank:

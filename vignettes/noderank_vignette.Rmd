@@ -29,6 +29,8 @@ library(kableExtra)
 
 devtools::load_all('..')
 
+set.seed(4)
+
 ```
 
 #### Import DEA Data and Define Parameters
@@ -131,11 +133,13 @@ score_pval <- sum(sample_means > mean_pred_score) / n_sim
 
 # results 
 network <- ppi_painted_filt_giant
+ggn <- ggnetwork(network)
 
-plot1 <- ggplot(ggnetwork(network), aes(x = x, y = y, xend = xend, yend = yend)) +
+plot1 <- ggplot(ggn, aes(x = x, y = y, xend = xend, yend = yend)) +
     geom_edges(alpha = 0.7) + 
     geom_nodes(aes(color = logFC, size = betweenness), alpha = 0.65) +
     geom_nodetext_repel(aes(label = Symbol)) + 
+    geom_nodelabel_repel(data=subset(ggn, Symbol == 'MYC'), aes(label=Symbol)) +
     scale_color_gradient(low = 'blue', high = 'red') +
     scale_size_continuous(range = c(5, 25)) + 
     theme_blank()
@@ -170,11 +174,13 @@ names(results)
 
 # results 
 network <- results$network
+ggn <- ggnetwork(network)
 
-plot2 <- ggplot(ggnetwork(network), aes(x = x, y = y, xend = xend, yend = yend)) +
+plot2 <- ggplot(ggn, aes(x = x, y = y, xend = xend, yend = yend)) +
     geom_edges(alpha = 0.7) + 
     geom_nodes(aes(color = logFC, size = betweenness), alpha = 0.65) +
     geom_nodetext_repel(aes(label = Symbol)) + 
+    geom_nodelabel_repel(data=subset(ggn, Symbol == 'MYC'), aes(label=Symbol)) +
     scale_color_gradient(low = 'blue', high = 'red') +
     scale_size_continuous(range = c(5, 25)) + 
     theme_blank()
