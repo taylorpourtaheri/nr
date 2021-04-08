@@ -22,31 +22,25 @@ You can install the released version of noderank from
 install.packages("noderank")
 ```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(noderank)
-## basic example code
-```
-
 ## A roadmap for noderank:
 
-Starting material: differential gene expression analysis results,
-i.e. the output of topTable() from *limma* or results() from *DESeq2*.
+Input: Differential gene expression analysis results including log
+fold-changes and p-values, i.e. the output of topTable() from *limma* or
+results() from *DESeq2*.
 
-1.  
-<!-- end list -->
+1.  Generate protein-protein interaction network.
+2.  Map DEA results onto the PPI.
+3.  Prune the network by user-specified thresholds for fold-change and
+    p-value.
+4.  Implement user-specified network analysis algorithm to rank the
+    nodes of the network.
+5.  Calculate overall network score and uncertainty metrics.
 
-``` r
-# summary(cars)
-```
+Output:
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
+  - The final network composed of the important genes.
 
-You can also embed plots, for example:
+  - A dataframe of important genes with their associated ranking
+    metrics.
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub\!
+  - The mean score and p-value for the overall network.

@@ -611,21 +611,21 @@ body {
 <h2 id="installation">Installation</h2>
 <p>You can install the released version of noderank from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;noderank&quot;</span>)</a></code></pre></div>
-<h2 id="example">Example</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(noderank)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">## basic example code</span></a></code></pre></div>
 <h2 id="a-roadmap-for-noderank">A roadmap for noderank:</h2>
-<p>Starting material: differential gene expression analysis results, i.e. the output of topTable() from <em>limma</em> or results() from <em>DESeq2</em>.</p>
+<p>Input: Differential gene expression analysis results including log fold-changes and p-values, i.e. the output of topTable() from <em>limma</em> or results() from <em>DESeq2</em>.</p>
 <ol>
-<li></li>
+<li>Generate protein-protein interaction network.</li>
+<li>Map DEA results onto the PPI.</li>
+<li>Prune the network by user-specified thresholds for fold-change and p-value.</li>
+<li>Implement user-specified network analysis algorithm to rank the nodes of the network.</li>
+<li>Calculate overall network score and uncertainty metrics.</li>
 </ol>
-<!-- end list -->
-
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># summary(cars)</span></a></code></pre></div>
-<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date.</p>
-<p>You can also embed plots, for example:</p>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub!</p>
+<p>Output:</p>
+<ul>
+<li><p>The final network composed of the important genes.</p></li>
+<li><p>A dataframe of important genes with their associated ranking metrics.</p></li>
+<li><p>The mean score and p-value for the overall network.</p></li>
+</ul>
 
 </body>
 </html>
