@@ -25,16 +25,16 @@ noderank maps differential gene expression results
     known, each ranked list result is scored by the position of the 
     causal gene. 
 
-## Installation
+### Installation
 
-You can install the released version of noderank from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of noderank from GitHub with:
 
 ``` r
-install.packages("noderank")
+devtools::install_github("hemoshear/noderank")
 ```
 
 
-## A roadmap for noderank:
+### A roadmap for noderank:
 
 Input: Differential gene expression analysis results including log fold-changes and p-values, i.e. the output of topTable() from *limma* or results() from *DESeq2*. 
 

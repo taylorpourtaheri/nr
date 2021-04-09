@@ -20,9 +20,9 @@ myc_de <- de_string$MYC
 deg <- myc_de
 edge_conf_score_min <- 950
 logFC_min <- 1.5
-pvalue_min <- 0.05
+pvalue_max <- 0.05
 causal_gene_symbol <- 'MYC'
-method <- 'centrality'
+method <- 'betweenness'
 final_results <- c()
 export_network <- FALSE
 n_sim <- 9999
@@ -42,13 +42,13 @@ ppi_painted <- df_to_vert_attr(graph=ppi, df=deg, common="STRING_id",
 
 # subset the graph to only include nodes that meet thresholds
 ppi_painted_filt <- attribute_filter(ppi_painted,
-                                     abs(logFC) > log2(logFC_min) & adj.P.Val < pvalue_min)
+                                     abs(logFC) > log2(logFC_min) & adj.P.Val < pvalue_max)
 
 # select the connected subgraph
 ppi_painted_filt_giant <- connected_subgraph(ppi_painted_filt)
 
 # calculate centrality
-ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant, bt=T, len = -1)
+ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant, method = method, bt=T, len = -1)
 # add argument 'method' that calls this function if value = 'centrality'
 
 # write final graph

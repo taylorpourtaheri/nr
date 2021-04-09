@@ -18,8 +18,8 @@ myc_de <- de_string$MYC
 results <- network_pipeline(deg = myc_de,
                             edge_conf_score_min = 950,
                             logFC_min = 1.5,
-                            pvalue_min = 0.05,
-                            method = 'centrality',
+                            pvalue_max = 0.05,
+                            method = 'betweenness',
                             causal_gene_symbol = 'MYC',
                             export_network = FALSE,
                             n_sim = 9999)
@@ -31,7 +31,7 @@ top_genes <- results$top_genes
 
 
 # define plotting network
-ggn <- ggnetwork(resultsnetwork)
+ggn <- ggnetwork(results$network)
 
 ggplot(ggn, aes(x = x, y = y, xend = xend, yend = yend)) +
     geom_edges() +

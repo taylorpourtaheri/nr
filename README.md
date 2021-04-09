@@ -13,7 +13,7 @@ methods to select a prioritized list of important nodes. For data in
 which the mechanism of perturbation is known, each ranked list result is
 scored by the position of the causal gene.
 
-## Installation
+### Installation
 
 You can install the released version of noderank from GitHub with:
 
@@ -21,7 +21,7 @@ You can install the released version of noderank from GitHub with:
 devtools::install_github("hemoshear/noderank")
 ```
 
-## A roadmap for noderank:
+### A roadmap for noderank:
 
 Input: Differential gene expression analysis results including log
 fold-changes and p-values, i.e. the output of topTable() from *limma* or

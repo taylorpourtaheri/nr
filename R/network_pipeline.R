@@ -1,6 +1,6 @@
 network_pipeline <- function(deg,
                              edge_conf_score_min, logFC_min, pvalue_max,
-                             method = 'centrality', causal_gene_symbol,
+                             method = 'betweenness', causal_gene_symbol,
                              export_network = FALSE, sim_method = 'jaccard', n_sim = 9999){
     # internal check
     print(causal_gene_symbol)
@@ -26,12 +26,19 @@ network_pipeline <- function(deg,
     # select the connected subgraph
     ppi_painted_filt_giant <- connected_subgraph(ppi_painted_filt)
 
-    # calculate centrality
-    if (method == 'centrality'){
+    # # calculate centrality
+    # if (method == 'centrality'){
+    #
+    #     ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant,
+    #                                               bt=TRUE, len = -1)
+    # }
 
-        ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant,
-                                                  bt=TRUE, len = -1)
-    }
+    # implement node ranking algorithm
+    ppi_painted_filt_giant <- switch(method,
+                                     betweenness={
+                                         calc_centrality(ppi_painted_filt_giant,
+                                                         method = method, bt = TRUE, len = -1)
+                                     })
 
     # write final graph
     if (export_network){

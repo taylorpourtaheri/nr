@@ -49,7 +49,7 @@ edge_conf_score_min <- 950
 logFC_min <- 1.5
 pvalue_max <- 0.05
 causal_gene_symbol <- 'MYC'
-method <- 'centrality'
+method <- 'betweenness'
 final_results <- c()
 export_network <- FALSE
 n_sim <- 9999
@@ -80,7 +80,7 @@ ppi_painted_filt <- attribute_filter(ppi_painted,
 ppi_painted_filt_giant <- connected_subgraph(ppi_painted_filt)
 
 # calculate centrality
-ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant, bt=T, len = -1)
+ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant, method = method, bt=T, len = -1)
 
 # write final graph
 # igraph::write_graph(ppi_painted_filt_giant,
@@ -144,7 +144,7 @@ plot1 <- ggplot(ggn, aes(x = x, y = y, xend = xend, yend = yend)) +
     scale_size_continuous(range = c(5, 25)) + 
     theme_blank()
 
-ggsave(plot = plot1, filename = 'figure1.png', width = 20, height = 20)
+ggsave(plot = plot1, filename = 'figure1.png', width = 15, height = 15)
 knitr::include_graphics('figure1.png')
 
 knitr::kable(head(network_df)) %>% 
@@ -165,7 +165,7 @@ results <- network_pipeline(deg = myc_de,
                             edge_conf_score_min = 950,
                             logFC_min = 1.5,
                             pvalue_max = 0.05,
-                            method = 'centrality',
+                            method = 'betweenness',
                             causal_gene_symbol = 'MYC',
                             export_network = FALSE,
                             n_sim = 9999)
@@ -185,7 +185,7 @@ plot2 <- ggplot(ggn, aes(x = x, y = y, xend = xend, yend = yend)) +
     scale_size_continuous(range = c(5, 25)) + 
     theme_blank()
 
-ggsave(plot = plot2, filename = 'figure2.png', width = 20, height = 20)
+ggsave(plot = plot2, filename = 'figure2.png', width = 15, height = 15)
 knitr::include_graphics('figure2.png')
 
 knitr::kable(head(results$top_genes)) %>% 
