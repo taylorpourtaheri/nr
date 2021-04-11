@@ -15,7 +15,7 @@ de_string <- readRDS('data/de_string.RDS')
 myc_de <- de_string$MYC
 
 # call wrapper
-results <- network_pipeline(deg = myc_de,
+results <- centrality_pipeline(deg = myc_de,
                             edge_conf_score_min = 950,
                             logFC_min = 1.5,
                             pvalue_max = 0.05,

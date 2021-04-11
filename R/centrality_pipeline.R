@@ -1,4 +1,4 @@
-network_pipeline <- function(deg,
+centrality_pipeline <- function(deg,
                              edge_conf_score_min, logFC_min, pvalue_max,
                              method = 'betweenness', causal_gene_symbol,
                              export_network = FALSE, sim_method = 'jaccard', n_sim = 9999){

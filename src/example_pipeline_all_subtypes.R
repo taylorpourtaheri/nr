@@ -17,7 +17,7 @@ causal_genes <- c('MYC', 'BCAT2', 'E2F3', 'HRAS', 'SRC')
 
 # call wrapper
 subtype_results <- purrr::map2(de_string, causal_genes,
-    ~network_pipeline(deg = .x,
+    ~network_centrality(deg = .x,
                       edge_conf_score_min = 950,
                       logFC_min = 1.5,
                       pvalue_min = 0.05,
