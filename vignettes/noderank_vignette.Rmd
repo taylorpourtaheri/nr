@@ -157,11 +157,11 @@ knitr::kable(d)
 
 ### Pipeline Workflow
 
-The workflow above can also be implemented in one step by calling the network_pipeline() wrapper function: 
+The workflow above can also be implemented in one step by calling the centrality_pipeline() wrapper function: 
 
 ```{r, out.width='100%'}
 
-results <- network_pipeline(deg = myc_de,
+results <- centrality_pipeline(deg = myc_de,
                             edge_conf_score_min = 950,
                             logFC_min = 1.5,
                             pvalue_max = 0.05,
