@@ -1,0 +1,17 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+<!-- README.md is generated from README.Rmd. Please edit this file -->
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# noderank 0.0.0.9000
+
+* Added a `NEWS.md` file to track changes to the package.
