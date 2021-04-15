@@ -4,7 +4,7 @@
 \alias{calc_centrality}
 \title{Network centrality}
 \usage{
-calc_centrality(graph, bt = FALSE, len = 3)
+calc_centrality(graph, method = "strength", bt = FALSE, len = 3)
 }
 \arguments{
 \item{graph}{Graph of class '\code{igraph}'}

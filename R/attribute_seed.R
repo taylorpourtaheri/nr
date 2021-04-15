@@ -17,5 +17,5 @@ attribute_seed <- function(graph, attr_expression) {
     return(temp_list)
 }
 
-a <- attribute_seed(ppi_painted,
-                    abs(logFC) > log2(logFC_min) & adj.P.Val < pvalue_max)
+# a <- attribute_seed(ppi_painted,
+#                     abs(logFC) > log2(logFC_min) & adj.P.Val < pvalue_max)
