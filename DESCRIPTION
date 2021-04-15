@@ -17,7 +17,13 @@ LazyData: true
 Suggests: 
     testthat (>= 2.1.0),
     knitr,
-    rmarkdown
+    rmarkdown,
+    noderank,
+    Bioconductor,
+    StringDB,
+    igraph,
+    dplyr,
+    magrittr
 RoxygenNote: 7.0.2
 Imports: 
     magrittr,

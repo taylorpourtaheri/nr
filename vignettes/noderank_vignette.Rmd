@@ -20,19 +20,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(noderank)
-library(ggplot2)
-library(ggnetwork)
-library(knitr)
-library(kableExtra)
-
-devtools::load_all('..')
-
-set.seed(4)
-
-```
-
 #### Import DEA Data and Define Parameters
 
 ```{r}

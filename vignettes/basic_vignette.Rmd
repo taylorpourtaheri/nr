@@ -1,0 +1,24 @@
+---
+title: "basic_vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{basic_vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(noderank)
+set.seed(1014)
+```
+
+```{r}
+noderank::add_test(2,2)
+```
+
+
+# test
