@@ -1,3 +1,48 @@
+#' @title Pipeline function to run complete noderank workflow.
+#' @description Given a dataframe of differential gene expression results and a set
+#' of parameters, '\code{centrality_pipeline()}' will generate network of the most
+#' important genes, ranked by the specified centrality measure.
+#' @param deg Object of class '\code{dataframe}'. Differential gene expression analysis
+#' results including log fold-changes and p-values,
+#' i.e. the output of \code{topTable()} from limma or \code{results()| from DESeq2.
+#' @param edge_conf_score_min Numeric. A The minimum confidence score between edges in the
+#' STRING protein-protein interaction network.
+#' @param logFC_min Numeric. The minimum log2 fold-change value for a gene
+#' to be included in the final network.
+#' @param pvalue_max Numeric. The maximum p-value value for a gene
+#' to be included in the final network.
+#' @param method A string. One of the following centrality methods:
+#' \itemize{
+#' \item strength
+#' \item degree
+#' \item avg_strength
+#' \item degree_frac
+#' \item strength_scaled
+#' \item avg_strength_scaled
+#' \item evcent_w
+#' \item evcent_uw
+#' \item betweenness
+#' }
+#' @param causal_gene_symbol A string. The gene symbol associated with the
+#' causal gene.
+#' @param export_network If TRUE, the network object will be returned.
+#' @param sim_method A string. The method for calculating the similarity between
+#' each gene in the final network and the causal gene. One of the following:
+#' #' \itemize{
+#' \item jaccard
+#' \item dice
+#' \item invlogweighted
+#' }
+#' @param n_sim
+#' @return A list of length 4:
+#' \describe{
+#'   \item{network}{Object of class '\code{igraph}'. The network of important genes.}
+#'   \item{top_genes}{An annotated dataframe of genes ranked by centrality method.}
+#'   \item{mean_score}{The mean score of the network, which is equal to the average
+#'   similarity score between each node in the network and the causal gene.}
+#'   \item{pvalue}{The p-value associated with the \code{mean_score}.}
+#' }
+#' @export
 centrality_pipeline <- function(deg,
                              edge_conf_score_min, logFC_min, pvalue_max,
                              method = 'betweenness', causal_gene_symbol,
