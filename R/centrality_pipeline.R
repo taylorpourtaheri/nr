@@ -4,7 +4,7 @@
 #' important genes, ranked by the specified centrality measure.
 #' @param deg Object of class '\code{dataframe}'. Differential gene expression analysis
 #' results including log fold-changes and p-values,
-#' i.e. the output of \code{topTable()} from limma or \code{results()| from DESeq2.
+#' i.e. the output of \code{topTable()} from limma or \code{results()} from DESeq2.
 #' @param edge_conf_score_min Numeric. A The minimum confidence score between edges in the
 #' STRING protein-protein interaction network.
 #' @param logFC_min Numeric. The minimum log2 fold-change value for a gene

@@ -17,6 +17,10 @@ centrality_pipeline(
 )
 }
 \arguments{
+\item{deg}{Object of class '\code{dataframe}'. Differential gene expression analysis
+results including log fold-changes and p-values,
+i.e. the output of \code{topTable()} from limma or \code{results()} from DESeq2.}
+
 \item{edge_conf_score_min}{Numeric. A The minimum confidence score between edges in the
 STRING protein-protein interaction network.}
 
