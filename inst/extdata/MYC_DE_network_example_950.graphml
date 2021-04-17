@@ -1,0 +1,3554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
+         http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+<!-- Created by igraph -->
+  <key id="v_name" for="node" attr.name="name" attr.type="string"/>
+  <key id="v_Symbol" for="node" attr.name="Symbol" attr.type="string"/>
+  <key id="v_ID" for="node" attr.name="ID" attr.type="double"/>
+  <key id="v_logFC" for="node" attr.name="logFC" attr.type="double"/>
+  <key id="v_AveExpr" for="node" attr.name="AveExpr" attr.type="double"/>
+  <key id="v_t" for="node" attr.name="t" attr.type="double"/>
+  <key id="v_P.Value" for="node" attr.name="P.Value" attr.type="double"/>
+  <key id="v_adj.P.Val" for="node" attr.name="adj.P.Val" attr.type="double"/>
+  <key id="v_B" for="node" attr.name="B" attr.type="double"/>
+  <key id="v_strength" for="node" attr.name="strength" attr.type="double"/>
+  <key id="v_degree" for="node" attr.name="degree" attr.type="double"/>
+  <key id="v_avg_strength" for="node" attr.name="avg_strength" attr.type="double"/>
+  <key id="v_evcent_w" for="node" attr.name="evcent_w" attr.type="double"/>
+  <key id="v_evcent_uw" for="node" attr.name="evcent_uw" attr.type="double"/>
+  <key id="v_betweenness" for="node" attr.name="betweenness" attr.type="double"/>
+  <key id="e_combined_score" for="edge" attr.name="combined_score" attr.type="double"/>
+  <graph id="G" edgedefault="undirected">
+    <node id="n0">
+      <data key="v_name">9606.ENSP00000199320</data>
+      <data key="v_Symbol">DIMT1</data>
+      <data key="v_ID">13853</data>
+      <data key="v_logFC">0.66890018493782</data>
+      <data key="v_AveExpr">10.6004732663238</data>
+      <data key="v_t">7.15859176877004</data>
+      <data key="v_P.Value">1.77467161067473e-009</data>
+      <data key="v_adj.P.Val">2.38403366863982e-007</data>
+      <data key="v_B">11.4904107156263</data>
+      <data key="v_strength">2</data>
+      <data key="v_degree">2</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0095957805115239</data>
+      <data key="v_evcent_uw">0.00959578051152391</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n1">
+      <data key="v_name">9606.ENSP00000202816</data>
+      <data key="v_Symbol">ESF1</data>
+      <data key="v_ID">28144</data>
+      <data key="v_logFC">0.749612354770091</data>
+      <data key="v_AveExpr">9.63708171868914</data>
+      <data key="v_t">7.37597244197321</data>
+      <data key="v_P.Value">7.71904555845209e-010</data>
+      <data key="v_adj.P.Val">1.18550229187744e-007</data>
+      <data key="v_B">12.2996402853403</data>
+      <data key="v_strength">10</data>
+      <data key="v_degree">10</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0450818737119888</data>
+      <data key="v_evcent_uw">0.0450818737119888</data>
+      <data key="v_betweenness">0.166666666666667</data>
+    </node>
+    <node id="n2">
+      <data key="v_name">9606.ENSP00000221233</data>
+      <data key="v_Symbol">EXOSC5</data>
+      <data key="v_ID">27767</data>
+      <data key="v_logFC">1.05526374310708</data>
+      <data key="v_AveExpr">9.39196133048283</data>
+      <data key="v_t">6.99360645300202</data>
+      <data key="v_P.Value">3.33752883376248e-009</data>
+      <data key="v_adj.P.Val">4.09146612076152e-007</data>
+      <data key="v_B">10.8765936054885</data>
+      <data key="v_strength">18</data>
+      <data key="v_degree">18</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0594663799429595</data>
+      <data key="v_evcent_uw">0.0594663799429595</data>
+      <data key="v_betweenness">47.2111111111112</data>
+    </node>
+    <node id="n3">
+      <data key="v_name">9606.ENSP00000223641</data>
+      <data key="v_Symbol">SEC61B</data>
+      <data key="v_ID">53951</data>
+      <data key="v_logFC">-0.646897673615124</data>
+      <data key="v_AveExpr">8.96981672110846</data>
+      <data key="v_t">-5.62227604922543</data>
+      <data key="v_P.Value">6.00083617889534e-007</data>
+      <data key="v_adj.P.Val">3.34109692546948e-005</data>
+      <data key="v_B">5.84200291475862</data>
+      <data key="v_strength">10</data>
+      <data key="v_degree">10</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00831629338012508</data>
+      <data key="v_evcent_uw">0.00831629338012512</data>
+      <data key="v_betweenness">149.5</data>
+    </node>
+    <node id="n4">
+      <data key="v_name">9606.ENSP00000225296</data>
+      <data key="v_Symbol">DHX33</data>
+      <data key="v_ID">32155</data>
+      <data key="v_logFC">0.600557308354189</data>
+      <data key="v_AveExpr">10.8050601024048</data>
+      <data key="v_t">9.16876534558998</data>
+      <data key="v_P.Value">8.57101074797497e-013</data>
+      <data key="v_adj.P.Val">3.60476932804255e-010</data>
+      <data key="v_B">18.9105072497452</data>
+      <data key="v_strength">6</data>
+      <data key="v_degree">6</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0299438420572822</data>
+      <data key="v_evcent_uw">0.0299438420572822</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n5">
+      <data key="v_name">9606.ENSP00000225298</data>
+      <data key="v_Symbol">UTP18</data>
+      <data key="v_ID">13169</data>
+      <data key="v_logFC">0.600043687419761</data>
+      <data key="v_AveExpr">9.61117781926255</data>
+      <data key="v_t">5.67063245916105</data>
+      <data key="v_P.Value">5.0132331466458e-007</data>
+      <data key="v_adj.P.Val">2.86115367737849e-005</data>
+      <data key="v_B">6.01584129173928</data>
+      <data key="v_strength">54</data>
+      <data key="v_degree">54</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.226399518377695</data>
+      <data key="v_evcent_uw">0.226399518377694</data>
+      <data key="v_betweenness">129.218359535368</data>
+    </node>
+    <node id="n6">
+      <data key="v_name">9606.ENSP00000232888</data>
+      <data key="v_Symbol">RRP9</data>
+      <data key="v_ID">13581</data>
+      <data key="v_logFC">1.52342921985523</data>
+      <data key="v_AveExpr">8.77838525539769</data>
+      <data key="v_t">9.2787811456052</data>
+      <data key="v_P.Value">5.68574210821206e-013</data>
+      <data key="v_adj.P.Val">2.50699959489108e-010</data>
+      <data key="v_B">19.3087804111823</data>
+      <data key="v_strength">50</data>
+      <data key="v_degree">50</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.219703036328138</data>
+      <data key="v_evcent_uw">0.219703036328138</data>
+      <data key="v_betweenness">142.167846894414</data>
+    </node>
+    <node id="n7">
+      <data key="v_name">9606.ENSP00000244230</data>
+      <data key="v_Symbol">MPHOSPH10</data>
+      <data key="v_ID">22191</data>
+      <data key="v_logFC">0.960592508391869</data>
+      <data key="v_AveExpr">8.81032810327573</data>
+      <data key="v_t">3.64754259740564</data>
+      <data key="v_P.Value">0.00057693494694394</data>
+      <data key="v_adj.P.Val">0.0100958519258308</data>
+      <data key="v_B">-0.724696146287422</data>
+      <data key="v_strength">46</data>
+      <data key="v_degree">46</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.215851683492691</data>
+      <data key="v_evcent_uw">0.215851683492691</data>
+      <data key="v_betweenness">35.8356214401298</data>
+    </node>
+    <node id="n8">
+      <data key="v_name">9606.ENSP00000253099</data>
+      <data key="v_Symbol">MRPL4</data>
+      <data key="v_ID">33020</data>
+      <data key="v_logFC">0.61778579715039</data>
+      <data key="v_AveExpr">9.6723551784811</data>
+      <data key="v_t">5.69487701104638</data>
+      <data key="v_P.Value">4.58044189189588e-007</data>
+      <data key="v_adj.P.Val">2.64731142113538e-005</data>
+      <data key="v_B">6.10314509231903</data>
+      <data key="v_strength">18</data>
+      <data key="v_degree">18</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00100518915612166</data>
+      <data key="v_evcent_uw">0.00100518915612173</data>
+      <data key="v_betweenness">4.75</data>
+    </node>
+    <node id="n9">
+      <data key="v_name">9606.ENSP00000254940</data>
+      <data key="v_Symbol">NIP7</data>
+      <data key="v_ID">28316</data>
+      <data key="v_logFC">0.684433085754464</data>
+      <data key="v_AveExpr">9.08193924112141</data>
+      <data key="v_t">4.29484894654521</data>
+      <data key="v_P.Value">6.9158958761414e-005</data>
+      <data key="v_adj.P.Val">0.00177941932719073</data>
+      <data key="v_B">1.28187519300247</data>
+      <data key="v_strength">40</data>
+      <data key="v_degree">40</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.170068700483363</data>
+      <data key="v_evcent_uw">0.170068700483363</data>
+      <data key="v_betweenness">64.5686291712715</data>
+    </node>
+    <node id="n10">
+      <data key="v_name">9606.ENSP00000256383</data>
+      <data key="v_Symbol">EIF2S1</data>
+      <data key="v_ID">10593</data>
+      <data key="v_logFC">0.694893464029124</data>
+      <data key="v_AveExpr">11.1498910962292</data>
+      <data key="v_t">6.43287767005157</data>
+      <data key="v_P.Value">2.83755363277616e-008</data>
+      <data key="v_adj.P.Val">2.47043383554199e-006</data>
+      <data key="v_B">8.79809792742927</data>
+      <data key="v_strength">4</data>
+      <data key="v_degree">4</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00790189551361472</data>
+      <data key="v_evcent_uw">0.00790189551361474</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n11">
+      <data key="v_name">9606.ENSP00000261015</data>
+      <data key="v_Symbol">WDR12</data>
+      <data key="v_ID">27798</data>
+      <data key="v_logFC">0.830474179895178</data>
+      <data key="v_AveExpr">11.3793350227386</data>
+      <data key="v_t">11.5086555468009</data>
+      <data key="v_P.Value">1.82762647590947e-016</data>
+      <data key="v_adj.P.Val">2.70068858298244e-013</data>
+      <data key="v_B">27.0851380245043</data>
+      <data key="v_strength">54</data>
+      <data key="v_degree">54</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.199902393675702</data>
+      <data key="v_evcent_uw">0.199902393675702</data>
+      <data key="v_betweenness">245.487706062123</data>
+    </node>
+    <node id="n12">
+      <data key="v_name">9606.ENSP00000261637</data>
+      <data key="v_Symbol">UTP20</data>
+      <data key="v_ID">19134</data>
+      <data key="v_logFC">0.955422917398002</data>
+      <data key="v_AveExpr">10.0513074394106</data>
+      <data key="v_t">11.6043051003192</data>
+      <data key="v_P.Value">1.31147797814915e-016</data>
+      <data key="v_adj.P.Val">2.10897230750897e-013</data>
+      <data key="v_B">27.4045401144221</data>
+      <data key="v_strength">36</data>
+      <data key="v_degree">36</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.18252411351601</data>
+      <data key="v_evcent_uw">0.18252411351601</data>
+      <data key="v_betweenness">0.700112459862784</data>
+    </node>
+    <node id="n13">
+      <data key="v_name">9606.ENSP00000263657</data>
+      <data key="v_Symbol">PNO1</data>
+      <data key="v_ID">13070</data>
+      <data key="v_logFC">0.873931944152016</data>
+      <data key="v_AveExpr">10.1551858460582</data>
+      <data key="v_t">8.24688127180561</data>
+      <data key="v_P.Value">2.77322332856424e-011</data>
+      <data key="v_adj.P.Val">6.79937154660312e-009</data>
+      <data key="v_B">15.5333325303904</data>
+      <data key="v_strength">46</data>
+      <data key="v_degree">46</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.201368148265591</data>
+      <data key="v_evcent_uw">0.201368148265591</data>
+      <data key="v_betweenness">157.374550166895</data>
+    </node>
+    <node id="n14">
+      <data key="v_name">9606.ENSP00000264279</data>
+      <data key="v_Symbol">NOP58</data>
+      <data key="v_ID">32376</data>
+      <data key="v_logFC">0.601091830892136</data>
+      <data key="v_AveExpr">12.0008248368728</data>
+      <data key="v_t">8.442211168614</data>
+      <data key="v_P.Value">1.32105729963155e-011</data>
+      <data key="v_adj.P.Val">3.66643694707385e-009</data>
+      <data key="v_B">16.254056654516</data>
+      <data key="v_strength">62</data>
+      <data key="v_degree">62</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.224991536099945</data>
+      <data key="v_evcent_uw">0.224991536099945</data>
+      <data key="v_betweenness">768.399797585622</data>
+    </node>
+    <node id="n15">
+      <data key="v_name">9606.ENSP00000264995</data>
+      <data key="v_Symbol">MRPL3</data>
+      <data key="v_ID">18203</data>
+      <data key="v_logFC">0.62194248562795</data>
+      <data key="v_AveExpr">11.6940303812045</data>
+      <data key="v_t">9.58662294490341</data>
+      <data key="v_P.Value">1.81394424010634e-013</data>
+      <data key="v_adj.P.Val">1.02244743636922e-010</data>
+      <data key="v_B">20.4168448078237</data>
+      <data key="v_strength">18</data>
+      <data key="v_degree">18</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00100518915612163</data>
+      <data key="v_evcent_uw">0.00100518915612172</data>
+      <data key="v_betweenness">4.75</data>
+    </node>
+    <node id="n16">
+      <data key="v_name">9606.ENSP00000265245</data>
+      <data key="v_Symbol">LSG1</data>
+      <data key="v_ID">30819</data>
+      <data key="v_logFC">0.629438621213432</data>
+      <data key="v_AveExpr">9.24150962247032</data>
+      <data key="v_t">5.60890493004757</data>
+      <data key="v_P.Value">6.30635743339032e-007</data>
+      <data key="v_adj.P.Val">3.48602754388288e-005</data>
+      <data key="v_B">5.79400458497737</data>
+      <data key="v_strength">2</data>
+      <data key="v_degree">2</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00952593302348033</data>
+      <data key="v_evcent_uw">0.00952593302348034</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n17">
+      <data key="v_name">9606.ENSP00000270625</data>
+      <data key="v_Symbol">RPS11</data>
+      <data key="v_ID">22652</data>
+      <data key="v_logFC">0.766246179584226</data>
+      <data key="v_AveExpr">11.0809870985451</data>
+      <data key="v_t">3.3337369866903</data>
+      <data key="v_P.Value">0.00151408749299663</data>
+      <data key="v_adj.P.Val">0.0216225423700117</data>
+      <data key="v_B">-1.62575907207456</data>
+      <data key="v_strength">48</data>
+      <data key="v_degree">48</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.157145311055112</data>
+      <data key="v_evcent_uw">0.157145311055112</data>
+      <data key="v_betweenness">1242.5</data>
+    </node>
+    <node id="n18">
+      <data key="v_name">9606.ENSP00000274054</data>
+      <data key="v_Symbol">NAF1</data>
+      <data key="v_ID">54079</data>
+      <data key="v_logFC">0.643689580297363</data>
+      <data key="v_AveExpr">8.76383449669132</data>
+      <data key="v_t">4.70899343807631</data>
+      <data key="v_P.Value">1.64889514833459e-005</data>
+      <data key="v_adj.P.Val">0.000548377994131349</data>
+      <data key="v_B">2.65157914071759</data>
+      <data key="v_strength">2</data>
+      <data key="v_degree">2</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0104694914884929</data>
+      <data key="v_evcent_uw">0.0104694914884929</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n19">
+      <data key="v_name">9606.ENSP00000288937</data>
+      <data key="v_Symbol">MRPL17</data>
+      <data key="v_ID">31497</data>
+      <data key="v_logFC">0.606262861583903</data>
+      <data key="v_AveExpr">9.60204933510328</data>
+      <data key="v_t">3.63100048556094</data>
+      <data key="v_P.Value">0.000607720706969452</data>
+      <data key="v_adj.P.Val">0.010515442455433</data>
+      <data key="v_B">-0.773467891797182</data>
+      <data key="v_strength">20</data>
+      <data key="v_degree">20</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00815300784740677</data>
+      <data key="v_evcent_uw">0.00815300784740687</data>
+      <data key="v_betweenness">406.75</data>
+    </node>
+    <node id="n20">
+      <data key="v_name">9606.ENSP00000296577</data>
+      <data key="v_Symbol">ABCE1</data>
+      <data key="v_ID">11321</data>
+      <data key="v_logFC">0.621129983663602</data>
+      <data key="v_AveExpr">11.268262535517</data>
+      <data key="v_t">9.34484802469407</data>
+      <data key="v_P.Value">4.44607134305089e-013</data>
+      <data key="v_adj.P.Val">2.04276429143956e-010</data>
+      <data key="v_B">19.5473901652706</data>
+      <data key="v_strength">4</data>
+      <data key="v_degree">4</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00788472880602252</data>
+      <data key="v_evcent_uw">0.00788472880602254</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n21">
+      <data key="v_name">9606.ENSP00000296792</data>
+      <data key="v_Symbol">UTP15</data>
+      <data key="v_ID">37305</data>
+      <data key="v_logFC">0.814578135021027</data>
+      <data key="v_AveExpr">8.88106896779557</data>
+      <data key="v_t">6.73753976322026</data>
+      <data key="v_P.Value">8.88434279632831e-009</data>
+      <data key="v_adj.P.Val">9.34137389210097e-007</data>
+      <data key="v_B">9.92546149675653</data>
+      <data key="v_strength">46</data>
+      <data key="v_degree">46</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.217864819336768</data>
+      <data key="v_evcent_uw">0.217864819336768</data>
+      <data key="v_betweenness">37.884583589092</data>
+    </node>
+    <node id="n22">
+      <data key="v_name">9606.ENSP00000297579</data>
+      <data key="v_Symbol">DCAF13</data>
+      <data key="v_ID">34934</data>
+      <data key="v_logFC">0.601511290024574</data>
+      <data key="v_AveExpr">10.6077349364353</data>
+      <data key="v_t">5.55615602182521</data>
+      <data key="v_P.Value">7.6690507850926e-007</data>
+      <data key="v_adj.P.Val">4.13516125912167e-005</data>
+      <data key="v_B">5.60495638789153</data>
+      <data key="v_strength">46</data>
+      <data key="v_degree">46</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.217864819336768</data>
+      <data key="v_evcent_uw">0.217864819336768</data>
+      <data key="v_betweenness">37.884583589092</data>
+    </node>
+    <node id="n23">
+      <data key="v_name">9606.ENSP00000297990</data>
+      <data key="v_Symbol">NOL6</data>
+      <data key="v_ID">27485</data>
+      <data key="v_logFC">0.905035273202024</data>
+      <data key="v_AveExpr">9.80965553142436</data>
+      <data key="v_t">6.94970977282071</data>
+      <data key="v_P.Value">3.94796353876237e-009</data>
+      <data key="v_adj.P.Val">4.69833139234492e-007</data>
+      <data key="v_B">10.7133832367143</data>
+      <data key="v_strength">52</data>
+      <data key="v_degree">52</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.225064582524588</data>
+      <data key="v_evcent_uw">0.225064582524588</data>
+      <data key="v_betweenness">86.7564547734632</data>
+    </node>
+    <node id="n24">
+      <data key="v_name">9606.ENSP00000301364</data>
+      <data key="v_Symbol">TSR1</data>
+      <data key="v_ID">27442</data>
+      <data key="v_logFC">0.593623062109625</data>
+      <data key="v_AveExpr">10.3294248762018</data>
+      <data key="v_t">6.22859585406936</data>
+      <data key="v_P.Value">6.16085241672776e-008</data>
+      <data key="v_adj.P.Val">4.73761752299002e-006</data>
+      <data key="v_B">8.04604567003256</data>
+      <data key="v_strength">38</data>
+      <data key="v_degree">38</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.182278974248536</data>
+      <data key="v_evcent_uw">0.182278974248536</data>
+      <data key="v_betweenness">39.6060242045536</data>
+    </node>
+    <node id="n25">
+      <data key="v_name">9606.ENSP00000302886</data>
+      <data key="v_Symbol">PA2G4</data>
+      <data key="v_ID">24091</data>
+      <data key="v_logFC">0.894498187849194</data>
+      <data key="v_AveExpr">9.93770468605028</data>
+      <data key="v_t">9.86434596708238</data>
+      <data key="v_P.Value">6.52362412421656e-014</data>
+      <data key="v_adj.P.Val">4.24618034513739e-011</data>
+      <data key="v_B">21.4079234007572</data>
+      <data key="v_strength">2</data>
+      <data key="v_degree">2</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00275380431788779</data>
+      <data key="v_evcent_uw">0.00275380431788779</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n26">
+      <data key="v_name">9606.ENSP00000307940</data>
+      <data key="v_Symbol">EEF2</data>
+      <data key="v_ID">13550</data>
+      <data key="v_logFC">0.995756085561788</data>
+      <data key="v_AveExpr">15.0451469263574</data>
+      <data key="v_t">13.0202137984255</data>
+      <data key="v_P.Value">1.10505239373238e-018</data>
+      <data key="v_adj.P.Val">3.17993366459567e-015</data>
+      <data key="v_B">31.9847297495676</data>
+      <data key="v_strength">8</data>
+      <data key="v_degree">8</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00833518364990033</data>
+      <data key="v_evcent_uw">0.00833518364990037</data>
+      <data key="v_betweenness">75</data>
+    </node>
+    <node id="n27">
+      <data key="v_name">9606.ENSP00000308179</data>
+      <data key="v_Symbol">WDR3</data>
+      <data key="v_ID">28167</data>
+      <data key="v_logFC">0.879400443087785</data>
+      <data key="v_AveExpr">10.3198578198837</data>
+      <data key="v_t">13.7049344345335</data>
+      <data key="v_P.Value">1.20306634814342e-019</data>
+      <data key="v_adj.P.Val">4.38517683898278e-016</data>
+      <data key="v_B">34.0990970850082</data>
+      <data key="v_strength">52</data>
+      <data key="v_degree">52</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.222848179292371</data>
+      <data key="v_evcent_uw">0.222848179292371</data>
+      <data key="v_betweenness">143.178432795441</data>
+    </node>
+    <node id="n28">
+      <data key="v_name">9606.ENSP00000311135</data>
+      <data key="v_Symbol">DHX37</data>
+      <data key="v_ID">32642</data>
+      <data key="v_logFC">1.76514374956534</data>
+      <data key="v_AveExpr">7.06325130538766</data>
+      <data key="v_t">5.05908356678173</data>
+      <data key="v_P.Value">4.72912320523001e-006</data>
+      <data key="v_adj.P.Val">0.000189981492465798</data>
+      <data key="v_B">3.85085558004985</data>
+      <data key="v_strength">40</data>
+      <data key="v_degree">40</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.193704170260127</data>
+      <data key="v_evcent_uw">0.193704170260127</data>
+      <data key="v_betweenness">5.01677912652945</data>
+    </node>
+    <node id="n29">
+      <data key="v_name">9606.ENSP00000313877</data>
+      <data key="v_Symbol">TSFM</data>
+      <data key="v_ID">23631</data>
+      <data key="v_logFC">1.47793925259444</data>
+      <data key="v_AveExpr">4.68754173943653</data>
+      <data key="v_t">3.32296429233844</data>
+      <data key="v_P.Value">0.00156377970054093</data>
+      <data key="v_adj.P.Val">0.0221616524435136</data>
+      <data key="v_B">-1.65575198151618</data>
+      <data key="v_strength">8</data>
+      <data key="v_degree">8</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.000868182721336146</data>
+      <data key="v_evcent_uw">0.000868182721336187</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n30">
+      <data key="v_name">9606.ENSP00000314348</data>
+      <data key="v_Symbol">DDX10</data>
+      <data key="v_ID">14425</data>
+      <data key="v_logFC">0.895248883315102</data>
+      <data key="v_AveExpr">9.97992569126645</data>
+      <data key="v_t">11.1238137796573</data>
+      <data key="v_P.Value">7.02705996884899e-016</data>
+      <data key="v_adj.P.Val">8.53787786215153e-013</data>
+      <data key="v_B">25.7875706853019</data>
+      <data key="v_strength">12</data>
+      <data key="v_degree">12</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.053739060914523</data>
+      <data key="v_evcent_uw">0.053739060914523</data>
+      <data key="v_betweenness">1.3030525030525</data>
+    </node>
+    <node id="n31">
+      <data key="v_name">9606.ENSP00000315476</data>
+      <data key="v_Symbol">EXOSC4</data>
+      <data key="v_ID">54526</data>
+      <data key="v_logFC">0.627198988217489</data>
+      <data key="v_AveExpr">9.85530458434002</data>
+      <data key="v_t">7.73104767397192</data>
+      <data key="v_P.Value">1.98330147318226e-010</data>
+      <data key="v_adj.P.Val">3.60255840685183e-008</data>
+      <data key="v_B">13.6207932309007</data>
+      <data key="v_strength">8</data>
+      <data key="v_degree">8</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00891444619484431</data>
+      <data key="v_evcent_uw">0.00891444619484433</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n32">
+      <data key="v_name">9606.ENSP00000317331</data>
+      <data key="v_Symbol">SSR4</data>
+      <data key="v_ID">10453</data>
+      <data key="v_logFC">0.694135966779293</data>
+      <data key="v_AveExpr">12.7233743064193</data>
+      <data key="v_t">7.96553207910775</data>
+      <data key="v_P.Value">8.09860372144419e-011</data>
+      <data key="v_adj.P.Val">1.70961837247089e-008</data>
+      <data key="v_B">14.4915631262083</data>
+      <data key="v_strength">2</data>
+      <data key="v_degree">2</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.000396295673533558</data>
+      <data key="v_evcent_uw">0.000396295673533564</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n33">
+      <data key="v_name">9606.ENSP00000318195</data>
+      <data key="v_Symbol">NCL</data>
+      <data key="v_ID">10059</data>
+      <data key="v_logFC">1.17783184661051</data>
+      <data key="v_AveExpr">12.2904256283717</data>
+      <data key="v_t">15.604205157939</data>
+      <data key="v_P.Value">3.49128032410744e-022</data>
+      <data key="v_adj.P.Val">2.12095279689527e-018</data>
+      <data key="v_B">39.6251101724348</data>
+      <data key="v_strength">4</data>
+      <data key="v_degree">4</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0210438586505237</data>
+      <data key="v_evcent_uw">0.0210438586505237</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n34">
+      <data key="v_name">9606.ENSP00000320184</data>
+      <data key="v_Symbol">MRPS23</data>
+      <data key="v_ID">32435</data>
+      <data key="v_logFC">0.640821729385982</data>
+      <data key="v_AveExpr">9.10686876498939</data>
+      <data key="v_t">5.58214061482346</data>
+      <data key="v_P.Value">6.9648501404157e-007</data>
+      <data key="v_adj.P.Val">3.80043095236755e-005</data>
+      <data key="v_B">5.69802189396787</data>
+      <data key="v_strength">10</data>
+      <data key="v_degree">10</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.000536559915063489</data>
+      <data key="v_evcent_uw">0.000536559915063559</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n35">
+      <data key="v_name">9606.ENSP00000321711</data>
+      <data key="v_Symbol">DIS3L</data>
+      <data key="v_ID">44255</data>
+      <data key="v_logFC">0.875069830755391</data>
+      <data key="v_AveExpr">9.46975449871251</data>
+      <data key="v_t">9.77340761579416</data>
+      <data key="v_P.Value">9.11044829323413e-014</data>
+      <data key="v_adj.P.Val">5.66038364127927e-011</data>
+      <data key="v_B">21.0843335570606</data>
+      <data key="v_strength">8</data>
+      <data key="v_degree">8</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00891444619484431</data>
+      <data key="v_evcent_uw">0.00891444619484432</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n36">
+      <data key="v_name">9606.ENSP00000322142</data>
+      <data key="v_Symbol">ING5</data>
+      <data key="v_ID">37927</data>
+      <data key="v_logFC">1.3453343874479</data>
+      <data key="v_AveExpr">5.17121985996588</data>
+      <data key="v_t">3.07415528932057</data>
+      <data key="v_P.Value">0.0032434058831317</data>
+      <data key="v_adj.P.Val">0.0389144649243419</data>
+      <data key="v_B">-2.3299072706532</data>
+      <data key="v_strength">2</data>
+      <data key="v_degree">2</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">2.45693155726621e-005</data>
+      <data key="v_evcent_uw">2.45693155726655e-005</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n37">
+      <data key="v_name">9606.ENSP00000322419</data>
+      <data key="v_Symbol">RPLP2</data>
+      <data key="v_ID">10357</data>
+      <data key="v_logFC">0.836037399253069</data>
+      <data key="v_AveExpr">9.36472135889014</data>
+      <data key="v_t">4.29849951198628</data>
+      <data key="v_P.Value">6.8306515520876e-005</data>
+      <data key="v_adj.P.Val">0.00176246282968565</data>
+      <data key="v_B">1.29368491043974</data>
+      <data key="v_strength">8</data>
+      <data key="v_degree">8</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00867653798091656</data>
+      <data key="v_evcent_uw">0.0086765379809166</data>
+      <data key="v_betweenness">1.5</data>
+    </node>
+    <node id="n38">
+      <data key="v_name">9606.ENSP00000322439</data>
+      <data key="v_Symbol">TUFM</data>
+      <data key="v_ID">10562</data>
+      <data key="v_logFC">0.663572977644086</data>
+      <data key="v_AveExpr">12.6212443352806</data>
+      <data key="v_t">8.77088491602904</data>
+      <data key="v_P.Value">3.81417152671587e-012</data>
+      <data key="v_adj.P.Val">1.31987233052652e-009</data>
+      <data key="v_B">17.4609977174039</data>
+      <data key="v_strength">12</data>
+      <data key="v_degree">12</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00805549105848694</data>
+      <data key="v_evcent_uw">0.008055491058487</data>
+      <data key="v_betweenness">134.25</data>
+    </node>
+    <node id="n39">
+      <data key="v_name">9606.ENSP00000323046</data>
+      <data key="v_Symbol">EXOSC3</data>
+      <data key="v_ID">32768</data>
+      <data key="v_logFC">1.17481269443736</data>
+      <data key="v_AveExpr">6.9064518136253</data>
+      <data key="v_t">3.36841262357861</data>
+      <data key="v_P.Value">0.00136408179545342</data>
+      <data key="v_adj.P.Val">0.0198406949099271</data>
+      <data key="v_B">-1.52877861712829</data>
+      <data key="v_strength">12</data>
+      <data key="v_degree">12</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0293486613099026</data>
+      <data key="v_evcent_uw">0.0293486613099026</data>
+      <data key="v_betweenness">18.2666666666667</data>
+    </node>
+    <node id="n40">
+      <data key="v_name">9606.ENSP00000327179</data>
+      <data key="v_Symbol">UTP4</data>
+      <data key="v_ID">39911</data>
+      <data key="v_logFC">0.760100752856477</data>
+      <data key="v_AveExpr">10.8959223256188</data>
+      <data key="v_t">10.9998329168712</data>
+      <data key="v_P.Value">1.08864624874814e-015</data>
+      <data key="v_adj.P.Val">1.22288704688451e-012</data>
+      <data key="v_B">25.365346720494</data>
+      <data key="v_strength">46</data>
+      <data key="v_degree">46</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.217864819336768</data>
+      <data key="v_evcent_uw">0.217864819336768</data>
+      <data key="v_betweenness">37.884583589092</data>
+    </node>
+    <node id="n41">
+      <data key="v_name">9606.ENSP00000338057</data>
+      <data key="v_Symbol">MRPL30</data>
+      <data key="v_ID">53138</data>
+      <data key="v_logFC">0.823210333461422</data>
+      <data key="v_AveExpr">7.57406477981244</data>
+      <data key="v_t">4.20441078468371</data>
+      <data key="v_P.Value">9.38986629969455e-005</data>
+      <data key="v_adj.P.Val">0.00230323436489816</data>
+      <data key="v_B">0.990927323239532</data>
+      <data key="v_strength">12</data>
+      <data key="v_degree">12</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.000559802561692392</data>
+      <data key="v_evcent_uw">0.000559802561692427</data>
+      <data key="v_betweenness">0.5</data>
+    </node>
+    <node id="n42">
+      <data key="v_name">9606.ENSP00000339145</data>
+      <data key="v_Symbol">RRP1B</data>
+      <data key="v_ID">22152</data>
+      <data key="v_logFC">0.597123216257625</data>
+      <data key="v_AveExpr">10.9342099551612</data>
+      <data key="v_t">8.8448796296697</data>
+      <data key="v_P.Value">2.88670842985176e-012</data>
+      <data key="v_adj.P.Val">1.04523697617315e-009</data>
+      <data key="v_B">17.7315876764561</data>
+      <data key="v_strength">8</data>
+      <data key="v_degree">8</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0292956803353567</data>
+      <data key="v_evcent_uw">0.0292956803353568</data>
+      <data key="v_betweenness">0.25</data>
+    </node>
+    <node id="n43">
+      <data key="v_name">9606.ENSP00000346080</data>
+      <data key="v_Symbol">RPL22L1</data>
+      <data key="v_ID">34799</data>
+      <data key="v_logFC">0.931318767882974</data>
+      <data key="v_AveExpr">11.9244167878364</data>
+      <data key="v_t">9.72093120795094</data>
+      <data key="v_P.Value">1.10512404580212e-013</data>
+      <data key="v_adj.P.Val">6.63985244002538e-011</data>
+      <data key="v_B">20.8971877062928</data>
+      <data key="v_strength">8</data>
+      <data key="v_degree">8</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00869538703721982</data>
+      <data key="v_evcent_uw">0.00869538703721986</data>
+      <data key="v_betweenness">4.5</data>
+    </node>
+    <node id="n44">
+      <data key="v_name">9606.ENSP00000346120</data>
+      <data key="v_Symbol">DDX21</data>
+      <data key="v_ID">33914</data>
+      <data key="v_logFC">0.786714334354373</data>
+      <data key="v_AveExpr">12.6109521713653</data>
+      <data key="v_t">13.7421316692214</data>
+      <data key="v_P.Value">1.06835354299593e-019</data>
+      <data key="v_adj.P.Val">4.17230214023588e-016</data>
+      <data key="v_B">34.2120822749592</data>
+      <data key="v_strength">6</data>
+      <data key="v_degree">6</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0292468347014967</data>
+      <data key="v_evcent_uw">0.0292468347014967</data>
+      <data key="v_betweenness">0.346464646464647</data>
+    </node>
+    <node id="n45">
+      <data key="v_name">9606.ENSP00000346725</data>
+      <data key="v_Symbol">PES1</data>
+      <data key="v_ID">11661</data>
+      <data key="v_logFC">0.992353223050329</data>
+      <data key="v_AveExpr">9.29136336054802</data>
+      <data key="v_t">6.38241587589832</data>
+      <data key="v_P.Value">3.43749632161062e-008</data>
+      <data key="v_adj.P.Val">2.92294107906782e-006</data>
+      <data key="v_B">8.61199064316784</data>
+      <data key="v_strength">60</data>
+      <data key="v_degree">60</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.212476400206608</data>
+      <data key="v_evcent_uw">0.212476400206608</data>
+      <data key="v_betweenness">291.75337625309</data>
+    </node>
+    <node id="n46">
+      <data key="v_name">9606.ENSP00000347277</data>
+      <data key="v_Symbol">MRPL52</data>
+      <data key="v_ID">31278</data>
+      <data key="v_logFC">0.906332888444252</data>
+      <data key="v_AveExpr">8.04807055834442</data>
+      <data key="v_t">3.80043247939183</data>
+      <data key="v_P.Value">0.000354836167766772</data>
+      <data key="v_adj.P.Val">0.00684568365301632</data>
+      <data key="v_B">-0.26760944346852</data>
+      <data key="v_strength">8</data>
+      <data key="v_degree">8</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.000510991267685161</data>
+      <data key="v_evcent_uw">0.00051099126768521</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n47">
+      <data key="v_name">9606.ENSP00000355899</data>
+      <data key="v_Symbol">RRP15</data>
+      <data key="v_ID">28322</data>
+      <data key="v_logFC">0.822594690263614</data>
+      <data key="v_AveExpr">9.22798624968207</data>
+      <data key="v_t">6.12211797365655</data>
+      <data key="v_P.Value">9.21584550149089e-008</data>
+      <data key="v_adj.P.Val">6.7094054965914e-006</data>
+      <data key="v_B">7.65563339765374</data>
+      <data key="v_strength">10</data>
+      <data key="v_degree">10</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0323244769426451</data>
+      <data key="v_evcent_uw">0.0323244769426451</data>
+      <data key="v_betweenness">12.3785839598997</data>
+    </node>
+    <node id="n48">
+      <data key="v_name">9606.ENSP00000358400</data>
+      <data key="v_Symbol">MDN1</data>
+      <data key="v_ID">21999</data>
+      <data key="v_logFC">0.74808565902736</data>
+      <data key="v_AveExpr">10.537472305461</data>
+      <data key="v_t">8.50558610533822</data>
+      <data key="v_P.Value">1.03906763038777e-011</data>
+      <data key="v_adj.P.Val">3.00587421647892e-009</data>
+      <data key="v_B">16.487377216215</data>
+      <data key="v_strength">4</data>
+      <data key="v_degree">4</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0101627289795201</data>
+      <data key="v_evcent_uw">0.0101627289795201</data>
+      <data key="v_betweenness">0.866666666666667</data>
+    </node>
+    <node id="n49">
+      <data key="v_name">9606.ENSP00000359127</data>
+      <data key="v_Symbol">DPH5</data>
+      <data key="v_ID">32948</data>
+      <data key="v_logFC">0.58690326419746</data>
+      <data key="v_AveExpr">11.125676274485</data>
+      <data key="v_t">7.42974683650603</data>
+      <data key="v_P.Value">6.28249976892305e-010</data>
+      <data key="v_adj.P.Val">9.92762066086323e-008</data>
+      <data key="v_B">12.4998268068378</data>
+      <data key="v_strength">2</data>
+      <data key="v_degree">2</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.000397195850071546</data>
+      <data key="v_evcent_uw">0.000397195850071558</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n50">
+      <data key="v_name">9606.ENSP00000360412</data>
+      <data key="v_Symbol">NOC3L</data>
+      <data key="v_ID">28174</data>
+      <data key="v_logFC">0.647610712375859</data>
+      <data key="v_AveExpr">10.7911076034369</data>
+      <data key="v_t">8.81624741644479</data>
+      <data key="v_P.Value">3.21514947760413e-012</data>
+      <data key="v_adj.P.Val">1.14148245251952e-009</data>
+      <data key="v_B">17.6269355734934</data>
+      <data key="v_strength">12</data>
+      <data key="v_degree">12</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0492533765235419</data>
+      <data key="v_evcent_uw">0.0492533765235419</data>
+      <data key="v_betweenness">3.08791208791209</data>
+    </node>
+    <node id="n51">
+      <data key="v_name">9606.ENSP00000361092</data>
+      <data key="v_Symbol">SURF6</data>
+      <data key="v_ID">34296</data>
+      <data key="v_logFC">0.657833365884307</data>
+      <data key="v_AveExpr">9.52600845493951</data>
+      <data key="v_t">6.44367449999378</data>
+      <data key="v_P.Value">2.72340162963239e-008</data>
+      <data key="v_adj.P.Val">2.38288354679429e-006</data>
+      <data key="v_B">8.83794362666202</data>
+      <data key="v_strength">4</data>
+      <data key="v_degree">4</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0116654769206822</data>
+      <data key="v_evcent_uw">0.0116654769206822</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n52">
+      <data key="v_name">9606.ENSP00000361433</data>
+      <data key="v_Symbol">EXOSC2</data>
+      <data key="v_ID">23807</data>
+      <data key="v_logFC">0.930427638792944</data>
+      <data key="v_AveExpr">6.76859703047243</data>
+      <data key="v_t">3.01474062600168</data>
+      <data key="v_P.Value">0.00384219524472704</data>
+      <data key="v_adj.P.Val">0.0442629635493997</data>
+      <data key="v_B">-2.48543648030299</data>
+      <data key="v_strength">24</data>
+      <data key="v_degree">24</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0893408108894918</data>
+      <data key="v_evcent_uw">0.0893408108894918</data>
+      <data key="v_betweenness">82.6720238095237</data>
+    </node>
+    <node id="n53">
+      <data key="v_name">9606.ENSP00000361465</data>
+      <data key="v_Symbol">POLR1C</data>
+      <data key="v_ID">18732</data>
+      <data key="v_logFC">0.612095806304475</data>
+      <data key="v_AveExpr">9.96965976642614</data>
+      <data key="v_t">8.06947779776689</data>
+      <data key="v_P.Value">5.44840345807357e-011</data>
+      <data key="v_adj.P.Val">1.23095644243873e-008</data>
+      <data key="v_B">14.8768928920466</data>
+      <data key="v_strength">6</data>
+      <data key="v_degree">6</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0113084882097539</data>
+      <data key="v_evcent_uw">0.0113084882097539</data>
+      <data key="v_betweenness">75</data>
+    </node>
+    <node id="n54">
+      <data key="v_name">9606.ENSP00000362166</data>
+      <data key="v_Symbol">MEAF6</data>
+      <data key="v_ID">37772</data>
+      <data key="v_logFC">0.993316215582105</data>
+      <data key="v_AveExpr">6.33094815715313</data>
+      <data key="v_t">2.99539734428826</data>
+      <data key="v_P.Value">0.00405840252335948</data>
+      <data key="v_adj.P.Val">0.0462084877060973</data>
+      <data key="v_B">-2.5356009196511</data>
+      <data key="v_strength">6</data>
+      <data key="v_degree">6</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00051558886482234</data>
+      <data key="v_evcent_uw">0.000515588864822357</data>
+      <data key="v_betweenness">149</data>
+    </node>
+    <node id="n55">
+      <data key="v_name">9606.ENSP00000363384</data>
+      <data key="v_Symbol">ZNF593</data>
+      <data key="v_ID">13623</data>
+      <data key="v_logFC">0.897315373665331</data>
+      <data key="v_AveExpr">9.46990768977061</data>
+      <data key="v_t">6.63674563932426</data>
+      <data key="v_P.Value">1.30529169381519e-008</data>
+      <data key="v_adj.P.Val">1.26312961697957e-006</data>
+      <data key="v_B">9.55185913251758</data>
+      <data key="v_strength">4</data>
+      <data key="v_degree">4</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0128789254843802</data>
+      <data key="v_evcent_uw">0.0128789254843802</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n56">
+      <data key="v_name">9606.ENSP00000363944</data>
+      <data key="v_Symbol">LAS1L</data>
+      <data key="v_ID">17547</data>
+      <data key="v_logFC">0.774498944219556</data>
+      <data key="v_AveExpr">9.44427646899011</data>
+      <data key="v_t">4.57057568627424</data>
+      <data key="v_P.Value">2.67787175100734e-005</data>
+      <data key="v_adj.P.Val">0.000812500765739879</data>
+      <data key="v_B">2.18736648897206</data>
+      <data key="v_strength">4</data>
+      <data key="v_degree">4</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0207444879049793</data>
+      <data key="v_evcent_uw">0.0207444879049794</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n57">
+      <data key="v_name">9606.ENSP00000364320</data>
+      <data key="v_Symbol">MRTO4</data>
+      <data key="v_ID">29973</data>
+      <data key="v_logFC">0.959238882372856</data>
+      <data key="v_AveExpr">10.0187186120999</data>
+      <data key="v_t">6.63935817594479</data>
+      <data key="v_P.Value">1.29234797990331e-008</data>
+      <data key="v_adj.P.Val">1.25504663945317e-006</data>
+      <data key="v_B">9.56153575125722</data>
+      <data key="v_strength">20</data>
+      <data key="v_degree">20</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0577887828418859</data>
+      <data key="v_evcent_uw">0.057788782841886</data>
+      <data key="v_betweenness">93.0389145359229</data>
+    </node>
+    <node id="n58">
+      <data key="v_name">9606.ENSP00000367029</data>
+      <data key="v_Symbol">POLR1E</data>
+      <data key="v_ID">28282</data>
+      <data key="v_logFC">0.893833826671782</data>
+      <data key="v_AveExpr">9.15416352407878</data>
+      <data key="v_t">7.79850806521575</data>
+      <data key="v_P.Value">1.5324956997271e-010</data>
+      <data key="v_adj.P.Val">2.8992803592588e-008</data>
+      <data key="v_B">13.8714984210602</data>
+      <data key="v_strength">6</data>
+      <data key="v_degree">6</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0117790246251035</data>
+      <data key="v_evcent_uw">0.0117790246251035</data>
+      <data key="v_betweenness">6.28333333333333</data>
+    </node>
+    <node id="n59">
+      <data key="v_name">9606.ENSP00000368459</data>
+      <data key="v_Symbol">NUFIP1</data>
+      <data key="v_ID">14582</data>
+      <data key="v_logFC">0.585382288179404</data>
+      <data key="v_AveExpr">9.08035483762455</data>
+      <data key="v_t">6.60527378866439</data>
+      <data key="v_P.Value">1.47175081986205e-008</data>
+      <data key="v_adj.P.Val">1.39944306219057e-006</data>
+      <data key="v_B">9.43532141691504</data>
+      <data key="v_strength">2</data>
+      <data key="v_degree">2</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0107215039516485</data>
+      <data key="v_evcent_uw">0.0107215039516485</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n60">
+      <data key="v_name">9606.ENSP00000368887</data>
+      <data key="v_Symbol">PAK1IP1</data>
+      <data key="v_ID">28171</data>
+      <data key="v_logFC">0.61469023174463</data>
+      <data key="v_AveExpr">8.58991129019717</data>
+      <data key="v_t">3.13648760117567</data>
+      <data key="v_P.Value">0.00270976820103336</data>
+      <data key="v_adj.P.Val">0.0340433309723114</data>
+      <data key="v_B">-2.16443299456327</data>
+      <data key="v_strength">4</data>
+      <data key="v_degree">4</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0176302034146746</data>
+      <data key="v_evcent_uw">0.0176302034146746</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n61">
+      <data key="v_name">9606.ENSP00000369682</data>
+      <data key="v_Symbol">MRPS26</data>
+      <data key="v_ID">34454</data>
+      <data key="v_logFC">0.596284044922335</data>
+      <data key="v_AveExpr">10.2716081466185</data>
+      <data key="v_t">5.95947875117966</data>
+      <data key="v_P.Value">1.70110440580708e-007</data>
+      <data key="v_adj.P.Val">1.13701568933377e-005</data>
+      <data key="v_B">7.06176903394366</data>
+      <data key="v_strength">10</data>
+      <data key="v_degree">10</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.000536559915063496</data>
+      <data key="v_evcent_uw">0.000536559915063552</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n62">
+      <data key="v_name">9606.ENSP00000370968</data>
+      <data key="v_Symbol">MYBBP1A</data>
+      <data key="v_ID">43054</data>
+      <data key="v_logFC">1.13698369937654</data>
+      <data key="v_AveExpr">9.01292120059562</data>
+      <data key="v_t">9.00428098203037</data>
+      <data key="v_P.Value">1.58629167083984e-012</data>
+      <data key="v_adj.P.Val">6.23960410814159e-010</data>
+      <data key="v_B">18.3129509520866</data>
+      <data key="v_strength">4</data>
+      <data key="v_degree">4</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.010883659631735</data>
+      <data key="v_evcent_uw">0.010883659631735</data>
+      <data key="v_betweenness">0.75</data>
+    </node>
+    <node id="n63">
+      <data key="v_name">9606.ENSP00000371169</data>
+      <data key="v_Symbol">RCL1</data>
+      <data key="v_ID">31946</data>
+      <data key="v_logFC">0.923903181879144</data>
+      <data key="v_AveExpr">8.95224706197252</data>
+      <data key="v_t">6.34242314078069</data>
+      <data key="v_P.Value">4.00131273863762e-008</data>
+      <data key="v_adj.P.Val">3.2947556323044e-006</data>
+      <data key="v_B">8.464643084123</data>
+      <data key="v_strength">46</data>
+      <data key="v_degree">46</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.216505968636882</data>
+      <data key="v_evcent_uw">0.216505968636882</data>
+      <data key="v_betweenness">43.1443058113142</data>
+    </node>
+    <node id="n64">
+      <data key="v_name">9606.ENSP00000377944</data>
+      <data key="v_Symbol">UTP14A</data>
+      <data key="v_ID">30798</data>
+      <data key="v_logFC">1.12891725664576</data>
+      <data key="v_AveExpr">9.07376481661107</data>
+      <data key="v_t">8.01756997298453</data>
+      <data key="v_P.Value">6.64059111999617e-011</data>
+      <data key="v_adj.P.Val">1.4407711090706e-008</data>
+      <data key="v_B">14.6845284881904</data>
+      <data key="v_strength">40</data>
+      <data key="v_degree">40</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.198407645805073</data>
+      <data key="v_evcent_uw">0.198407645805073</data>
+      <data key="v_betweenness">17.2168218615722</data>
+    </node>
+    <node id="n65">
+      <data key="v_name">9606.ENSP00000380024</data>
+      <data key="v_Symbol">ING4</data>
+      <data key="v_ID">54446</data>
+      <data key="v_logFC">-0.776698987239891</data>
+      <data key="v_AveExpr">8.04483606895582</data>
+      <data key="v_t">-3.40477648322288</data>
+      <data key="v_P.Value">0.00122194518543405</data>
+      <data key="v_adj.P.Val">0.0181746063693163</data>
+      <data key="v_B">-1.42636562813357</data>
+      <data key="v_strength">2</data>
+      <data key="v_degree">2</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">2.45693155726621e-005</data>
+      <data key="v_evcent_uw">2.45693155726655e-005</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n66">
+      <data key="v_name">9606.ENSP00000382058</data>
+      <data key="v_Symbol">POLR3G</data>
+      <data key="v_ID">16100</data>
+      <data key="v_logFC">0.678930638728235</data>
+      <data key="v_AveExpr">8.15156623266074</data>
+      <data key="v_t">4.19589214906786</data>
+      <data key="v_P.Value">9.66286805528829e-005</data>
+      <data key="v_adj.P.Val">0.00236066716230066</data>
+      <data key="v_B">0.963685447415581</data>
+      <data key="v_strength">2</data>
+      <data key="v_degree">2</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.000538882498114004</data>
+      <data key="v_evcent_uw">0.000538882498114009</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n67">
+      <data key="v_name">9606.ENSP00000384302</data>
+      <data key="v_Symbol">WDR43</data>
+      <data key="v_ID">23959</data>
+      <data key="v_logFC">0.751092397491756</data>
+      <data key="v_AveExpr">9.51446935841243</data>
+      <data key="v_t">7.97157584004858</data>
+      <data key="v_P.Value">7.91399646364193e-011</data>
+      <data key="v_adj.P.Val">1.67712308778923e-008</data>
+      <data key="v_B">14.5139802807111</data>
+      <data key="v_strength">50</data>
+      <data key="v_degree">50</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.216615360153023</data>
+      <data key="v_evcent_uw">0.216615360153023</data>
+      <data key="v_betweenness">147.019693658761</data>
+    </node>
+    <node id="n68">
+      <data key="v_name">9606.ENSP00000391457</data>
+      <data key="v_Symbol">INO80C</data>
+      <data key="v_ID">38837</data>
+      <data key="v_logFC">-0.600978611837898</data>
+      <data key="v_AveExpr">10.2716088282447</data>
+      <data key="v_t">-7.17251250674216</data>
+      <data key="v_P.Value">1.68254455735798e-009</data>
+      <data key="v_adj.P.Val">2.27143515243328e-007</data>
+      <data key="v_B">11.5422228053111</data>
+      <data key="v_strength">2</data>
+      <data key="v_degree">2</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.000513247265502061</data>
+      <data key="v_evcent_uw">0.000513247265502063</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n69">
+      <data key="v_name">9606.ENSP00000398131</data>
+      <data key="v_Symbol">GSPT1</data>
+      <data key="v_ID">11361</data>
+      <data key="v_logFC">0.611337647168772</data>
+      <data key="v_AveExpr">11.5097315439999</data>
+      <data key="v_t">7.85397547989169</data>
+      <data key="v_P.Value">1.23983951020137e-010</data>
+      <data key="v_adj.P.Val">2.42218266314153e-008</data>
+      <data key="v_B">14.077527774181</data>
+      <data key="v_strength">2</data>
+      <data key="v_degree">2</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.00748843313248897</data>
+      <data key="v_evcent_uw">0.00748843313248897</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n70">
+      <data key="v_name">9606.ENSP00000413572</data>
+      <data key="v_Symbol">NLE1</data>
+      <data key="v_ID">13315</data>
+      <data key="v_logFC">0.852067860282303</data>
+      <data key="v_AveExpr">9.00581852272938</data>
+      <data key="v_t">4.14374428630623</data>
+      <data key="v_P.Value">0.000115095143563708</data>
+      <data key="v_adj.P.Val">0.00273244766580361</data>
+      <data key="v_B">0.79754836133564</data>
+      <data key="v_strength">6</data>
+      <data key="v_degree">6</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0133632092081246</data>
+      <data key="v_evcent_uw">0.0133632092081247</data>
+      <data key="v_betweenness">3.07070707070707</data>
+    </node>
+    <node id="n71">
+      <data key="v_name">9606.ENSP00000418401</data>
+      <data key="v_Symbol">SRPRB</data>
+      <data key="v_ID">27426</data>
+      <data key="v_logFC">0.839549665126737</data>
+      <data key="v_AveExpr">12.4185198545615</data>
+      <data key="v_t">13.6023424021549</data>
+      <data key="v_P.Value">1.67082824790298e-019</data>
+      <data key="v_adj.P.Val">5.70953340338097e-016</data>
+      <data key="v_B">33.7864775085112</data>
+      <data key="v_strength">2</data>
+      <data key="v_degree">2</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.000396295673533558</data>
+      <data key="v_evcent_uw">0.000396295673533569</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n72">
+      <data key="v_name">9606.ENSP00000419005</data>
+      <data key="v_Symbol">UTP25</data>
+      <data key="v_ID">14148</data>
+      <data key="v_logFC">0.588885651689166</data>
+      <data key="v_AveExpr">9.10664139772858</data>
+      <data key="v_t">4.89746588756349</data>
+      <data key="v_P.Value">8.44927471230173e-006</data>
+      <data key="v_adj.P.Val">0.00030921291492309</data>
+      <data key="v_B">3.29299622009416</data>
+      <data key="v_strength">40</data>
+      <data key="v_degree">40</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.192055295454677</data>
+      <data key="v_evcent_uw">0.192055295454677</data>
+      <data key="v_betweenness">15.5265185169092</data>
+    </node>
+    <node id="n73">
+      <data key="v_name">9606.ENSP00000419038</data>
+      <data key="v_Symbol">GFM1</data>
+      <data key="v_ID">34411</data>
+      <data key="v_logFC">0.639805327029803</data>
+      <data key="v_AveExpr">10.2835661055715</data>
+      <data key="v_t">7.87521808744003</data>
+      <data key="v_P.Value">1.14322283961868e-010</data>
+      <data key="v_adj.P.Val">2.26469959261417e-008</data>
+      <data key="v_B">14.1564040968962</data>
+      <data key="v_strength">8</data>
+      <data key="v_degree">8</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.000868182721336153</data>
+      <data key="v_evcent_uw">0.000868182721336187</data>
+      <data key="v_betweenness">0</data>
+    </node>
+    <node id="n74">
+      <data key="v_name">9606.ENSP00000423067</data>
+      <data key="v_Symbol">WDR36</data>
+      <data key="v_ID">35437</data>
+      <data key="v_logFC">0.643108656395078</data>
+      <data key="v_AveExpr">10.2511033678712</data>
+      <data key="v_t">7.70949584774263</data>
+      <data key="v_P.Value">2.15366611946001e-010</data>
+      <data key="v_adj.P.Val">3.84809461050575e-008</data>
+      <data key="v_B">13.5406725067554</data>
+      <data key="v_strength">48</data>
+      <data key="v_degree">48</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.220569671929604</data>
+      <data key="v_evcent_uw">0.220569671929604</data>
+      <data key="v_betweenness">58.2387502557586</data>
+    </node>
+    <node id="n75">
+      <data key="v_name">9606.ENSP00000460871</data>
+      <data key="v_Symbol">RSL1D1</data>
+      <data key="v_ID">21325</data>
+      <data key="v_logFC">0.594463322595194</data>
+      <data key="v_AveExpr">10.6042076435649</data>
+      <data key="v_t">5.30114684310025</data>
+      <data key="v_P.Value">1.96162314694255e-006</data>
+      <data key="v_adj.P.Val">9.05842445600371e-005</data>
+      <data key="v_B">4.69844074495682</data>
+      <data key="v_strength">36</data>
+      <data key="v_degree">36</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.168357856400409</data>
+      <data key="v_evcent_uw">0.168357856400409</data>
+      <data key="v_betweenness">14.4443656017185</data>
+    </node>
+    <node id="n76">
+      <data key="v_name">9606.ENSP00000473172</data>
+      <data key="v_Symbol">RUVBL2</data>
+      <data key="v_ID">5076</data>
+      <data key="v_logFC">0.60235213451301</data>
+      <data key="v_AveExpr">10.8298972510136</data>
+      <data key="v_t">7.84995859384065</data>
+      <data key="v_P.Value">1.25900933085613e-010</data>
+      <data key="v_adj.P.Val">2.44100479306947e-008</data>
+      <data key="v_B">14.0626108248321</data>
+      <data key="v_strength">6</data>
+      <data key="v_degree">6</data>
+      <data key="v_avg_strength">1</data>
+      <data key="v_evcent_w">0.0107705309987458</data>
+      <data key="v_evcent_uw">0.0107705309987458</data>
+      <data key="v_betweenness">291</data>
+    </node>
+    <edge source="n0" target="n13">
+      <data key="e_combined_score">966</data>
+    </edge>
+    <edge source="n1" target="n30">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n1" target="n7">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n1" target="n14">
+      <data key="e_combined_score">987</data>
+    </edge>
+    <edge source="n1" target="n23">
+      <data key="e_combined_score">965</data>
+    </edge>
+    <edge source="n1" target="n5">
+      <data key="e_combined_score">980</data>
+    </edge>
+    <edge source="n2" target="n74">
+      <data key="e_combined_score">963</data>
+    </edge>
+    <edge source="n2" target="n63">
+      <data key="e_combined_score">951</data>
+    </edge>
+    <edge source="n2" target="n27">
+      <data key="e_combined_score">955</data>
+    </edge>
+    <edge source="n2" target="n52">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n2" target="n39">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n2" target="n23">
+      <data key="e_combined_score">964</data>
+    </edge>
+    <edge source="n2" target="n35">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n2" target="n5">
+      <data key="e_combined_score">961</data>
+    </edge>
+    <edge source="n2" target="n31">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n3" target="n20">
+      <data key="e_combined_score">963</data>
+    </edge>
+    <edge source="n3" target="n71">
+      <data key="e_combined_score">967</data>
+    </edge>
+    <edge source="n3" target="n43">
+      <data key="e_combined_score">979</data>
+    </edge>
+    <edge source="n3" target="n32">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n3" target="n17">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n4" target="n72">
+      <data key="e_combined_score">967</data>
+    </edge>
+    <edge source="n4" target="n6">
+      <data key="e_combined_score">952</data>
+    </edge>
+    <edge source="n4" target="n67">
+      <data key="e_combined_score">965</data>
+    </edge>
+    <edge source="n5" target="n21">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n5" target="n30">
+      <data key="e_combined_score">959</data>
+    </edge>
+    <edge source="n5" target="n13">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n5" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n5" target="n11">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n5" target="n63">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n5" target="n22">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n5" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n5" target="n75">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n5" target="n27">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n5" target="n52">
+      <data key="e_combined_score">981</data>
+    </edge>
+    <edge source="n5" target="n39">
+      <data key="e_combined_score">956</data>
+    </edge>
+    <edge source="n5" target="n7">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n5" target="n24">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n5" target="n9">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n5" target="n28">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n5" target="n72">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n5" target="n14">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n5" target="n23">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n5" target="n64">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n2" target="n5">
+      <data key="e_combined_score">961</data>
+    </edge>
+    <edge source="n1" target="n5">
+      <data key="e_combined_score">980</data>
+    </edge>
+    <edge source="n5" target="n67">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n5" target="n45">
+      <data key="e_combined_score">986</data>
+    </edge>
+    <edge source="n5" target="n6">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n5" target="n12">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n5" target="n17">
+      <data key="e_combined_score">979</data>
+    </edge>
+    <edge source="n6" target="n21">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n6" target="n13">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n6" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n6" target="n11">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n6" target="n63">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n6" target="n22">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n6" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n6" target="n75">
+      <data key="e_combined_score">976</data>
+    </edge>
+    <edge source="n6" target="n27">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n6" target="n52">
+      <data key="e_combined_score">971</data>
+    </edge>
+    <edge source="n6" target="n7">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n6" target="n24">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n6" target="n9">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n6" target="n28">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n6" target="n72">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n6" target="n14">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n6" target="n23">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n6" target="n64">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n4" target="n6">
+      <data key="e_combined_score">952</data>
+    </edge>
+    <edge source="n6" target="n67">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n6" target="n45">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n5" target="n6">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n6" target="n12">
+      <data key="e_combined_score">977</data>
+    </edge>
+    <edge source="n6" target="n18">
+      <data key="e_combined_score">980</data>
+    </edge>
+    <edge source="n6" target="n17">
+      <data key="e_combined_score">980</data>
+    </edge>
+    <edge source="n7" target="n21">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n7" target="n13">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n7" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n7" target="n11">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n7" target="n63">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n7" target="n22">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n7" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n7" target="n75">
+      <data key="e_combined_score">987</data>
+    </edge>
+    <edge source="n7" target="n27">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n7" target="n24">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n7" target="n9">
+      <data key="e_combined_score">964</data>
+    </edge>
+    <edge source="n7" target="n28">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n7" target="n72">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n7" target="n14">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n7" target="n23">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n7" target="n64">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n1" target="n7">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n7" target="n67">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n7" target="n45">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n6" target="n7">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n5" target="n7">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n7" target="n12">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n7" target="n17">
+      <data key="e_combined_score">978</data>
+    </edge>
+    <edge source="n8" target="n34">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n8" target="n46">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n8" target="n19">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n8" target="n29">
+      <data key="e_combined_score">966</data>
+    </edge>
+    <edge source="n8" target="n15">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n8" target="n61">
+      <data key="e_combined_score">986</data>
+    </edge>
+    <edge source="n8" target="n73">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n8" target="n38">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n8" target="n41">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n9" target="n21">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n9" target="n60">
+      <data key="e_combined_score">978</data>
+    </edge>
+    <edge source="n9" target="n74">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n9" target="n11">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n9" target="n63">
+      <data key="e_combined_score">986</data>
+    </edge>
+    <edge source="n9" target="n22">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n9" target="n40">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n9" target="n75">
+      <data key="e_combined_score">962</data>
+    </edge>
+    <edge source="n9" target="n27">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n9" target="n42">
+      <data key="e_combined_score">958</data>
+    </edge>
+    <edge source="n7" target="n9">
+      <data key="e_combined_score">964</data>
+    </edge>
+    <edge source="n9" target="n72">
+      <data key="e_combined_score">972</data>
+    </edge>
+    <edge source="n9" target="n14">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n9" target="n57">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n9" target="n23">
+      <data key="e_combined_score">983</data>
+    </edge>
+    <edge source="n9" target="n50">
+      <data key="e_combined_score">959</data>
+    </edge>
+    <edge source="n9" target="n67">
+      <data key="e_combined_score">986</data>
+    </edge>
+    <edge source="n9" target="n45">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n6" target="n9">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n5" target="n9">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n10" target="n37">
+      <data key="e_combined_score">954</data>
+    </edge>
+    <edge source="n10" target="n17">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n11" target="n21">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n11" target="n60">
+      <data key="e_combined_score">981</data>
+    </edge>
+    <edge source="n11" target="n74">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n11" target="n63">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n11" target="n22">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n11" target="n40">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n11" target="n75">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n11" target="n27">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n11" target="n42">
+      <data key="e_combined_score">977</data>
+    </edge>
+    <edge source="n7" target="n11">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n11" target="n44">
+      <data key="e_combined_score">959</data>
+    </edge>
+    <edge source="n9" target="n11">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n11" target="n48">
+      <data key="e_combined_score">959</data>
+    </edge>
+    <edge source="n11" target="n28">
+      <data key="e_combined_score">982</data>
+    </edge>
+    <edge source="n11" target="n72">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n11" target="n14">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n11" target="n57">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n11" target="n23">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n11" target="n50">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n11" target="n64">
+      <data key="e_combined_score">977</data>
+    </edge>
+    <edge source="n11" target="n67">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n11" target="n45">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n6" target="n11">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n11" target="n47">
+      <data key="e_combined_score">975</data>
+    </edge>
+    <edge source="n5" target="n11">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n11" target="n12">
+      <data key="e_combined_score">952</data>
+    </edge>
+    <edge source="n11" target="n16">
+      <data key="e_combined_score">950</data>
+    </edge>
+    <edge source="n12" target="n21">
+      <data key="e_combined_score">983</data>
+    </edge>
+    <edge source="n12" target="n13">
+      <data key="e_combined_score">975</data>
+    </edge>
+    <edge source="n12" target="n74">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n11" target="n12">
+      <data key="e_combined_score">952</data>
+    </edge>
+    <edge source="n12" target="n63">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n12" target="n22">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n12" target="n40">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n12" target="n27">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n7" target="n12">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n12" target="n24">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n12" target="n28">
+      <data key="e_combined_score">980</data>
+    </edge>
+    <edge source="n12" target="n14">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n12" target="n23">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n12" target="n64">
+      <data key="e_combined_score">978</data>
+    </edge>
+    <edge source="n12" target="n67">
+      <data key="e_combined_score">987</data>
+    </edge>
+    <edge source="n12" target="n45">
+      <data key="e_combined_score">976</data>
+    </edge>
+    <edge source="n6" target="n12">
+      <data key="e_combined_score">977</data>
+    </edge>
+    <edge source="n5" target="n12">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n13" target="n21">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n13" target="n74">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n13" target="n63">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n13" target="n22">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n13" target="n40">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n13" target="n75">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n13" target="n27">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n7" target="n13">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n13" target="n24">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n13" target="n44">
+      <data key="e_combined_score">952</data>
+    </edge>
+    <edge source="n13" target="n28">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n13" target="n72">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n13" target="n14">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n13" target="n57">
+      <data key="e_combined_score">978</data>
+    </edge>
+    <edge source="n13" target="n23">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n13" target="n64">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n0" target="n13">
+      <data key="e_combined_score">966</data>
+    </edge>
+    <edge source="n13" target="n67">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n13" target="n45">
+      <data key="e_combined_score">955</data>
+    </edge>
+    <edge source="n6" target="n13">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n5" target="n13">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n12" target="n13">
+      <data key="e_combined_score">975</data>
+    </edge>
+    <edge source="n13" target="n17">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n14" target="n21">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n14" target="n30">
+      <data key="e_combined_score">950</data>
+    </edge>
+    <edge source="n13" target="n14">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n14" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n11" target="n14">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n14" target="n63">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n14" target="n22">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n14" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n14" target="n75">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n14" target="n59">
+      <data key="e_combined_score">963</data>
+    </edge>
+    <edge source="n14" target="n27">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n7" target="n14">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n14" target="n24">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n14" target="n58">
+      <data key="e_combined_score">986</data>
+    </edge>
+    <edge source="n9" target="n14">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n14" target="n28">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n14" target="n72">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n14" target="n23">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n14" target="n50">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n14" target="n33">
+      <data key="e_combined_score">965</data>
+    </edge>
+    <edge source="n14" target="n64">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n1" target="n14">
+      <data key="e_combined_score">987</data>
+    </edge>
+    <edge source="n14" target="n67">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n14" target="n45">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n6" target="n14">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n14" target="n53">
+      <data key="e_combined_score">952</data>
+    </edge>
+    <edge source="n14" target="n47">
+      <data key="e_combined_score">961</data>
+    </edge>
+    <edge source="n5" target="n14">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n12" target="n14">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n14" target="n76">
+      <data key="e_combined_score">950</data>
+    </edge>
+    <edge source="n14" target="n17">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n15" target="n34">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n15" target="n46">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n8" target="n15">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n15" target="n19">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n15" target="n29">
+      <data key="e_combined_score">968</data>
+    </edge>
+    <edge source="n15" target="n61">
+      <data key="e_combined_score">983</data>
+    </edge>
+    <edge source="n15" target="n73">
+      <data key="e_combined_score">982</data>
+    </edge>
+    <edge source="n15" target="n38">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n15" target="n41">
+      <data key="e_combined_score">983</data>
+    </edge>
+    <edge source="n11" target="n16">
+      <data key="e_combined_score">950</data>
+    </edge>
+    <edge source="n17" target="n21">
+      <data key="e_combined_score">982</data>
+    </edge>
+    <edge source="n17" target="n37">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n13" target="n17">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n17" target="n74">
+      <data key="e_combined_score">978</data>
+    </edge>
+    <edge source="n17" target="n63">
+      <data key="e_combined_score">981</data>
+    </edge>
+    <edge source="n17" target="n22">
+      <data key="e_combined_score">977</data>
+    </edge>
+    <edge source="n17" target="n40">
+      <data key="e_combined_score">981</data>
+    </edge>
+    <edge source="n17" target="n20">
+      <data key="e_combined_score">973</data>
+    </edge>
+    <edge source="n17" target="n27">
+      <data key="e_combined_score">977</data>
+    </edge>
+    <edge source="n7" target="n17">
+      <data key="e_combined_score">978</data>
+    </edge>
+    <edge source="n17" target="n24">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n17" target="n19">
+      <data key="e_combined_score">959</data>
+    </edge>
+    <edge source="n10" target="n17">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n14" target="n17">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n17" target="n23">
+      <data key="e_combined_score">974</data>
+    </edge>
+    <edge source="n3" target="n17">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n17" target="n43">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n17" target="n64">
+      <data key="e_combined_score">977</data>
+    </edge>
+    <edge source="n17" target="n67">
+      <data key="e_combined_score">953</data>
+    </edge>
+    <edge source="n17" target="n26">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n17" target="n38">
+      <data key="e_combined_score">965</data>
+    </edge>
+    <edge source="n6" target="n17">
+      <data key="e_combined_score">980</data>
+    </edge>
+    <edge source="n17" target="n69">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n5" target="n17">
+      <data key="e_combined_score">979</data>
+    </edge>
+    <edge source="n6" target="n18">
+      <data key="e_combined_score">980</data>
+    </edge>
+    <edge source="n19" target="n34">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n19" target="n46">
+      <data key="e_combined_score">983</data>
+    </edge>
+    <edge source="n8" target="n19">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n19" target="n29">
+      <data key="e_combined_score">978</data>
+    </edge>
+    <edge source="n15" target="n19">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n19" target="n61">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n19" target="n73">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n19" target="n38">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n19" target="n41">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n17" target="n19">
+      <data key="e_combined_score">959</data>
+    </edge>
+    <edge source="n3" target="n20">
+      <data key="e_combined_score">963</data>
+    </edge>
+    <edge source="n17" target="n20">
+      <data key="e_combined_score">973</data>
+    </edge>
+    <edge source="n13" target="n21">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n21" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n11" target="n21">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n21" target="n63">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n21" target="n22">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n21" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n21" target="n75">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n21" target="n27">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n21" target="n52">
+      <data key="e_combined_score">981</data>
+    </edge>
+    <edge source="n7" target="n21">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n21" target="n24">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n9" target="n21">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n21" target="n28">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n21" target="n72">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n14" target="n21">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n21" target="n23">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n21" target="n64">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n21" target="n67">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n21" target="n45">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n6" target="n21">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n5" target="n21">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n12" target="n21">
+      <data key="e_combined_score">983</data>
+    </edge>
+    <edge source="n17" target="n21">
+      <data key="e_combined_score">982</data>
+    </edge>
+    <edge source="n21" target="n22">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n13" target="n22">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n22" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n11" target="n22">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n22" target="n63">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n22" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n22" target="n75">
+      <data key="e_combined_score">972</data>
+    </edge>
+    <edge source="n22" target="n27">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n22" target="n52">
+      <data key="e_combined_score">983</data>
+    </edge>
+    <edge source="n7" target="n22">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n22" target="n24">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n9" target="n22">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n22" target="n28">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n22" target="n72">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n14" target="n22">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n22" target="n23">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n22" target="n64">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n22" target="n67">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n22" target="n45">
+      <data key="e_combined_score">987</data>
+    </edge>
+    <edge source="n6" target="n22">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n5" target="n22">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n12" target="n22">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n17" target="n22">
+      <data key="e_combined_score">977</data>
+    </edge>
+    <edge source="n21" target="n23">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n23" target="n30">
+      <data key="e_combined_score">960</data>
+    </edge>
+    <edge source="n13" target="n23">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n23" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n11" target="n23">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n23" target="n63">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n22" target="n23">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n23" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n23" target="n75">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n23" target="n27">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n23" target="n52">
+      <data key="e_combined_score">951</data>
+    </edge>
+    <edge source="n7" target="n23">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n23" target="n24">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n9" target="n23">
+      <data key="e_combined_score">983</data>
+    </edge>
+    <edge source="n23" target="n28">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n23" target="n72">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n14" target="n23">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n23" target="n64">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n2" target="n23">
+      <data key="e_combined_score">964</data>
+    </edge>
+    <edge source="n1" target="n23">
+      <data key="e_combined_score">965</data>
+    </edge>
+    <edge source="n23" target="n67">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n23" target="n45">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n6" target="n23">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n5" target="n23">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n12" target="n23">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n17" target="n23">
+      <data key="e_combined_score">974</data>
+    </edge>
+    <edge source="n21" target="n24">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n13" target="n24">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n24" target="n74">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n24" target="n63">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n22" target="n24">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n24" target="n40">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n24" target="n27">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n7" target="n24">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n24" target="n28">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n24" target="n72">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n14" target="n24">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n24" target="n57">
+      <data key="e_combined_score">960</data>
+    </edge>
+    <edge source="n23" target="n24">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n24" target="n64">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n24" target="n67">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n6" target="n24">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n5" target="n24">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n12" target="n24">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n17" target="n24">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n25" target="n57">
+      <data key="e_combined_score">960</data>
+    </edge>
+    <edge source="n26" target="n37">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n26" target="n49">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n26" target="n43">
+      <data key="e_combined_score">979</data>
+    </edge>
+    <edge source="n17" target="n26">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n21" target="n27">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n13" target="n27">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n27" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n11" target="n27">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n27" target="n63">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n22" target="n27">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n27" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n27" target="n75">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n27" target="n52">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n27" target="n39">
+      <data key="e_combined_score">963</data>
+    </edge>
+    <edge source="n7" target="n27">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n24" target="n27">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n9" target="n27">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n27" target="n28">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n27" target="n72">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n14" target="n27">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n23" target="n27">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n27" target="n64">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n2" target="n27">
+      <data key="e_combined_score">955</data>
+    </edge>
+    <edge source="n27" target="n56">
+      <data key="e_combined_score">963</data>
+    </edge>
+    <edge source="n27" target="n67">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n27" target="n45">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n6" target="n27">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n5" target="n27">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n12" target="n27">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n17" target="n27">
+      <data key="e_combined_score">977</data>
+    </edge>
+    <edge source="n28" target="n30">
+      <data key="e_combined_score">975</data>
+    </edge>
+    <edge source="n28" target="n74">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n11" target="n28">
+      <data key="e_combined_score">982</data>
+    </edge>
+    <edge source="n22" target="n28">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n28" target="n40">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n27" target="n28">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n7" target="n28">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n28" target="n72">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n23" target="n28">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n28" target="n64">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n6" target="n28">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n5" target="n28">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n12" target="n28">
+      <data key="e_combined_score">980</data>
+    </edge>
+    <edge source="n21" target="n28">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n13" target="n28">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n28" target="n63">
+      <data key="e_combined_score">981</data>
+    </edge>
+    <edge source="n24" target="n28">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n14" target="n28">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n28" target="n67">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n28" target="n45">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n8" target="n29">
+      <data key="e_combined_score">966</data>
+    </edge>
+    <edge source="n19" target="n29">
+      <data key="e_combined_score">978</data>
+    </edge>
+    <edge source="n15" target="n29">
+      <data key="e_combined_score">968</data>
+    </edge>
+    <edge source="n29" target="n38">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n28" target="n30">
+      <data key="e_combined_score">975</data>
+    </edge>
+    <edge source="n23" target="n30">
+      <data key="e_combined_score">960</data>
+    </edge>
+    <edge source="n5" target="n30">
+      <data key="e_combined_score">959</data>
+    </edge>
+    <edge source="n14" target="n30">
+      <data key="e_combined_score">950</data>
+    </edge>
+    <edge source="n1" target="n30">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n30" target="n45">
+      <data key="e_combined_score">957</data>
+    </edge>
+    <edge source="n31" target="n52">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n31" target="n39">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n2" target="n31">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n31" target="n35">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n3" target="n32">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n14" target="n33">
+      <data key="e_combined_score">965</data>
+    </edge>
+    <edge source="n33" target="n67">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n15" target="n34">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n34" target="n61">
+      <data key="e_combined_score">986</data>
+    </edge>
+    <edge source="n8" target="n34">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n19" target="n34">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n34" target="n41">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n35" target="n52">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n35" target="n39">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n2" target="n35">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n31" target="n35">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n36" target="n54">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n10" target="n37">
+      <data key="e_combined_score">954</data>
+    </edge>
+    <edge source="n37" target="n43">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n26" target="n37">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n17" target="n37">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n8" target="n38">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n19" target="n38">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n29" target="n38">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n15" target="n38">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n38" target="n73">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n17" target="n38">
+      <data key="e_combined_score">965</data>
+    </edge>
+    <edge source="n27" target="n39">
+      <data key="e_combined_score">963</data>
+    </edge>
+    <edge source="n39" target="n52">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n2" target="n39">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n35" target="n39">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n5" target="n39">
+      <data key="e_combined_score">956</data>
+    </edge>
+    <edge source="n31" target="n39">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n40" target="n72">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n14" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n21" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n23" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n13" target="n40">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n40" target="n64">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n40" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n11" target="n40">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n40" target="n63">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n22" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n40" target="n75">
+      <data key="e_combined_score">987</data>
+    </edge>
+    <edge source="n27" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n40" target="n67">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n40" target="n52">
+      <data key="e_combined_score">962</data>
+    </edge>
+    <edge source="n40" target="n45">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n6" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n7" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n24" target="n40">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n5" target="n40">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n12" target="n40">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n9" target="n40">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n28" target="n40">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n17" target="n40">
+      <data key="e_combined_score">981</data>
+    </edge>
+    <edge source="n15" target="n41">
+      <data key="e_combined_score">983</data>
+    </edge>
+    <edge source="n34" target="n41">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n41" target="n61">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n41" target="n46">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n8" target="n41">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n19" target="n41">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n11" target="n42">
+      <data key="e_combined_score">977</data>
+    </edge>
+    <edge source="n9" target="n42">
+      <data key="e_combined_score">958</data>
+    </edge>
+    <edge source="n42" target="n45">
+      <data key="e_combined_score">973</data>
+    </edge>
+    <edge source="n42" target="n47">
+      <data key="e_combined_score">960</data>
+    </edge>
+    <edge source="n37" target="n43">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n3" target="n43">
+      <data key="e_combined_score">979</data>
+    </edge>
+    <edge source="n26" target="n43">
+      <data key="e_combined_score">979</data>
+    </edge>
+    <edge source="n17" target="n43">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n11" target="n44">
+      <data key="e_combined_score">959</data>
+    </edge>
+    <edge source="n13" target="n44">
+      <data key="e_combined_score">952</data>
+    </edge>
+    <edge source="n44" target="n45">
+      <data key="e_combined_score">974</data>
+    </edge>
+    <edge source="n21" target="n45">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n30" target="n45">
+      <data key="e_combined_score">957</data>
+    </edge>
+    <edge source="n13" target="n45">
+      <data key="e_combined_score">955</data>
+    </edge>
+    <edge source="n45" target="n74">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n11" target="n45">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n45" target="n63">
+      <data key="e_combined_score">969</data>
+    </edge>
+    <edge source="n22" target="n45">
+      <data key="e_combined_score">987</data>
+    </edge>
+    <edge source="n40" target="n45">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n45" target="n75">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n27" target="n45">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n42" target="n45">
+      <data key="e_combined_score">973</data>
+    </edge>
+    <edge source="n7" target="n45">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n44" target="n45">
+      <data key="e_combined_score">974</data>
+    </edge>
+    <edge source="n9" target="n45">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n28" target="n45">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n45" target="n72">
+      <data key="e_combined_score">987</data>
+    </edge>
+    <edge source="n14" target="n45">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n45" target="n57">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n23" target="n45">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n45" target="n50">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n45" target="n64">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n45" target="n55">
+      <data key="e_combined_score">973</data>
+    </edge>
+    <edge source="n45" target="n51">
+      <data key="e_combined_score">977</data>
+    </edge>
+    <edge source="n45" target="n56">
+      <data key="e_combined_score">953</data>
+    </edge>
+    <edge source="n45" target="n67">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n6" target="n45">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n45" target="n47">
+      <data key="e_combined_score">979</data>
+    </edge>
+    <edge source="n5" target="n45">
+      <data key="e_combined_score">986</data>
+    </edge>
+    <edge source="n12" target="n45">
+      <data key="e_combined_score">976</data>
+    </edge>
+    <edge source="n45" target="n70">
+      <data key="e_combined_score">976</data>
+    </edge>
+    <edge source="n15" target="n46">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n8" target="n46">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n19" target="n46">
+      <data key="e_combined_score">983</data>
+    </edge>
+    <edge source="n41" target="n46">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n11" target="n47">
+      <data key="e_combined_score">975</data>
+    </edge>
+    <edge source="n42" target="n47">
+      <data key="e_combined_score">960</data>
+    </edge>
+    <edge source="n14" target="n47">
+      <data key="e_combined_score">961</data>
+    </edge>
+    <edge source="n47" target="n51">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n45" target="n47">
+      <data key="e_combined_score">979</data>
+    </edge>
+    <edge source="n11" target="n48">
+      <data key="e_combined_score">959</data>
+    </edge>
+    <edge source="n48" target="n70">
+      <data key="e_combined_score">954</data>
+    </edge>
+    <edge source="n26" target="n49">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n11" target="n50">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n50" target="n75">
+      <data key="e_combined_score">969</data>
+    </edge>
+    <edge source="n9" target="n50">
+      <data key="e_combined_score">959</data>
+    </edge>
+    <edge source="n14" target="n50">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n50" target="n57">
+      <data key="e_combined_score">978</data>
+    </edge>
+    <edge source="n45" target="n50">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n45" target="n51">
+      <data key="e_combined_score">977</data>
+    </edge>
+    <edge source="n47" target="n51">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n21" target="n52">
+      <data key="e_combined_score">981</data>
+    </edge>
+    <edge source="n52" target="n74">
+      <data key="e_combined_score">972</data>
+    </edge>
+    <edge source="n22" target="n52">
+      <data key="e_combined_score">983</data>
+    </edge>
+    <edge source="n40" target="n52">
+      <data key="e_combined_score">962</data>
+    </edge>
+    <edge source="n27" target="n52">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n39" target="n52">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n23" target="n52">
+      <data key="e_combined_score">951</data>
+    </edge>
+    <edge source="n2" target="n52">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n35" target="n52">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n6" target="n52">
+      <data key="e_combined_score">971</data>
+    </edge>
+    <edge source="n5" target="n52">
+      <data key="e_combined_score">981</data>
+    </edge>
+    <edge source="n31" target="n52">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n53" target="n66">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n53" target="n58">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n14" target="n53">
+      <data key="e_combined_score">952</data>
+    </edge>
+    <edge source="n36" target="n54">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n54" target="n65">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n54" target="n76">
+      <data key="e_combined_score">971</data>
+    </edge>
+    <edge source="n55" target="n57">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n45" target="n55">
+      <data key="e_combined_score">973</data>
+    </edge>
+    <edge source="n27" target="n56">
+      <data key="e_combined_score">963</data>
+    </edge>
+    <edge source="n45" target="n56">
+      <data key="e_combined_score">953</data>
+    </edge>
+    <edge source="n25" target="n57">
+      <data key="e_combined_score">960</data>
+    </edge>
+    <edge source="n13" target="n57">
+      <data key="e_combined_score">978</data>
+    </edge>
+    <edge source="n11" target="n57">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n57" target="n75">
+      <data key="e_combined_score">968</data>
+    </edge>
+    <edge source="n24" target="n57">
+      <data key="e_combined_score">960</data>
+    </edge>
+    <edge source="n9" target="n57">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n50" target="n57">
+      <data key="e_combined_score">978</data>
+    </edge>
+    <edge source="n55" target="n57">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n45" target="n57">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n57" target="n70">
+      <data key="e_combined_score">973</data>
+    </edge>
+    <edge source="n14" target="n58">
+      <data key="e_combined_score">986</data>
+    </edge>
+    <edge source="n53" target="n58">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n58" target="n62">
+      <data key="e_combined_score">973</data>
+    </edge>
+    <edge source="n14" target="n59">
+      <data key="e_combined_score">963</data>
+    </edge>
+    <edge source="n11" target="n60">
+      <data key="e_combined_score">981</data>
+    </edge>
+    <edge source="n9" target="n60">
+      <data key="e_combined_score">978</data>
+    </edge>
+    <edge source="n15" target="n61">
+      <data key="e_combined_score">983</data>
+    </edge>
+    <edge source="n34" target="n61">
+      <data key="e_combined_score">986</data>
+    </edge>
+    <edge source="n8" target="n61">
+      <data key="e_combined_score">986</data>
+    </edge>
+    <edge source="n19" target="n61">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n41" target="n61">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n58" target="n62">
+      <data key="e_combined_score">973</data>
+    </edge>
+    <edge source="n62" target="n67">
+      <data key="e_combined_score">976</data>
+    </edge>
+    <edge source="n21" target="n63">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n13" target="n63">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n63" target="n74">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n11" target="n63">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n22" target="n63">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n40" target="n63">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n63" target="n75">
+      <data key="e_combined_score">970</data>
+    </edge>
+    <edge source="n27" target="n63">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n7" target="n63">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n24" target="n63">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n9" target="n63">
+      <data key="e_combined_score">986</data>
+    </edge>
+    <edge source="n28" target="n63">
+      <data key="e_combined_score">981</data>
+    </edge>
+    <edge source="n63" target="n72">
+      <data key="e_combined_score">969</data>
+    </edge>
+    <edge source="n14" target="n63">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n23" target="n63">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n63" target="n64">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n2" target="n63">
+      <data key="e_combined_score">951</data>
+    </edge>
+    <edge source="n63" target="n67">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n45" target="n63">
+      <data key="e_combined_score">969</data>
+    </edge>
+    <edge source="n6" target="n63">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n5" target="n63">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n12" target="n63">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n17" target="n63">
+      <data key="e_combined_score">981</data>
+    </edge>
+    <edge source="n21" target="n64">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n13" target="n64">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n64" target="n74">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n11" target="n64">
+      <data key="e_combined_score">977</data>
+    </edge>
+    <edge source="n63" target="n64">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n22" target="n64">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n40" target="n64">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n27" target="n64">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n7" target="n64">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n24" target="n64">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n28" target="n64">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n64" target="n72">
+      <data key="e_combined_score">972</data>
+    </edge>
+    <edge source="n14" target="n64">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n23" target="n64">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n64" target="n67">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n45" target="n64">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n6" target="n64">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n5" target="n64">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n12" target="n64">
+      <data key="e_combined_score">978</data>
+    </edge>
+    <edge source="n17" target="n64">
+      <data key="e_combined_score">977</data>
+    </edge>
+    <edge source="n54" target="n65">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n53" target="n66">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n21" target="n67">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n13" target="n67">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n67" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n11" target="n67">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n63" target="n67">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n22" target="n67">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n40" target="n67">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n67" target="n75">
+      <data key="e_combined_score">968</data>
+    </edge>
+    <edge source="n27" target="n67">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n7" target="n67">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n24" target="n67">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n9" target="n67">
+      <data key="e_combined_score">986</data>
+    </edge>
+    <edge source="n28" target="n67">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n67" target="n72">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n14" target="n67">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n23" target="n67">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n33" target="n67">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n64" target="n67">
+      <data key="e_combined_score">995</data>
+    </edge>
+    <edge source="n4" target="n67">
+      <data key="e_combined_score">965</data>
+    </edge>
+    <edge source="n45" target="n67">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n6" target="n67">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n5" target="n67">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n12" target="n67">
+      <data key="e_combined_score">987</data>
+    </edge>
+    <edge source="n62" target="n67">
+      <data key="e_combined_score">976</data>
+    </edge>
+    <edge source="n17" target="n67">
+      <data key="e_combined_score">953</data>
+    </edge>
+    <edge source="n68" target="n76">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n17" target="n69">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n48" target="n70">
+      <data key="e_combined_score">954</data>
+    </edge>
+    <edge source="n57" target="n70">
+      <data key="e_combined_score">973</data>
+    </edge>
+    <edge source="n45" target="n70">
+      <data key="e_combined_score">976</data>
+    </edge>
+    <edge source="n3" target="n71">
+      <data key="e_combined_score">967</data>
+    </edge>
+    <edge source="n21" target="n72">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n13" target="n72">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n72" target="n74">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n11" target="n72">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n63" target="n72">
+      <data key="e_combined_score">969</data>
+    </edge>
+    <edge source="n22" target="n72">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n40" target="n72">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n27" target="n72">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n7" target="n72">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n24" target="n72">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n9" target="n72">
+      <data key="e_combined_score">972</data>
+    </edge>
+    <edge source="n28" target="n72">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n14" target="n72">
+      <data key="e_combined_score">984</data>
+    </edge>
+    <edge source="n23" target="n72">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n64" target="n72">
+      <data key="e_combined_score">972</data>
+    </edge>
+    <edge source="n4" target="n72">
+      <data key="e_combined_score">967</data>
+    </edge>
+    <edge source="n67" target="n72">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n45" target="n72">
+      <data key="e_combined_score">987</data>
+    </edge>
+    <edge source="n6" target="n72">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n5" target="n72">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n8" target="n73">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n19" target="n73">
+      <data key="e_combined_score">985</data>
+    </edge>
+    <edge source="n15" target="n73">
+      <data key="e_combined_score">982</data>
+    </edge>
+    <edge source="n38" target="n73">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n21" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n13" target="n74">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n11" target="n74">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n63" target="n74">
+      <data key="e_combined_score">994</data>
+    </edge>
+    <edge source="n22" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n40" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n74" target="n75">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n27" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n52" target="n74">
+      <data key="e_combined_score">972</data>
+    </edge>
+    <edge source="n7" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n24" target="n74">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n9" target="n74">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n28" target="n74">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n72" target="n74">
+      <data key="e_combined_score">997</data>
+    </edge>
+    <edge source="n14" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n23" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n64" target="n74">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n2" target="n74">
+      <data key="e_combined_score">963</data>
+    </edge>
+    <edge source="n67" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n45" target="n74">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n6" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n5" target="n74">
+      <data key="e_combined_score">999</data>
+    </edge>
+    <edge source="n12" target="n74">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n17" target="n74">
+      <data key="e_combined_score">978</data>
+    </edge>
+    <edge source="n21" target="n75">
+      <data key="e_combined_score">990</data>
+    </edge>
+    <edge source="n13" target="n75">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n74" target="n75">
+      <data key="e_combined_score">992</data>
+    </edge>
+    <edge source="n11" target="n75">
+      <data key="e_combined_score">991</data>
+    </edge>
+    <edge source="n63" target="n75">
+      <data key="e_combined_score">970</data>
+    </edge>
+    <edge source="n22" target="n75">
+      <data key="e_combined_score">972</data>
+    </edge>
+    <edge source="n40" target="n75">
+      <data key="e_combined_score">987</data>
+    </edge>
+    <edge source="n27" target="n75">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n7" target="n75">
+      <data key="e_combined_score">987</data>
+    </edge>
+    <edge source="n9" target="n75">
+      <data key="e_combined_score">962</data>
+    </edge>
+    <edge source="n14" target="n75">
+      <data key="e_combined_score">996</data>
+    </edge>
+    <edge source="n57" target="n75">
+      <data key="e_combined_score">968</data>
+    </edge>
+    <edge source="n23" target="n75">
+      <data key="e_combined_score">993</data>
+    </edge>
+    <edge source="n50" target="n75">
+      <data key="e_combined_score">969</data>
+    </edge>
+    <edge source="n67" target="n75">
+      <data key="e_combined_score">968</data>
+    </edge>
+    <edge source="n45" target="n75">
+      <data key="e_combined_score">989</data>
+    </edge>
+    <edge source="n6" target="n75">
+      <data key="e_combined_score">976</data>
+    </edge>
+    <edge source="n5" target="n75">
+      <data key="e_combined_score">988</data>
+    </edge>
+    <edge source="n54" target="n76">
+      <data key="e_combined_score">971</data>
+    </edge>
+    <edge source="n68" target="n76">
+      <data key="e_combined_score">998</data>
+    </edge>
+    <edge source="n14" target="n76">
+      <data key="e_combined_score">950</data>
+    </edge>
+  </graph>
+</graphml>
