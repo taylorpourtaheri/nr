@@ -18,16 +18,19 @@ Suggests:
     testthat (>= 2.1.0),
     knitr,
     rmarkdown,
-    noderank,
-    Bioconductor,
-    StringDB,
-    igraph,
-    dplyr,
-    magrittr
+    noderank
 RoxygenNote: 7.1.1
 Imports: 
     magrittr,
     dplyr,
     igraph,
-    STRINGdb
-VignetteBuilder: knitr
+    STRINGdb,
+    glue,
+    ggplot2,
+    ggnetwork
+VignetteBuilder: 
+    knitr,
+    base,
+    ggplot2,
+    STRINGdb,
+    ggnetwork,

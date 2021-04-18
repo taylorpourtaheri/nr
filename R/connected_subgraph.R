@@ -1,6 +1,6 @@
 #' @title Extract the connected subcomponents of a graph
 #' @description Extract the connected components of a graph based on a size threshold
-#' @param G Graph of class '\code{igraph}'
+#' @param graph Graph of class '\code{igraph}'
 #' @param thresh Numeric. The threshold size for a connected component. If
 #' \code{NA} then only the giant (i.e., the largest) component is returned. All ties are returned.
 #' @param method Either "less" or "greater". The latter returns all connected

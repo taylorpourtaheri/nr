@@ -25,7 +25,8 @@ knitr::opts_chunk$set(
 ```{r}
 
 # read differential expression data (annotated with gene symbols)
-de_string <- readRDS('../data/de_string.RDS')
+
+de_string <- readRDS(system.file("extdata", "de_string.RDS", package = "noderank"))
 
 # select MYC condition as an example
 myc_de <- de_string$MYC
@@ -49,7 +50,7 @@ n_sim <- 9999
 # network generation ------------------------------------------------------
 
 # generate protein association network
-string_db <- STRINGdb::STRINGdb$new(version="10",
+string_db <- STRINGdb::STRINGdb$new(version="11",
                                     species=9606,
                                     score_threshold=edge_conf_score_min)
 ppi <- string_db$get_graph()
@@ -69,10 +70,6 @@ ppi_painted_filt_giant <- connected_subgraph(ppi_painted_filt)
 # calculate centrality
 ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant, method = method, bt=T, len = -1)
 
-# write final graph
-# igraph::write_graph(ppi_painted_filt_giant,
-#                     file=glue::glue("data/MYC_DE_network_example_{edge_conf_score_min}.graphml"),
-#                     format = "graphml")
 
 # dataframe of final graph results
 network_df <- igraph::as_data_frame(ppi_painted_filt_giant, what = 'vertices')
@@ -120,7 +117,7 @@ score_pval <- sum(sample_means > mean_pred_score) / n_sim
 
 # results 
 network <- ppi_painted_filt_giant
-ggn <- ggnetwork(network)
+ggn <- ggnetwork::ggnetwork(network)
 
 plot1 <- ggplot(ggn, aes(x = x, y = y, xend = xend, yend = yend)) +
     geom_edges(alpha = 0.7) + 
@@ -148,7 +145,7 @@ The workflow above can also be implemented in one step by calling the network_pi
 
 ```{r, out.width='100%'}
 
-results <- network_pipeline(deg = myc_de,
+results <- centrality_pipeline(deg = myc_de,
                             edge_conf_score_min = 950,
                             logFC_min = 1.5,
                             pvalue_max = 0.05,
