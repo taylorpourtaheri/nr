@@ -1,3 +1,6 @@
 .Rproj.user
 inst/doc
 noderank.Rproj
+data/
+/doc/
+/Meta/

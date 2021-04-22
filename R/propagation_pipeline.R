@@ -1,4 +1,4 @@
-#' @title Pipeline function to run complete noderank workflow.
+#' @title Pipeline function to run complete noderank network propagation workflow.
 #' @description Given a dataframe of differential gene expression results and a set
 #' of parameters, '\code{centrality_pipeline()}' will generate network of the most
 #' important genes, ranked by the specified centrality measure.
