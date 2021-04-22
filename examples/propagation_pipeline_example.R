@@ -4,41 +4,31 @@ library(igraph)
 library(ggplot2)
 library(dplyr)
 library(glue)
+library(devtools)
 
 # load all package functions
 load_all()
 
 # read differential expression data (annotated with gene symbols)
-de_string <- readRDS('data/de_string.RDS')
+de_string <- readRDS('data/de_string_v11.RDS')
 
 # select MYC condition as an example
 myc_de <- de_string$MYC
 
 # call wrapper
-results <- centrality_pipeline(deg = myc_de,
+results <- propagation_pipeline(deg = myc_de,
                             edge_conf_score_min = 950,
                             logFC_min = 1.5,
                             pvalue_max = 0.05,
-                            method = 'betweenness',
+                            method = 'raw',
+                            min_diff_score = 0.15,
                             causal_gene_symbol = 'MYC',
                             export_network = FALSE,
+                            sim_method = 'jaccard',
                             n_sim = 9999)
 
-View(results)
+# plot output
+set.seed(4)
+plot_graph(results[['network']], method = 'diffusion_score', gene_list = c('MYCN'))
 
-# annotate with gene symbols
-top_genes <- results$top_genes
-
-
-# define plotting network
-ggn <- ggnetwork(results$network)
-
-ggplot(ggn, aes(x = x, y = y, xend = xend, yend = yend)) +
-    geom_edges() +
-    geom_nodes(aes(color = logFC, size = betweenness), alpha = 0.65) +
-    geom_nodetext_repel(aes(label = Symbol), size = 2.5) +
-    geom_nodelabel_repel(data=subset(ggn, Symbol == 'MYC'), aes(label=Symbol)) +
-    scale_color_gradient(low = 'blue', high = 'red') +
-    scale_size_continuous(range = c(5, 25)) +
-    theme_blank()
 # ggsave('test.png', width = 15, height = 15)
