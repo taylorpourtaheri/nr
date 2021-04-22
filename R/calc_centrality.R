@@ -33,7 +33,7 @@ calc_centrality <- function(graph, method = 'strength', bt = FALSE, len = 3) {
     if (method == 'evcent_uw'){
         igraph::V(graph)$evcent_uw <- igraph::evcent(graph, scale = F, weights = NA)$vector
     }
-    if (bt) {
+    if (method == 'betweenness' & bt) {
         igraph::V(graph)$betweenness <- igraph::estimate_betweenness(graph, directed = F, cutoff = len)
     }
     return(graph)
