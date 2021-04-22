@@ -21,7 +21,6 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(noderank)
 library(ggplot2)
 library(ggnetwork)
 library(knitr)
@@ -62,7 +61,7 @@ n_sim <- 9999
 # network generation ------------------------------------------------------
 
 # generate protein association network
-string_db <- STRINGdb::STRINGdb$new(version="10",
+string_db <- STRINGdb::STRINGdb$new(version="11",
                                     species=9606,
                                     score_threshold=edge_conf_score_min)
 ppi <- string_db$get_graph()
