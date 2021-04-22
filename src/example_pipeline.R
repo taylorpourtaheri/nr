@@ -4,12 +4,13 @@ library(igraph)
 library(ggplot2)
 library(dplyr)
 library(glue)
+library(ggnetwork)
 
 # load all package functions
 load_all()
 
 # read differential expression data (annotated with gene symbols)
-de_string <- readRDS('data/de_string.RDS')
+de_string <- readRDS('data/de_string_v11.RDS')
 
 # select MYC condition as an example
 myc_de <- de_string$MYC

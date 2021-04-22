@@ -9,7 +9,7 @@ centrality_pipeline <- function(deg,
     final_results <- c()
 
     # generate protein association network
-    string_db <- STRINGdb::STRINGdb$new(version="10",
+    string_db <- STRINGdb::STRINGdb$new(version="11",
                                         species=9606,
                                         score_threshold=edge_conf_score_min)
     ppi <- string_db$get_graph()
