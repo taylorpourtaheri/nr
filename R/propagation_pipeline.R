@@ -22,7 +22,6 @@
 #' \item ber_p
 #' \item z
 #' }
-#' @param
 #' @param min_diff_score Numeric. The diffusion score threshold for filtering
 #' the final network.
 #' @param causal_gene_symbol String. The gene symbol associated with the
@@ -33,8 +32,7 @@
 #' #' \itemize{
 #' \item jaccard
 #' \item dice
-#' \item invlogweighted
-#' }
+#' \item invlogweighted }
 #' @param n_sim
 #' @return A list of length 4:
 #' \describe{
