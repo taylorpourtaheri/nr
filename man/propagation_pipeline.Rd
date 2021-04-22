@@ -56,8 +56,7 @@ each gene in the final network and the causal gene. One of the following:
 #' \itemize{
 \item jaccard
 \item dice
-\item invlogweighted
-}}
+\item invlogweighted }}
 }
 \value{
 A list of length 4:
