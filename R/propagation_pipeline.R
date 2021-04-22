@@ -11,22 +11,24 @@
 #' to be included in the final network.
 #' @param pvalue_max Numeric. The maximum p-value value for a gene
 #' to be included in the final network.
-#' @param method A string. One of the following centrality methods:
+#' @param method String. The method passed to the  diffusion() function
+#' from the diffuStats() package. One of the following methods:
 #' \itemize{
-#' \item strength
-#' \item degree
-#' \item avg_strength
-#' \item degree_frac
-#' \item strength_scaled
-#' \item avg_strength_scaled
-#' \item evcent_w
-#' \item evcent_uw
-#' \item betweenness
+#' \item raw
+#' \item ml
+#' \item gm
+#' \item ber_s
+#' \item mc
+#' \item ber_p
+#' \item z
 #' }
-#' @param causal_gene_symbol A string. The gene symbol associated with the
+#' @param
+#' @param min_diff_score Numeric. The diffusion score threshold for filtering
+#' the final network.
+#' @param causal_gene_symbol String. The gene symbol associated with the
 #' causal gene.
-#' @param export_network If TRUE, the network object will be returned.
-#' @param sim_method A string. The method for calculating the similarity between
+#' @param export_network Logical. If TRUE, the network object will be returned.
+#' @param sim_method String. The method for calculating the similarity between
 #' each gene in the final network and the causal gene. One of the following:
 #' #' \itemize{
 #' \item jaccard
@@ -37,7 +39,7 @@
 #' @return A list of length 4:
 #' \describe{
 #'   \item{network}{Object of class '\code{igraph}'. The network of important genes.}
-#'   \item{top_genes}{An annotated dataframe of genes ranked by centrality method.}
+#'   \item{top_genes}{An annotated dataframe of genes ranked by diffusion score.}
 #'   \item{mean_score}{The mean score of the network, which is equal to the average
 #'   similarity score between each node in the network and the causal gene.}
 #'   \item{pvalue}{The p-value associated with the \code{mean_score}.}
