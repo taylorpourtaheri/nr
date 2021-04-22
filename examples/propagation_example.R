@@ -11,7 +11,7 @@ library(glue)
 devtools::load_all()
 
 # read differential expression data (annotated with gene symbols)
-de_string <- readRDS('data/de_string.RDS')
+de_string <- readRDS('data/de_string_v11.RDS')
 
 # select MYC condition as an example
 myc_de <- de_string$MYC
@@ -22,40 +22,77 @@ edge_conf_score_min <- 950
 logFC_min <- 1.5
 pvalue_max <- 0.05
 causal_gene_symbol <- 'MYC'
-method <- 'betweenness'
 final_results <- c()
 export_network <- FALSE
 n_sim <- 9999
 
+# new
+kernel <- 'raw'
+min_diff_score <- 0.15
+grid <- FALSE
+
+# in the DEG results:
+MYC_stringID <-'9606.ENSP00000479618'
+
 # network generation ------------------------------------------------------
 
 # generate protein association network
-string_db <- STRINGdb::STRINGdb$new(version="10",
+string_db <- STRINGdb::STRINGdb$new(version="11",
                                     species=9606,
                                     score_threshold=edge_conf_score_min)
 ppi <- string_db$get_graph()
 
+# filter to only include genes that are also in the DEG results - check this
+ppi2 <- attribute_filter(ppi, name %in% deg$STRING_id)
+
 # map DEA results onto ppi network
-ppi_painted <- df_to_vert_attr(graph=ppi, df=deg, common="STRING_id",
+ppi_painted <- df_to_vert_attr(graph=ppi2, df=deg, common="STRING_id",
                                attr_name = c("Symbol", "ID", "logFC", "AveExpr",
                                              "t", "P.Value", "adj.P.Val", "B"))
 
-# subset the graph to only include nodes that meet thresholds
-ppi_painted_filt <- attribute_filter(ppi_painted,
+# seed the graph based on the fold-change and pvalue thresholds
+ppi_painted_filt <- attribute_seed(ppi_painted,
                                      abs(logFC) > log2(logFC_min) & adj.P.Val < pvalue_max)
 
 # select the connected subgraph
 ppi_painted_filt_giant <- connected_subgraph(ppi_painted_filt)
 
-# calculate centrality
-ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant, method = method, bt=T, len = -1)
-# add argument 'method' that calls this function if value = 'centrality'
+# simulate diffusion
+scores <- as_data_frame(vertex_attr(ppi_painted_filt_giant))$seed
+names(scores) <- as_data_frame(vertex_attr(ppi_painted_filt_giant))$name
+diffusion_scores <- diffuStats::diffuse(graph = ppi_painted_filt_giant,
+                                              scores = scores,
+                                              method = kernel)
+ppi_painted_filt_giant <- igraph::set_vertex_attr(ppi_painted_filt_giant,
+                                    name = 'diffusion_score',
+                                    value = diffusion_scores)
 
-# write final graph
-igraph::write_graph(ppi_painted_filt_giant,
-                    file=glue("data/MYC_DE_network_example_{edge_conf_score_min}.graphml"),
-                    format = "graphml")
-# ^ this might be a good place for a logical argument 'export_graph'
+# filter network to only include scores above threshold
+final_network <- attribute_filter(ppi_painted_filt_giant,
+                                  diffusion_score > min_diff_score)
+# remove duplicated edges
+final_network_simple <- igraph::simplify(final_network)
+
+View(igraph::as_data_frame(ppi_painted_filt_giant, what = 'vertices'))
+# MYC is filtered out because of low diffusion score
+View(igraph::as_data_frame(final_network_simple, what = 'vertices'))
+
+# test plotting
+set.seed(4)
+ggn <- ggnetwork(final_network_simple)
+ggplot(ggn, aes(x = x, y = y, xend = xend, yend = yend)) +
+    geom_edges() +
+    geom_nodes(aes(color = logFC, size = diffusion_score), alpha = 0.65) +
+    geom_nodetext_repel(aes(label = Symbol), size = 2.5) +
+    geom_nodelabel_repel(data=subset(ggn, Symbol == 'MYCN'), aes(label=Symbol)) +
+    scale_color_gradient(low = 'blue', high = 'red') +
+    scale_size_continuous(range = c(5, 25)) +
+    theme_blank()
+
+# dataframe of final graph results
+network_df <- igraph::as_data_frame(final_network_simple, what = 'vertices')
+network_df <- dplyr::arrange(network_df, -diffusion_score)
+rownames(network_df) <- NULL
 
 # network scoring ---------------------------------------------------------
 
@@ -97,7 +134,7 @@ score_pval <- sum(sample_means > mean_pred_score) / n_sim
 
 # save results
 final_results[['network']] <- ppi_painted_filt_giant
-final_results[['top_genes']] <- top_genes
+final_results[['top_genes']] <- top_genes_df
 final_results[['mean_score']] <- mean_pred_score
 final_results[['pvalue']] <- score_pval
 
