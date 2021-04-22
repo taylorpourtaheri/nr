@@ -8,14 +8,10 @@
 attribute_seed <- function(graph, attr_expression) {
     vdf <- as.data.frame(igraph::vertex_attr(graph), stringsAsFactors = FALSE)
     ind <- eval(substitute(attr_expression), vdf, parent.frame())
-    g_filt <- igraph::induced_subgraph(graph, which(ind), impl = "copy_and_delete")
-
-    temp_list <- c()
-    temp_list[[1]]<-vdf
-    temp_list[[2]]<-ind
-
-    return(temp_list)
+    seed <- as.numeric(ind)
+    seed[is.na(seed)] <- 0 # convert na values to zeroes - check this
+    g_seeded <- igraph::set_vertex_attr(graph,
+                                        name = 'seed',
+                                        value = seed)
+    return(g_seeded)
 }
-
-# a <- attribute_seed(ppi_painted,
-#                     abs(logFC) > log2(logFC_min) & adj.P.Val < pvalue_max)
