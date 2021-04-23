@@ -4,3 +4,5 @@ noderank.Rproj
 data/
 /doc/
 /Meta/
+.RData
+.Rhistory
