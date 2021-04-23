@@ -7,11 +7,13 @@
 #' @export
 plot_graph <- function(graph, method, gene_list) {
 
-    ggn <- ggnetwork(graph)
+    ggn <- ggnetwork::ggnetwork(graph)
+
+    as.name(method)
 
     ggplot(ggn, aes(x = x, y = y, xend = xend, yend = yend)) +
         geom_edges() +
-        geom_nodes(aes(color = logFC, size = diffusion_score), alpha = 0.65) +
+        geom_nodes(aes_string(color = 'logFC', size = method), alpha = 0.65) +
         geom_nodetext_repel(aes(label = Symbol), size = 2.5) +
         geom_nodelabel_repel(data=subset(ggn, Symbol %in% gene_list), aes(label=Symbol)) +
         scale_color_gradient(low = 'blue', high = 'red') +
