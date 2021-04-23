@@ -25,10 +25,11 @@ results <- propagation_pipeline(deg = myc_de,
                             causal_gene_symbol = 'MYC',
                             export_network = FALSE,
                             sim_method = 'jaccard',
-                            n_sim = 9999)
+                            n_sim = 9999,
+                            weighted = TRUE)
 
 # plot output
 set.seed(4)
-plot_graph(results[['network']], method = 'diffusion_score', gene_list = c('MYCN'))
+plot_graph(results[['network']], method = 'weighted_score', gene_list = c('MYCN'))
 
 # ggsave('test.png', width = 15, height = 15)

@@ -1,17 +1,44 @@
+---
+title: "noderank: A Node Prioritization Optimizer"
+subtitle: 'Network Propagation Workflow'
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{noderank_propagation_vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
 
-# load relevant packages
-library(STRINGdb)
-library(ggnetwork)
+noderank maps differential gene expression results onto an established network 
+of protein-protein associations and employs network analysis methods to select 
+a prioritized list of important nodes. For data in which the mechanism of 
+perturbation is known, each ranked list result is scored by the position of 
+the causal gene. 
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
 library(ggplot2)
-library(igraph)
-library(dplyr)
-library(glue)
+library(ggnetwork)
+library(knitr)
+library(kableExtra)
 
-# load all package functions
-devtools::load_all()
+devtools::load_all('..')
+
+set.seed(4)
+
+```
+
+#### Import DEA Data and Define Parameters
+
+```{r}
 
 # read differential expression data (annotated with gene symbols)
-de_string <- readRDS('data/de_string_v11.RDS')
+de_string <- readRDS('../data/de_string_v11.RDS')
 
 # select MYC condition as an example
 myc_de <- de_string$MYC
@@ -26,13 +53,15 @@ final_results <- c()
 export_network <- FALSE
 n_sim <- 9999
 method <- 'raw'
-min_diff_score <- 0.15
 sim_method = 'jaccard'
+min_diff_score <- 0.15
 weighted = TRUE
 
-# in the DEG results:
-MYC_stringID <-'9606.ENSP00000479618'
+```
 
+#### Generate Protein Association Network and Prune by DEA Results
+
+```{r}
 # network generation ------------------------------------------------------
 
 # generate protein association network
@@ -70,6 +99,14 @@ final_network_simple <- igraph::simplify(final_network)
 # MYC is filtered out because of low diffusion score
 # View(igraph::as_data_frame(final_network_simple, what = 'vertices'))
 
+
+```
+
+#### Score the network by structural similarity to the causal gene, MYC
+
+```{r}
+# network scoring ---------------------------------------------------------
+
 # generate network scores
 scoring_output <- structural_sim(network = final_network_simple,
                                  string_db = string_db,
@@ -87,15 +124,61 @@ performance_results <- evaluate_performance(network = scoring_output$network,
                                             n_sim = n_sim,
                                             weighted = weighted)
 
-# save results
-final_results[['network']] <- scoring_output$network
-final_results[['top_genes']] <- scoring_output$network_df
-final_results[['performance']] <- performance_results
+```
 
+#### Inspect Results
 
-# plotting
+```{r, out.width="100%"}
+
+# plotting 
+plot1 <- plot_graph(scoring_output$network, method = 'diffusion_score', gene_list = c('MYCN'))
+
+ggsave(plot = plot1, filename = 'pfigure1.png', width = 15, height = 15)
+knitr::include_graphics('pfigure1.png')
+
+knitr::kable(head(scoring_output$network_df)) %>% 
+  kableExtra::kable_styling(latex_options="scale_down")
+
+knitr::kable(performance_results) %>% 
+  kableExtra::kable_styling(latex_options="scale_down") 
+```
+
+### Pipeline Workflow
+
+The workflow above can also be implemented in one step by calling the centrality_pipeline() wrapper function: 
+
+```{r, out.width='100%'}
+
+# call wrapper
+results <- propagation_pipeline(deg = myc_de,
+                            edge_conf_score_min = 950,
+                            logFC_min = 1.5,
+                            pvalue_max = 0.05,
+                            method = 'raw',
+                            min_diff_score = 0.15,
+                            causal_gene_symbol = 'MYC',
+                            export_network = FALSE,
+                            sim_method = 'jaccard',
+                            n_sim = 9999,
+                            weighted = TRUE)
+
+names(results)
+
+# plot output
 set.seed(4)
-network <- final_results[['network']]
-plot_graph(network, method = 'diffusion_score', gene_list = c('MYCN'))
+plot2 <- plot_graph(results$network, method = 'diffusion_score', gene_list = c('MYCN'))
+
+ggsave(plot = plot2, filename = 'pfigure2.png', width = 15, height = 15)
+knitr::include_graphics('pfigure2.png')
+
+knitr::kable(head(results$top_genes)) %>% 
+  kableExtra::kable_styling(latex_options="scale_down")
+
+knitr::kable(results$performance) %>% 
+  kableExtra::kable_styling(latex_options="scale_down")
+
+
+
+```
 
 

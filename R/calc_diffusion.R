@@ -10,8 +10,8 @@
 calc_diffusion <- function(graph, method = 'raw') {
 
     # simulate diffusion
-    scores <- as_data_frame(vertex_attr(graph))$seed
-    names(scores) <- as_data_frame(vertex_attr(graph))$name
+    scores <- as.data.frame(igraph::vertex_attr(graph))$seed
+    names(scores) <- as.data.frame(igraph::vertex_attr(graph))$name
     diffusion_scores <- diffuStats::diffuse(graph = graph,
                                             scores = scores,
                                             method = method)

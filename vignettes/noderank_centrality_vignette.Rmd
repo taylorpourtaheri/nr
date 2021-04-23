@@ -1,8 +1,9 @@
 ---
 title: "noderank: A Node Prioritization Optimizer"
+subtitle: 'Network Centrality Workflow'
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{noderank_vignette}
+  %\VignetteIndexEntry{noderank_centrality_vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -37,7 +38,7 @@ set.seed(4)
 ```{r}
 
 # read differential expression data (annotated with gene symbols)
-de_string <- readRDS('../data/de_string.RDS')
+de_string <- readRDS('../data/de_string_v11.RDS')
 
 # select MYC condition as an example
 myc_de <- de_string$MYC
@@ -86,12 +87,6 @@ ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant, method = metho
 #                     file=glue::glue("data/MYC_DE_network_example_{edge_conf_score_min}.graphml"),
 #                     format = "graphml")
 
-# dataframe of final graph results
-network_df <- igraph::as_data_frame(ppi_painted_filt_giant, what = 'vertices')
-network_df <- dplyr::arrange(network_df, -betweenness)
-rownames(network_df) <- NULL
-
-
 ```
 
 #### Score the network by structural similarity to the causal gene, MYC
@@ -99,30 +94,22 @@ rownames(network_df) <- NULL
 ```{r}
 # network scoring ---------------------------------------------------------
 
-# find the STRING ID for the causal gene
-xref <- data.frame(symbol = causal_gene_symbol)
-xref <- string_db$map(xref, "symbol", removeUnmappedRows=T, quiet=T)
+# generate network scores
+scoring_output <- structural_sim(network = ppi_painted_filt_giant,
+                         ppi = ppi,
+                         string_db = string_db,
+                         method = 'betweenness',
+                         sim_method = 'jaccard', 
+                         causal_gene_symbol = causal_gene_symbol,
+                         weighted = TRUE)
 
-# calculate similarity of each node and slice out the causal gene
-sim <- igraph::similarity(ppi)
-index <- which(igraph::V(ppi)$name == xref$STRING_id)
-causal_sim <- sim[index,]
-
-# make scores a named vector
-names(causal_sim) <- igraph::V(ppi)$name
-
-# get the scores associated with the subnetwork
-pred_scores <- causal_sim[igraph::V(ppi_painted_filt_giant)$name]
-mean_pred_score <- mean(pred_scores)
-
-# estimate uncertainty with a random draw of the full ppi graph
-n_sim <- 9999
-n_draws <- length(igraph::V(ppi_painted_filt_giant)) #151
-samples <- lapply(1:n_sim, function(x) sample(causal_sim, n_draws))
-sample_means <- sapply(samples, mean)
-
-# calculate p
-score_pval <- sum(sample_means > mean_pred_score) / n_sim
+# evaluate scoring
+performance_results <- evaluate_performance(network = scoring_output$network,
+                                network_df = scoring_output$network_df,
+                                causal_sim = scoring_output$causal_sim,
+                                n_sim = n_sim,
+                                method = 'betweenness',
+                                weighted = TRUE)
 
 ```
 
@@ -130,28 +117,17 @@ score_pval <- sum(sample_means > mean_pred_score) / n_sim
 
 ```{r, out.width="100%"}
 
-# results 
-network <- ppi_painted_filt_giant
-ggn <- ggnetwork(network)
+# plotting 
+plot1 <- plot_graph(scoring_output$network, method = 'weighted_score', gene_list = c('MYC'))
 
-plot1 <- ggplot(ggn, aes(x = x, y = y, xend = xend, yend = yend)) +
-    geom_edges(alpha = 0.7) + 
-    geom_nodes(aes(color = logFC, size = betweenness), alpha = 0.65) +
-    geom_nodetext_repel(aes(label = Symbol)) + 
-    geom_nodelabel_repel(data=subset(ggn, Symbol == 'MYC'), aes(label=Symbol)) +
-    scale_color_gradient(low = 'blue', high = 'red') +
-    scale_size_continuous(range = c(5, 25)) + 
-    theme_blank()
+ggsave(plot = plot1, filename = 'cfigure1.png', width = 15, height = 15)
+knitr::include_graphics('cfigure1.png')
 
-ggsave(plot = plot1, filename = 'figure1.png', width = 15, height = 15)
-knitr::include_graphics('figure1.png')
-
-knitr::kable(head(network_df)) %>% 
+knitr::kable(head(scoring_output$network_df)) %>% 
   kableExtra::kable_styling(latex_options="scale_down")
 
-d <- data.frame(mean_score = mean_pred_score, 
-                pvalue = score_pval)
-knitr::kable(d) 
+knitr::kable(performance_results) %>% 
+  kableExtra::kable_styling(latex_options="scale_down") 
 ```
 
 ### Pipeline Workflow
@@ -167,32 +143,24 @@ results <- centrality_pipeline(deg = myc_de,
                             method = 'betweenness',
                             causal_gene_symbol = 'MYC',
                             export_network = FALSE,
-                            n_sim = 9999)
+                            sim_method = 'jaccard',
+                            n_sim = 9999,
+                            weighted = TRUE)
 
 names(results)
 
-# results 
-network <- results$network
-ggn <- ggnetwork(network)
+# plot output
+set.seed(4)
+plot2 <- plot_graph(results[['network']], method = 'weighted_score', gene_list = c('MYC'))
 
-plot2 <- ggplot(ggn, aes(x = x, y = y, xend = xend, yend = yend)) +
-    geom_edges(alpha = 0.7) + 
-    geom_nodes(aes(color = logFC, size = betweenness), alpha = 0.65) +
-    geom_nodetext_repel(aes(label = Symbol)) + 
-    geom_nodelabel_repel(data=subset(ggn, Symbol == 'MYC'), aes(label=Symbol)) +
-    scale_color_gradient(low = 'blue', high = 'red') +
-    scale_size_continuous(range = c(5, 25)) + 
-    theme_blank()
-
-ggsave(plot = plot2, filename = 'figure2.png', width = 15, height = 15)
-knitr::include_graphics('figure2.png')
+ggsave(plot = plot2, filename = 'cfigure2.png', width = 15, height = 15)
+knitr::include_graphics('cfigure2.png')
 
 knitr::kable(head(results$top_genes)) %>% 
   kableExtra::kable_styling(latex_options="scale_down")
 
-d <- data.frame(mean_score = results$mean_score, 
-                pvalue = results$pvalue)
-knitr::kable(d)
+knitr::kable(results$performance) %>% 
+  kableExtra::kable_styling(latex_options="scale_down")
 
 
 

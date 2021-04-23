@@ -46,7 +46,8 @@
 centrality_pipeline <- function(deg,
                              edge_conf_score_min, logFC_min, pvalue_max,
                              method = 'betweenness', causal_gene_symbol,
-                             export_network = FALSE, sim_method = 'jaccard', n_sim = 9999){
+                             export_network = FALSE, sim_method = 'jaccard',
+                             n_sim = 9999, weighted = FALSE){
     # internal check
     print(causal_gene_symbol)
 
@@ -92,40 +93,27 @@ centrality_pipeline <- function(deg,
                             format = "graphml")
     }
 
-    # dataframe of final graph results
-    network_df <- igraph::as_data_frame(ppi_painted_filt_giant, what = 'vertices')
-    network_df <- dplyr::arrange(network_df, -betweenness)
-    rownames(network_df) <- NULL
+    # generate network scores
+    scoring_output <- structural_sim(network = ppi_painted_filt_giant,
+                                     string_db = string_db,
+                                     ppi = ppi,
+                                     method = method,
+                                     sim_method = sim_method,
+                                     causal_gene_symbol = causal_gene_symbol,
+                                     weighted = weighted)
 
-    # find the STRING ID for the causal gene
-    xref <- data.frame(symbol = causal_gene_symbol)
-    xref <- string_db$map(xref, "symbol", removeUnmappedRows=T, quiet=T)
-
-    # calculate similarity of each node and slice out the causal gene row
-    sim <- igraph::similarity(ppi, method = sim_method)
-    index <- which(igraph::V(ppi)$name == xref$STRING_id)
-    causal_sim <- sim[index,]
-
-    # make scores a named vector
-    names(causal_sim) <- igraph::V(ppi)$name
-
-    # get the scores associated with the subnetwork
-    pred_scores <- causal_sim[igraph::V(ppi_painted_filt_giant)$name]
-    mean_pred_score <- mean(pred_scores)
-
-    # estimate uncertainty with a random draw of the full ppi graph
-    n_draws <- length(igraph::V(ppi_painted_filt_giant))
-    samples <- lapply(1:n_sim, function(x) sample(causal_sim, n_draws))
-    sample_means <- sapply(samples, mean)
-
-    # calculate p
-    score_pval <- sum(sample_means > mean_pred_score) / n_sim
+    # evaluate scoring
+    performance_results <- evaluate_performance(network = scoring_output$network,
+                                                network_df = scoring_output$network_df,
+                                                causal_sim = scoring_output$causal_sim,
+                                                method = method,
+                                                n_sim = n_sim,
+                                                weighted = weighted)
 
     # save results
-    final_results[['network']] <- ppi_painted_filt_giant
-    final_results[['top_genes']] <- network_df
-    final_results[['mean_score']] <- mean_pred_score
-    final_results[['pvalue']] <- score_pval
+    final_results[['network']] <- scoring_output$network
+    final_results[['top_genes']] <- scoring_output$network_df
+    final_results[['performance']] <- performance_results
 
     return(final_results)
 

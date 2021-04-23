@@ -11,7 +11,7 @@ library(glue)
 load_all()
 
 # read differential expression data (annotated with gene symbols)
-de_string <- readRDS('data/de_string.RDS')
+de_string <- readRDS('data/de_string_v11.RDS')
 
 # select MYC condition as an example
 myc_de <- de_string$MYC
@@ -26,11 +26,12 @@ method <- 'betweenness'
 final_results <- c()
 export_network <- FALSE
 n_sim <- 9999
+sim_method <- 'jaccard'
 
 # network generation ------------------------------------------------------
 
 # generate protein association network
-string_db <- STRINGdb::STRINGdb$new(version="10",
+string_db <- STRINGdb::STRINGdb$new(version="11",
                                     species=9606,
                                     score_threshold=edge_conf_score_min)
 ppi <- string_db$get_graph()
@@ -52,74 +53,41 @@ ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant, method = metho
 # add argument 'method' that calls this function if value = 'centrality'
 
 # write final graph
-igraph::write_graph(ppi_painted_filt_giant,
-                    file=glue("data/MYC_DE_network_example_{edge_conf_score_min}.graphml"),
-                    format = "graphml")
+# igraph::write_graph(ppi_painted_filt_giant,
+#                     file=glue("data/MYC_DE_network_example_{edge_conf_score_min}.graphml"),
+#                     format = "graphml")
 # ^ this might be a good place for a logical argument 'export_graph'
 
 # network scoring ---------------------------------------------------------
 
-# find the STRING ID for the causal gene
-xref <- data.frame(symbol = causal_gene_symbol)
-xref <- string_db$map(xref, "symbol", removeUnmappedRows=T, quiet=T)
+# generate network scores
+scoring_output <- structural_sim(network = ppi_painted_filt_giant,
+                         ppi = ppi,
+                         method = 'betweenness',
+                         causal_gene_symbol = causal_gene_symbol,
+                         weighted = TRUE)
 
-# calculate similarity of each node and slice out the causal gene
-sim <- igraph::similarity(ppi)
-index <- which(igraph::V(ppi)$name == xref$STRING_id)
-causal_sim <- sim[index,]
-
-# make scores a named vector
-names(causal_sim) <- igraph::V(ppi)$name
-
-# get the scores associated with the subnetwork
-pred_scores <- causal_sim[igraph::V(ppi_painted_filt_giant)$name]
-mean_pred_score <- mean(pred_scores)
-
-# create a key mapping STRING id to gene symbol for all genes
-key <- data.frame(symbol = deg$Symbol)
-key <- string_db$map(key, "symbol", removeUnmappedRows=T, quiet=T)
-
-# select top genes and annotate for readability
-top_genes <- sort(pred_scores, decreasing = TRUE)
-top_genes_df <- data.frame(score = top_genes,
-                           STRING_id  = names(top_genes))
-top_genes_df <- dplyr::left_join(top_genes_df, key)
-rownames(top_genes_df) <- NULL
-
-# estimate uncertainty with a random draw of the full ppi graph
-n_sim <- 9999
-n_draws <- length(igraph::V(ppi_painted_filt_giant)) #151
-samples <- lapply(1:n_sim, function(x) sample(causal_sim, n_draws))
-sample_means <- sapply(samples, mean)
-
-# calculate p
-score_pval <- sum(sample_means > mean_pred_score) / n_sim
+# evaluate scoring
+performance_results <- evaluate_performance(network = scoring_output$network,
+                                network_df = scoring_output$network_df,
+                                causal_sim = scoring_output$causal_sim,
+                                method = 'betweenness',
+                                weighted = TRUE)
 
 # save results
-final_results[['network']] <- ppi_painted_filt_giant
-final_results[['top_genes']] <- top_genes
-final_results[['mean_score']] <- mean_pred_score
-final_results[['pvalue']] <- score_pval
+final_results[['network']] <- scoring_output$network
+final_results[['top_genes']] <- scoring_output$network_df
+final_results[['performance']] <- performance_results
+
 
 
 
 # plot results
-network <- ppi_painted_filt_giant
+network <- final_results[['network']]
 
+# plotting
 set.seed(4)
-
-# define plotting network
-ggn <- ggnetwork(network)
-
-ggplot(ggn, aes(x = x, y = y, xend = xend, yend = yend)) +
-    geom_edges() +
-    geom_nodes(aes(color = logFC, size = betweenness), alpha = 0.65) +
-    geom_nodetext_repel(aes(label = Symbol), size = 2.5) +
-    geom_nodelabel_repel(data=subset(ggn, Symbol == 'MYC'), aes(label=Symbol)) +
-    scale_color_gradient(low = 'blue', high = 'red') +
-    scale_size_continuous(range = c(5, 25)) +
-    theme_blank()
-# ggsave('test.png', width = 15, height = 15)
+plot_graph(network, method = 'weighted_score', gene_list = c('MYC'))
 
 
 
