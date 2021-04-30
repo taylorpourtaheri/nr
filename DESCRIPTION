@@ -23,5 +23,6 @@ Imports:
     magrittr,
     dplyr,
     igraph,
-    STRINGdb
+    STRINGdb,
+    diffuStats
 VignetteBuilder: knitr
