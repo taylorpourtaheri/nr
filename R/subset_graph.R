@@ -8,7 +8,7 @@
 
 subset_graph <- function(graph, score_threshold){
   sub_ppi <- igraph::subgraph.edges(graph, E(graph)[E(graph)$combined_score >= score_threshold], del=F)
-  sub_ppi <- noderank::connected_subgraph(sub_ppi)
+  sub_ppi <- connected_subgraph(sub_ppi)
   
   return(sub_ppi)
 }
