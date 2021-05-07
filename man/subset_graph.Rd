@@ -13,7 +13,7 @@ subset_graph(graph, score_threshold)
 }
 \description{
 Given an iGraph object from StringDb, reduce the
-full graph to a subset based on edge confidence scores. This 
-function will improve the performance of multiple calls to 
+full graph to a subset based on edge confidence scores. This
+function will improve the performance of multiple calls to
 the iGraph object for the parameter optimization.
 }
