@@ -2,9 +2,14 @@ Package: noderank
 Title: Node prioritization optimizer 
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Taylor", family = "D. Pourtaheri",
-           role = c("aut", "cre"), email = "thd6tp@virginia.edu",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    person(given = "Bradley", family = "Howlett", role = c("aut", "cre"), 
+    email = "bth2g@virginia.edu")
+    person(given = "Monish", family = "Dadlani", role = c("aut", "cre"), 
+    email = "thd6tp@virginia.edu")
+    person(given = "Patrick", family = "Chatfield", role = c("aut", "cre"), 
+    email = "pc2sq@virginia.edu")
+    person(given = "Taylor", family = "D. Pourtaheri", role = c("aut", "cre"), 
+    email = "mkd7q@virginia.edu")
 Description: noderank maps differential gene expression results 
     onto an established network of protein-protein associations and 
     employs network analysis methods to select a prioritized list of 
@@ -24,5 +29,7 @@ Imports:
     dplyr,
     igraph,
     STRINGdb,
-    diffuStats
+    diffuStats,
+    ggplot2,
+    ggnetwork
 VignetteBuilder: knitr
