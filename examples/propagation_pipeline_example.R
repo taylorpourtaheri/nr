@@ -2,6 +2,7 @@
 library(STRINGdb)
 library(igraph)
 library(ggplot2)
+library(ggnetwork)
 library(dplyr)
 library(glue)
 library(devtools)
@@ -30,6 +31,5 @@ results <- propagation_pipeline(deg = myc_de,
 
 # plot output
 set.seed(4)
-plot_graph(results[['network']], method = 'weighted_score', gene_list = c('MYCN'))
-
-# ggsave('test.png', width = 15, height = 15)
+plot_graph(results[['network']], method = 'weighted_score', gene_list = c('MYC'))
+ggsave('test.png', width = 12, height = 12)
