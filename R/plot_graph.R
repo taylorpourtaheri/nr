@@ -1,5 +1,7 @@
 #' @title Plot final network.
 #' @description Plot network with standard visualization specifications.
+#' @import ggplot2
+#' @import ggnetwork
 #' @param graph Graph of class '\code{igraph}'. Must include node
 #' attributes '\code{name}' and '\code{seed}'.
 #' @param method String. Name of node attribute that should correspond to node size.
@@ -11,7 +13,7 @@ plot_graph <- function(graph, method, gene_list) {
 
     as.name(method)
 
-    ggplot(ggn, aes(x = x, y = y, xend = xend, yend = yend)) +
+    ggplot2::ggplot(ggn, aes(x = x, y = y, xend = xend, yend = yend)) +
         geom_edges() +
         geom_nodes(aes_string(color = 'logFC', size = method), alpha = 0.65) +
         geom_nodetext_repel(aes(label = Symbol), size = 2.5) +
