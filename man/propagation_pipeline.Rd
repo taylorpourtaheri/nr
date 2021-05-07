@@ -6,6 +6,8 @@
 \usage{
 propagation_pipeline(
   deg,
+  ppi = NULL,
+  string_db = NULL,
   edge_conf_score_min,
   logFC_min,
   pvalue_max,
@@ -14,7 +16,8 @@ propagation_pipeline(
   causal_gene_symbol,
   export_network = FALSE,
   sim_method = "jaccard",
-  n_sim = 9999
+  n_sim = 9999,
+  weighted = FALSE
 )
 }
 \arguments{
@@ -57,6 +60,8 @@ each gene in the final network and the causal gene. One of the following:
 \item jaccard
 \item dice
 \item invlogweighted }}
+
+\item{n_sim}{Numeric. The number of simulations passed to \code{evaluate_performance()}.}
 }
 \value{
 A list of length 4:

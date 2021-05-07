@@ -33,7 +33,7 @@
 #' \item jaccard
 #' \item dice
 #' \item invlogweighted }
-#' @param n_sim
+#' @param n_sim Numeric. The number of simulations passed to \code{evaluate_performance()}.
 #' @return A list of length 4:
 #' \describe{
 #'   \item{network}{Object of class '\code{igraph}'. The network of important genes.}
@@ -43,7 +43,7 @@
 #'   \item{pvalue}{The p-value associated with the \code{mean_score}.}
 #' }
 #' @export
-propagation_pipeline <- function(deg,
+propagation_pipeline <- function(deg, ppi = NULL, string_db = NULL,
                              edge_conf_score_min, logFC_min, pvalue_max,
                              method = 'raw', min_diff_score = 0.15,
                              causal_gene_symbol, export_network = FALSE,
@@ -55,17 +55,21 @@ propagation_pipeline <- function(deg,
     # list to store results
     final_results <- c()
 
-    # generate protein association network
-    string_db <- STRINGdb::STRINGdb$new(version="11",
-                                        species=9606,
-                                        score_threshold=edge_conf_score_min)
-    ppi <- string_db$get_graph()
+    if (is.null(ppi) & is.null(string_db)){
 
-    # filter to only include genes that are also in the DEG results - check this
-    ppi2 <- attribute_filter(ppi, name %in% deg$STRING_id)
+        # generate protein association network
+        string_db <- STRINGdb::STRINGdb$new(version="11",
+                                            species=9606,
+                                            score_threshold=edge_conf_score_min)
+        ppi <- string_db$get_graph()
+    }
+
+    # filter to only include genes that are also in the DEG results
+        # removed after conversation with Steve
+    # ppi2 <- attribute_filter(ppi, name %in% deg$STRING_id)
 
     # map DEA results onto ppi network
-    ppi_painted <- df_to_vert_attr(graph=ppi2, df=deg, common="STRING_id",
+    ppi_painted <- df_to_vert_attr(graph=ppi, df=deg, common="STRING_id",
                                    attr_name = c("Symbol", "ID", "logFC", "AveExpr",
                                                  "t", "P.Value", "adj.P.Val", "B"))
 

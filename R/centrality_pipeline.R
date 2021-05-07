@@ -33,7 +33,7 @@
 #' \item dice
 #' \item invlogweighted
 #' }
-#' @param n_sim
+#' @param n_sim Numeric. The number of simulations passed to \code{evaluate_performance()}.
 #' @return A list of length 4:
 #' \describe{
 #'   \item{network}{Object of class '\code{igraph}'. The network of important genes.}
@@ -43,8 +43,8 @@
 #'   \item{pvalue}{The p-value associated with the \code{mean_score}.}
 #' }
 #' @export
-centrality_pipeline <- function(deg,
-                             edge_conf_score_min, logFC_min, pvalue_max,
+centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL,
+                             edge_conf_score_min = NULL, logFC_min, pvalue_max,
                              method = 'betweenness', causal_gene_symbol,
                              export_network = FALSE, sim_method = 'jaccard',
                              n_sim = 9999, weighted = FALSE){
@@ -54,11 +54,14 @@ centrality_pipeline <- function(deg,
     # list to store results
     final_results <- c()
 
-    # generate protein association network
-    string_db <- STRINGdb::STRINGdb$new(version="11",
-                                        species=9606,
-                                        score_threshold=edge_conf_score_min)
-    ppi <- string_db$get_graph()
+    if (is.null(ppi) & is.null(string_db)){
+
+        # generate protein association network
+        string_db <- STRINGdb::STRINGdb$new(version="11",
+                                            species=9606,
+                                            score_threshold=edge_conf_score_min)
+        ppi <- string_db$get_graph()
+    }
 
     # map DEA results onto ppi network
     ppi_painted <- df_to_vert_attr(graph=ppi, df=deg, common="STRING_id",
