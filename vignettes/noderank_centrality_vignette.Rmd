@@ -1,7 +1,8 @@
 ---
 title: "noderank: A Node Prioritization Optimizer"
 subtitle: 'Network Centrality Workflow'
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{noderank_centrality_vignette}
   %\VignetteEngine{knitr::rmarkdown}
@@ -13,6 +14,7 @@ of protein-protein associations and employs network analysis methods to select
 a prioritized list of important nodes. For data in which the mechanism of 
 perturbation is known, each ranked list result is scored by the position of 
 the causal gene. 
+
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -33,7 +35,11 @@ set.seed(4)
 
 ```
 
-#### Import DEA Data and Define Parameters
+##### DEA Data Import and Parameter Definitions
+
+A breast cancer oncogene differential gene expression analysis (DEA) dataset from NCBI's GEO database will be used here as a test case to demonstrate the noderank centrality workflow. The data is a list of genes that are differentially expressed between normal breast tissue samples and samples in which the proto-oncogene MYC has been experimentally upregulated. For each gene in the dataset, there is a log2-fold-change value, which represents the size of the effect, and an associated p-value, which gives its significance. 
+
+The goal of this pipeline is to join the DEA results with a network that represents all known molecular interactions, providing a model of the biological perturbation (here, MYC upregulation). This network can then be analyzed to determine which genes in the network play a significant role in the resultant biological processes. These genes represent good candidates for therapeutic intervention. 
 
 ```{r}
 
@@ -56,10 +62,11 @@ n_sim <- 9999
 
 ```
 
-#### Generate Protein Association Network and Prune by DEA Results
+##### Protein Association Network Construction and Pre-processing 
+
+First, the protein-protein interaction (ppl) network is downloaded from the STRING database. This is accomplished with the package STRINGdb. After downloading, the string_db object has a method called get_graph() that will load the ppi network. 
 
 ```{r}
-# network generation ------------------------------------------------------
 
 # generate protein association network
 string_db <- STRINGdb::STRINGdb$new(version="11",
@@ -67,18 +74,36 @@ string_db <- STRINGdb::STRINGdb$new(version="11",
                                     score_threshold=edge_conf_score_min)
 ppi <- string_db$get_graph()
 
+```
+
+The differential gene expression analysis results are then mapped onto the ppi network. The function df_to_vert_attr() takes the ppi graph, the data frame of DEA results, a vector of attributes will be added as new node attributes, and the name of an existing node attribute on which to join the new data. 
+
+```{r}
 # map DEA results onto ppi network
 ppi_painted <- df_to_vert_attr(graph=ppi, df=deg, common="STRING_id",
                                attr_name = c("Symbol", "ID", "logFC", "AveExpr",
                                              "t", "P.Value", "adj.P.Val", "B"))
 
+```
+
+The ppi network is then filtered to retain only the nodes that fall within the range of user-defined thresholds. The attribute_filter() function takes the ppi graph annotated with the DEA results and an equality expression involving the threshold values. It is important to match the expression components to the column names between the DEA data frame passed into df_to_vert_attr(). The function will identify the nodes that meet the threshold requirements and return a graph composed of only those nodes. 
+
+```{r}
 # subset the graph to only include nodes that meet thresholds
 ppi_painted_filt <- attribute_filter(ppi_painted,
                                      abs(logFC) > log2(logFC_min) & adj.P.Val < pvalue_max)
+```
 
+To remove disconnected nodes that may not be relevant to the biological mechanisms represented in the DEA results, the giant component of the network is selected with the connected_subgraph() function. 
+
+```{r}
 # select the connected subgraph
 ppi_painted_filt_giant <- connected_subgraph(ppi_painted_filt)
+```
 
+After these pre-processing steps are complete, network analysis algorithms can be implemented to rank the nodes. The calc_centrality() function will calculate the specified centrality score (provided in the method argument), and add this score as a new attribute for each node in the network. 
+
+```{r}
 # calculate centrality
 ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant, method = method, bt=T, len = -1)
 
@@ -89,7 +114,10 @@ ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant, method = metho
 
 ```
 
-#### Score the network by structural similarity to the causal gene, MYC
+
+##### Network and Method Evaluation 
+
+The effectiveness of the network in identifying nodes that are important to the biological mechanism can be evaluated by scoring the structural similarity of the nodes in the final network to the known causal gene. Here, the similarity to MYC is calculated for each node. If the weighted argument is FALSE, the similarity scores are added to the network as a new vertex attribute, causal_similarity. If weighted = TRUE, the function also adds a second attribute, weighted_score, which represents the product of the centrality score and the similarity score for each node. 
 
 ```{r}
 # network scoring ---------------------------------------------------------
@@ -103,6 +131,12 @@ scoring_output <- structural_sim(network = ppi_painted_filt_giant,
                          causal_gene_symbol = causal_gene_symbol,
                          weighted = TRUE)
 
+```
+
+Finally, the overall workflow is evaluated with performance_results(). The function first calculates the mean performance score (weighted or unweighted) across all nodes in the final network. Then, a null distribution is generated from a user-specified number of draws from the full ppi network. The overall network score is compared to the scores of the null hypothesis, allowing for the calculation of a p-value to represent the significance of the score. 
+
+```{r}
+
 # evaluate scoring
 performance_results <- evaluate_performance(network = scoring_output$network,
                                 network_df = scoring_output$network_df,
@@ -111,9 +145,13 @@ performance_results <- evaluate_performance(network = scoring_output$network,
                                 method = 'betweenness',
                                 weighted = TRUE)
 
+
 ```
 
-#### Inspect Results
+
+##### Examine Results
+
+In the plot below, we see that the causal gene, MYC, is successfully identified as one of the top nodes in the final network. The p-value associated with the mean score of 50.7 is very small. 
 
 ```{r, out.width="100%"}
 
@@ -130,7 +168,7 @@ knitr::kable(performance_results) %>%
   kableExtra::kable_styling(latex_options="scale_down") 
 ```
 
-### Pipeline Workflow
+##### Pipeline Workflow
 
 The workflow above can also be implemented in one step by calling the centrality_pipeline() wrapper function: 
 
