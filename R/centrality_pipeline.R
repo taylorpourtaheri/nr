@@ -25,7 +25,9 @@
 #' }
 #' @param causal_gene_symbol A string. The gene symbol associated with the
 #' causal gene.
-#' @param export_network If TRUE, the network object will be returned.
+#' @param export_network Logical. If TRUE, the network object will be returned.
+#' @param export_dir String. If export_network = TRUE, the network object will be
+#' saved using the file path provided in export_dir.
 #' @param sim_method A string. The method for calculating the similarity between
 #' each gene in the final network and the causal gene. One of the following:
 #' #' \itemize{
@@ -46,8 +48,8 @@
 centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL,
                              edge_conf_score_min = NULL, logFC_min, pvalue_max,
                              method = 'betweenness', causal_gene_symbol,
-                             export_network = FALSE, sim_method = 'jaccard',
-                             n_sim = 9999, weighted = FALSE){
+                             export_network = FALSE, export_dir = NULL,
+                             sim_method = 'jaccard',n_sim = 9999, weighted = FALSE){
     # internal check
     print(causal_gene_symbol)
 
@@ -92,7 +94,7 @@ centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL,
     # write final graph
     if (export_network){
         igraph::write_graph(ppi_painted_filt_giant,
-                            file=glue::glue("data/network_result_{edge_conf_score_min}.graphml"),
+                            file = export_dir,
                             format = "graphml")
     }
 
