@@ -7,7 +7,6 @@ structural_sim <- function(network, string_db, ppi, method, sim_method, causal_g
     rownames(network_df) <- NULL
 
     # find the STRING ID for the causal gene
-
     xref <- data.frame(symbol = causal_gene_symbol)
     xref <- string_db$map(xref, "symbol", removeUnmappedRows=T, quiet=T)
 
