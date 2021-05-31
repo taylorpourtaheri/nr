@@ -28,12 +28,18 @@ evaluate_performance <- function(network, network_df, causal_sim,
         weighted_samples <- purrr::map(samples, ~ .*weights)
         sample_means <- sapply(weighted_samples, mean)
 
+        # find z-score
+        simulation_mean <- mean(sample_means)
+        simulation_sd <- sd(sample_means)
+        network_z_score <- (mean_score - simulation_mean) / simulation_sd
+
         # calculate p
         score_pval <- sum(sample_means > mean_score) / n_sim
 
     }
 
     output_df <- data.frame('mean_score' = mean_score,
+                            'z_score' = network_z_score,
                             'score_pval' = score_pval)
 
     return(output_df)
