@@ -27,6 +27,8 @@
 #' @param causal_gene_symbol String. The gene symbol associated with the
 #' causal gene.
 #' @param export_network Logical. If TRUE, the network object will be returned.
+#' @param export_dir String. If export_network = TRUE, the network object will be
+#' saved using the file path provided in export_dir.
 #' @param sim_method String. The method for calculating the similarity between
 #' each gene in the final network and the causal gene. One of the following:
 #' #' \itemize{
@@ -45,10 +47,11 @@
 #' @export
 propagation_pipeline <- function(deg, ppi = NULL, string_db = NULL,
                              edge_conf_score_min, logFC_min, pvalue_max,
-                             method = 'raw', min_diff_score = 0.15,
-                             causal_gene_symbol, export_network = FALSE,
-                             sim_method = 'jaccard', n_sim = 9999,
-                             weighted = FALSE){
+                             method = 'raw', min_diff_score = 0.15, causal_gene_symbol,
+                             export_network = FALSE, export_dir = NULL,
+                             sim_method = 'jaccard', n_sim = 9999, weighted = FALSE,
+                             ...){
+
     # internal check
     print(causal_gene_symbol)
 
@@ -81,19 +84,35 @@ propagation_pipeline <- function(deg, ppi = NULL, string_db = NULL,
     ppi_painted_filt_giant <- connected_subgraph(ppi_painted_filt)
 
     # calculate diffusion scores
-    ppi_painted_filt_giant <- calc_diffusion(graph = ppi_painted_filt_giant,
-                                             method = method)
 
-    # filter network to only include scores above threshold
-    final_network <- attribute_filter(ppi_painted_filt_giant,
-                                      diffusion_score > min_diff_score)
+    # diffusion with diffuStats:
+    diffuStats_methods <- c('raw', 'ml', 'gm', 'ber_s', 'mc', 'ber_p', 'z')
+
+    if (method %in% diffuStats_methods){
+
+        ppi_painted_filt_giant <- calc_diffusion(graph = ppi_painted_filt_giant,
+                                                 method = method)
+    }
+
+    # random walk with dnet:
+    if (method == 'random_walk'){
+
+        ppi_painted_filt_giant <- calc_random_walk(graph = ppi_painted_filt_giant,
+                                                   ...)
+    }
+
+    # # filter network to only include scores above threshold
+    # final_network <- attribute_filter(ppi_painted_filt_giant,
+    #                                   propagation_score > min_diff_score)
     # remove duplicated edges
+    final_network <- ppi_painted_filt_giant
+
     final_network_simple <- igraph::simplify(final_network)
 
     # write final graph
     if (export_network){
         igraph::write_graph(final_network_simple,
-                            file=glue::glue("data/network_result_{edge_conf_score_min}_{method}.graphml"),
+                            file = export_dir,
                             format = "graphml")
     }
 
@@ -101,7 +120,7 @@ propagation_pipeline <- function(deg, ppi = NULL, string_db = NULL,
     scoring_output <- structural_sim(network = final_network_simple,
                                      string_db = string_db,
                                      ppi = ppi,
-                                     method = 'diffusion_score',
+                                     method = 'propagation_score',
                                      sim_method = sim_method,
                                      causal_gene_symbol = causal_gene_symbol,
                                      weighted = weighted)
@@ -110,7 +129,7 @@ propagation_pipeline <- function(deg, ppi = NULL, string_db = NULL,
     performance_results <- evaluate_performance(network = scoring_output$network,
                                                 network_df = scoring_output$network_df,
                                                 causal_sim = scoring_output$causal_sim,
-                                                method = 'diffusion_score',
+                                                method = 'propagation_score',
                                                 n_sim = n_sim,
                                                 weighted = weighted)
 
