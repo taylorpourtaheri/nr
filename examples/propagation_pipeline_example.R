@@ -21,15 +21,16 @@ results <- propagation_pipeline(deg = myc_de,
                             edge_conf_score_min = 950,
                             logFC_min = 1.5,
                             pvalue_max = 0.05,
-                            method = 'raw',
-                            min_diff_score = 0.15,
+                            method = 'random_walk',
+                            norm_method = 'column',
                             causal_gene_symbol = 'MYC',
                             export_network = FALSE,
                             sim_method = 'jaccard',
                             n_sim = 9999,
-                            weighted = TRUE)
+                            weighted = TRUE,
+                            restart_value = 0.01)
 
 # plot output
 set.seed(4)
-plot_graph(results[['network']], method = 'weighted_score', gene_list = c('MYC'))
+plot_graph(results[['network']], method = 'scaled_score', gene_list = c('MYC'))
 ggsave('test.png', width = 12, height = 12)

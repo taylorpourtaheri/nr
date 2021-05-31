@@ -1,14 +1,14 @@
 
 # load relevant packages
-library(STRINGdb)
-library(ggnetwork)
-library(ggplot2)
-library(igraph)
-library(dplyr)
-library(glue)
+# library(STRINGdb)
+# library(ggnetwork)
+# library(ggplot2)
+# library(igraph)
+# library(dplyr)
+# library(glue)
 
 # load all package functions
-load_all()
+devtools::load_all()
 
 # read differential expression data (annotated with gene symbols)
 de_string <- readRDS('data/de_string_v11.RDS')
@@ -27,6 +27,7 @@ final_results <- c()
 export_network <- FALSE
 n_sim <- 9999
 sim_method <- 'jaccard'
+weighted <- TRUE
 
 # network generation ------------------------------------------------------
 

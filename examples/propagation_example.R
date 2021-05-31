@@ -24,11 +24,14 @@ pvalue_max <- 0.05
 causal_gene_symbol <- 'MYC'
 final_results <- c()
 export_network <- FALSE
+export_dir = NULL
 n_sim <- 9999
 method <- 'raw'
 min_diff_score <- 0.15
 sim_method = 'jaccard'
 weighted = TRUE
+ppi = NULL
+string_db = NULL
 
 # in the DEG results:
 MYC_stringID <-'9606.ENSP00000479618'

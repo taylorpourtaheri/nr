@@ -12,10 +12,10 @@ deg <- myc_de
 target <- 'MYC'
 
 # generate parameter grid
-pipeline_vec <- c('centrality', 'propagation')
+pipeline_vec <- c('centrality')
 threshold_vec <- c(950)
-logFC_vec <- c(1.75)
-Adj.P_vec <- c(0.025)
+logFC_vec <- c(1.5)
+Adj.P_vec <- c(0.05)
 
 parameter_grid <- expand.grid(pipeline = pipeline_vec,
                               threshold=threshold_vec,

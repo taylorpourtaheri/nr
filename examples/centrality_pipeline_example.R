@@ -6,7 +6,7 @@ library(dplyr)
 library(glue)
 
 # load all package functions
-load_all()
+devtools::load_all()
 
 # read differential expression data (annotated with gene symbols)
 de_string <- readRDS('data/de_string_v11.RDS')
@@ -14,10 +14,23 @@ de_string <- readRDS('data/de_string_v11.RDS')
 # select MYC condition as an example
 myc_de <- de_string$MYC
 
+deg = myc_de
+edge_conf_score_min = 950
+logFC_min = 1.5
+pvalue_max = 0.05
+method = 'betweenness'
+causal_gene_symbol = 'MYC'
+export_network = FALSE
+sim_method = 'jaccard'
+n_sim = 9999
+weighted = TRUE
+ppi = NULL
+string_db = NULL
+
 # call wrapper
 results <- centrality_pipeline(deg = myc_de,
                             edge_conf_score_min = 950,
-                            logFC_min = 1.5,
+                            logFC_min = 1.0,
                             pvalue_max = 0.05,
                             method = 'betweenness',
                             causal_gene_symbol = 'MYC',
