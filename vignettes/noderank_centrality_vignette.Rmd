@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, warning=FALSE, message=FALSE}
 library(ggplot2)
 library(ggnetwork)
 library(knitr)
@@ -66,7 +66,7 @@ n_sim <- 9999
 
 First, the protein-protein interaction (ppl) network is downloaded from the STRING database. This is accomplished with the package STRINGdb. After downloading, the string_db object has a method called get_graph() that will load the ppi network. 
 
-```{r}
+```{r cache=TRUE}
 
 # generate protein association network
 string_db <- STRINGdb::STRINGdb$new(version="11",
@@ -107,11 +107,6 @@ After these pre-processing steps are complete, network analysis algorithms can b
 # calculate centrality
 ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant, method = method, bt=T, len = -1)
 
-# write final graph
-# igraph::write_graph(ppi_painted_filt_giant,
-#                     file=glue::glue("data/MYC_DE_network_example_{edge_conf_score_min}.graphml"),
-#                     format = "graphml")
-
 ```
 
 
@@ -119,7 +114,7 @@ ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant, method = metho
 
 The effectiveness of the network in identifying nodes that are important to the biological mechanism can be evaluated by scoring the structural similarity of the nodes in the final network to the known causal gene. Here, the similarity to MYC is calculated for each node. If the weighted argument is FALSE, the similarity scores are added to the network as a new vertex attribute, causal_similarity. If weighted = TRUE, the function also adds a second attribute, weighted_score, which represents the product of the centrality score and the similarity score for each node. 
 
-```{r}
+```{r warning=FALSE, message=FALSE}
 # network scoring ---------------------------------------------------------
 
 # generate network scores
@@ -153,7 +148,7 @@ performance_results <- evaluate_performance(network = scoring_output$network,
 
 In the plot below, we see that the causal gene, MYC, is successfully identified as one of the top nodes in the final network. The p-value associated with the mean score of 50.7 is very small. 
 
-```{r, out.width="100%"}
+```{r, warning=FALSE, message=FALSE, out.width="100%"}
 
 # plotting 
 plot1 <- plot_graph(scoring_output$network, method = 'weighted_score', gene_list = c('MYC'))
@@ -172,7 +167,7 @@ knitr::kable(performance_results) %>%
 
 The workflow above can also be implemented in one step by calling the centrality_pipeline() wrapper function: 
 
-```{r, out.width='100%'}
+```{r, warning=FALSE, message=FALSE, out.width='100%'}
 
 results <- centrality_pipeline(deg = myc_de,
                             edge_conf_score_min = 950,
