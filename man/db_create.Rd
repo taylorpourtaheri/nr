@@ -7,12 +7,16 @@
 db_create(vers = "11", spec = 9606, thresh = 950)
 }
 \arguments{
-\item{vers}{stingDB version}
+\item{vers}{A string representing the stringDB version.}
 
-\item{spec}{species code #9606 for human}
+\item{spec}{A number specifying the species code (default is 9606 for humans.)}
 
-\item{thresh}{score_threshold}
+\item{thresh}{A number specifying score_threshold (a measure of interaction strength.)}
+}
+\value{
+An iGraph object representing the ppi network.
 }
 \description{
-add two numbers
+Download protein-protein interaction (ppi) network and return in the form of
+an iGraph object for processing.
 }
