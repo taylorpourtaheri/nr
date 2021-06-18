@@ -15,6 +15,7 @@ target <- 'MYC'
 pipeline_vec <- c('centrality')
 threshold_vec <- c(950)
 logFC_vec <- c(1.5)
+#logFC_vec <- c(seq(1.0,2.0,0.1))
 Adj.P_vec <- c(0.05)
 
 parameter_grid <- expand.grid(pipeline = pipeline_vec,
@@ -39,7 +40,7 @@ results <- parameter_grid(deg = myc_de,
                           target = 'MYC',
                           grid = parameter_grid,
                           n_cores = 2,
-                          weighted = TRUE)
+                          weighted = FALSE)
 toc()
 
 saveRDS(results, 'results/parameter_grid_dev_results6.RDS')
@@ -69,7 +70,6 @@ ggplot(results, aes(x = threshold, y = mean_score)) +
     scale_y_log10() +
     annotation_logticks(sides = 'l')
 ggsave('results/parameter_grid_dev_results6.png', width = 10, height = 6)
-
 
 
 

@@ -63,6 +63,7 @@ parameter_grid <- function(deg, target, grid, pipeline = NULL, n_cores = 1, ...)
                                                    pvalue_max = as.numeric(x['Adj.P']),
                                                    # method = method,
                                                    causal_gene_symbol =  target,
+                                                   connected_filter = TRUE,
                                                    ...)
         }
 
