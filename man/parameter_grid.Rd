@@ -4,7 +4,15 @@
 \alias{parameter_grid}
 \title{Implement pipeline workflow over a grid of parameters.}
 \usage{
-parameter_grid(deg, target, grid, pipeline = NULL, n_cores = 1, ...)
+parameter_grid(
+  deg,
+  target,
+  grid,
+  pipeline = NULL,
+  connected_filter = NULL,
+  n_cores = 1,
+  ...
+)
 }
 \arguments{
 \item{deg}{Object of class '\code{dataframe}'. Differential gene expression

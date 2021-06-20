@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_diffusion.R
 \name{calc_diffusion}
 \alias{calc_diffusion}
-\title{Network propagation}
+\title{Calculate network propagation by diffusion}
 \usage{
 calc_diffusion(graph, method = "raw")
 }
@@ -14,8 +14,8 @@ attributes '\code{name}' and '\code{seed}'.}
 from the \code{diffuStats} package.}
 }
 \value{
-Graph of class '\code{igraph}' with new attribute, '\code{diffusion_score}'.
+Graph of class '\code{igraph}' with new attribute, '\code{propagation_score}'.
 }
 \description{
-Calculate various measures of network propagation
+Calculate various measures of diffusion
 }

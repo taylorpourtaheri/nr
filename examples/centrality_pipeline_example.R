@@ -26,7 +26,7 @@ n_sim = 9999
 weighted = TRUE
 ppi = NULL
 string_db = NULL
-connected_filter = FALSE
+
 
 # call wrapper
 results <- centrality_pipeline(deg = myc_de,

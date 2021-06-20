@@ -1,4 +1,3 @@
-
 # load relevant packages
 # library(STRINGdb)
 # library(ggnetwork)
@@ -33,10 +32,12 @@ weighted <- TRUE
 # network generation ------------------------------------------------------
 
 # generate protein association network
+
 #string_db <- STRINGdb::STRINGdb$new(version="11",
 #                                    species=9606,
 #                                    score_threshold=edge_conf_score_min)
 #ppi <- string_db$get_graph()
+
 
 ppi <- readRDS('data/ppi.RDS')
 
@@ -67,7 +68,7 @@ ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant, method = metho
 # generate network scores
 scoring_output <- structural_sim(network = ppi_painted_filt_giant,
                                  ppi = ppi_painted,
-                                 #string_db = string_db, #i think this line of code can be removed
+                                 string_db = string_db,
                                  method = 'betweenness',
                                  sim_method = 'jaccard',
                                  causal_gene_symbol = causal_gene_symbol,
@@ -95,5 +96,4 @@ network <- final_results[['network']]
 # plotting
 set.seed(4)
 plot_graph(network, method = 'weighted_score', gene_list = c('MYC'))
-
 

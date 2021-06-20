@@ -17,7 +17,8 @@
 #' @return Object of class '\code{dataframe}', with columns corresponding to the
 #' parameter combination implemented and the
 #' @export
-parameter_grid <- function(deg, target, grid, pipeline = NULL, n_cores = 1, ...){
+parameter_grid <- function(deg, target, grid, pipeline = NULL,
+                           connected_filter = NULL, n_cores = 1, ...){
 
     if(n_cores > parallel::detectCores()){
         warn('n_cores exceeds number of cores; using maximum number of cores instead.')
@@ -49,8 +50,13 @@ parameter_grid <- function(deg, target, grid, pipeline = NULL, n_cores = 1, ...)
         if(is.null(pipeline)){
             pipeline <- x['pipeline']
         }
+
+        if(is.null(connected_filter)){
+            connected_filter <- as.logical(x['connected_filter'])
+        }
+
         # how to specify method in a way that won't allow centrality methods
-            # to be passed to the propagation pipeline and vice versa?
+        # to be passed to the propagation pipeline and vice versa?
         # if(is.null(method)){
         #     method <- x['method']
         # }
@@ -63,7 +69,7 @@ parameter_grid <- function(deg, target, grid, pipeline = NULL, n_cores = 1, ...)
                                                    pvalue_max = as.numeric(x['Adj.P']),
                                                    # method = method,
                                                    causal_gene_symbol =  target,
-                                                   connected_filter = TRUE,
+						   connected_filter = connected_filter,
                                                    ...)
         }
 
@@ -81,6 +87,7 @@ parameter_grid <- function(deg, target, grid, pipeline = NULL, n_cores = 1, ...)
 
 
         x_df <- data.frame(pipeline = pipeline,
+                           connected_filter = connected_filter,
                            'threshold' = x['threshold'],
                            'logFC' = x['logFC'],
                            'Adj.P' = x['Adj.P'],

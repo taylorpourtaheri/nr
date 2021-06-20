@@ -1,6 +1,7 @@
 #' @title Calculate network propagation by random walk
 #' @description Calculate various measures of random walk
-#' @import dnet, igraph
+#' @import dnet
+#' @import igraph
 #' @param graph Graph of class '\code{igraph}'. Must include node
 #' attributes '\code{name}' and '\code{seed}'.
 #' @param method String. Method for random walk. Passed to \code{dRWR()}

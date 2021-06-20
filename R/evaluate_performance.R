@@ -15,7 +15,7 @@ evaluate_performance <- function(target, network_df, causal_sim,
         simulation_mean <- mean(sample_means)
         simulation_sd <- sd(sample_means)
         network_z_score <- (mean_score - simulation_mean) / simulation_sd
-        
+
         # calculate p
         score_pval <- sum(sample_means > mean_score) / n_sim
 
@@ -43,8 +43,10 @@ evaluate_performance <- function(target, network_df, causal_sim,
 
     }
 
-    target_in_network <- any(network_df==target)
-    
+
+    target_in_network <- any(network_df$Symbol==target)
+
+
     output_df <- data.frame('mean_score' = mean_score,
                             'sample_mean' = simulation_mean,
                             'sample_sd' = simulation_sd,
