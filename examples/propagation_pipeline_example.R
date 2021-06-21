@@ -28,9 +28,11 @@ results <- propagation_pipeline(deg = myc_de,
                             sim_method = 'jaccard',
                             n_sim = 9999,
                             weighted = TRUE,
-                            restart_value = 0.01)
+                            restart_value = 0.1)
 
-# plot output
-set.seed(4)
-plot_graph(results[['network']], method = 'scaled_score', gene_list = c('MYC'))
-ggsave('test.png', width = 12, height = 12)
+# # plot output
+# set.seed(4)
+# plot_graph(results[['network']], method = 'weighted_score', gene_list = c('MYC'))
+# ggsave('test2.png', width = 12, height = 12)
+
+

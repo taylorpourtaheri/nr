@@ -46,10 +46,12 @@
 #' }
 #' @export
 centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL,
-                             edge_conf_score_min = NULL, logFC_min, pvalue_max,
-                             method = 'betweenness', causal_gene_symbol,
-                             export_network = FALSE, export_dir = NULL,
-                             sim_method = 'jaccard',n_sim = 9999, weighted = FALSE){
+                                edge_conf_score_min = NULL, logFC_min, pvalue_max,
+                                connected_filter = TRUE,
+                                method = 'betweenness', causal_gene_symbol,
+                                export_network = FALSE, export_dir = NULL,
+                                sim_method = 'jaccard', n_sim = 9999, weighted = FALSE){
+
     # internal check
     print(causal_gene_symbol)
 
@@ -75,7 +77,13 @@ centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL,
                                          abs(logFC) > log2(logFC_min) & adj.P.Val < pvalue_max)
 
     # select the connected subgraph
-    ppi_painted_filt_giant <- connected_subgraph(ppi_painted_filt)
+    if (connected_filter == TRUE){
+        ppi_painted_filt_giant <- connected_subgraph(ppi_painted_filt)
+    }
+
+    if (connected_filter == FALSE){
+        ppi_painted_filt_giant <- ppi_painted_filt
+    }
 
     # # calculate centrality
     # if (method == 'centrality'){
@@ -100,20 +108,32 @@ centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL,
 
     # generate network scores
     scoring_output <- structural_sim(network = ppi_painted_filt_giant,
-                                     string_db = string_db,
                                      ppi = ppi,
+                                     string_db = string_db,
                                      method = method,
                                      sim_method = sim_method,
                                      causal_gene_symbol = causal_gene_symbol,
                                      weighted = weighted)
 
     # evaluate scoring
-    performance_results <- evaluate_performance(network = scoring_output$network,
+    performance_results <- evaluate_performance(target = causal_gene_symbol,
                                                 network_df = scoring_output$network_df,
                                                 causal_sim = scoring_output$causal_sim,
                                                 method = method,
                                                 n_sim = n_sim,
                                                 weighted = weighted)
+
+    # check for target neighbors
+    # find the STRING ID for the causal gene
+    xref <- data.frame(symbol = causal_gene_symbol)
+    xref <- string_db$map(xref, "symbol", removeUnmappedRows=T, quiet=T)
+
+    total_neighbors <- igraph::neighbors(ppi, xref$STRING_id, 'all')
+    performance_results$target_neighbors_in_ppi <- length(total_neighbors)
+
+    neighbors_in_final <- sum(total_neighbors %in% V(scoring_output$network))
+    performance_results$target_neighbors_in_final <- neighbors_in_final
+
 
     # save results
     final_results[['network']] <- scoring_output$network

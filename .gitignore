@@ -1,8 +1,12 @@
-.Rproj.user
-inst/doc
 noderank.Rproj
-data/
-/doc/
-/Meta/
+.Rproj.user
 .RData
 .Rhistory
+.DS_Store
+inst/doc
+data/
+results/
+presentations/
+/doc/
+/Meta/
+test.png
