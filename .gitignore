@@ -2,6 +2,9 @@
 inst/doc
 noderank.Rproj
 data/
+results/
+presentations/
+.DS_Store
 /doc/
 /Meta/
 .RData
