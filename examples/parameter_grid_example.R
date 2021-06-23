@@ -123,4 +123,6 @@ ggplot(results %>% filter(connected_filter == FALSE), aes(x = logFC, y = Adj.P))
          x = 'Log Fold-Change',
          y = 'Adjusted p-value',
          fill = 'Z-score')
+
 ggsave('results/HRAS/parameter_grid_pvalue_logFC_heatmap_FALSE.png', width = 15, height = 8)
+

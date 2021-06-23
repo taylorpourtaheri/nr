@@ -27,6 +27,7 @@ weighted = TRUE
 ppi = NULL
 string_db = NULL
 
+
 # call wrapper
 results <- centrality_pipeline(deg = myc_de,
                             edge_conf_score_min = 950,
@@ -37,7 +38,8 @@ results <- centrality_pipeline(deg = myc_de,
                             export_network = FALSE,
                             sim_method = 'jaccard',
                             n_sim = 9999,
-                            weighted = TRUE)
+                            weighted = TRUE,
+                            connected_filter = FALSE)
 
 View(results)
 

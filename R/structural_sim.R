@@ -1,4 +1,4 @@
-structural_sim <- function(network, string_db, ppi, method, sim_method, causal_gene_symbol, weighted = FALSE){
+structural_sim <- function(network, ppi, string_db, method, sim_method, causal_gene_symbol, weighted = FALSE){
 
     output_list <- c()
 
