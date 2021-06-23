@@ -17,7 +17,7 @@
 #' @return Object of class '\code{dataframe}', with columns corresponding to the
 #' parameter combination implemented and the
 #' @export
-parameter_grid <- function(deg, target, grid, pipeline = NULL,
+parameter_grid <- function(deg, target, grid, pipeline_method = NULL,
                            connected_filter = NULL, n_cores = 1, ...){
 
     if(n_cores > parallel::detectCores()){
@@ -42,14 +42,23 @@ parameter_grid <- function(deg, target, grid, pipeline = NULL,
     # convert grid to list of rows
     grid_list <- asplit(grid, 1)
 
+    centrality_methods = c('strength','degree','avg_strength','degree_frac',
+                           'strength_scaled','avg_strength_scaled','evcent_w',
+                           'evcent_uw','betweenness')
+    
+    propagation_methods = c('raw', 'ml', 'gm', 'ber_s', 'mc', 'ber_p', 'z','random_walk')
+    
     # run pipeline
     results_list <- parallel::mclapply(grid_list, FUN = function(x){
 
         print(x)
 
-        if(is.null(pipeline)){
-            pipeline <- x['pipeline']
-        }
+        pipeline_method <- x['pipeline_method']
+        
+        #not sure what the point of this was, seemed like it would not be updated at each iteration
+        #if(is.null(pipeline_method)){
+        #    pipeline_method <- x['pipeline_method']
+        #}
 
         if(is.null(connected_filter)){
             connected_filter <- as.logical(x['connected_filter'])
@@ -61,32 +70,32 @@ parameter_grid <- function(deg, target, grid, pipeline = NULL,
         #     method <- x['method']
         # }
 
-        if (pipeline == 'centrality'){
+        if (pipeline_method %in% centrality_methods){
             pipeline_output <- centrality_pipeline(deg = deg,
                                                    ppi = ppi_list[[as.character(x['threshold'])]],
                                                    string_db = string_list[[as.character(x['threshold'])]],
                                                    logFC_min = as.numeric(x['logFC']),
                                                    pvalue_max = as.numeric(x['Adj.P']),
-                                                   # method = method,
+                                                   method = as.character(x['pipeline_method']),
                                                    causal_gene_symbol =  target,
 						   connected_filter = connected_filter,
                                                    ...)
         }
 
-        else if (pipeline == 'propagation'){
+        else if (pipeline_method %in% propagation_methods){
             pipeline_output <- propagation_pipeline(deg = deg,
                                                     ppi = ppi_list[[as.character(x['threshold'])]],
                                                     string_db = string_list[[as.character(x['threshold'])]],
                                                     logFC_min = as.numeric(x['logFC']),
                                                     pvalue_max = as.numeric(x['Adj.P']),
-                                                    # method = method,
+                                                    method = as.character(x['pipeline_method']),
                                                     min_diff_score = 0.15,
                                                     causal_gene_symbol =  target,
                                                     ...)
         }
 
 
-        x_df <- data.frame(pipeline = pipeline,
+        x_df <- data.frame(pipeline_method = pipeline_method,
                            connected_filter = connected_filter,
                            'threshold' = x['threshold'],
                            'logFC' = x['logFC'],

@@ -11,16 +11,20 @@ devtools::load_all()
 de_string <- readRDS('data/de_string_v11.RDS')
 
 # select HRAS condition as an example
-RAS_de <- de_string$RAS
-deg <- RAS_de
-target <- 'HRAS'
+#RAS_de <- de_string$RAS
+myc_de <- de_string$MYC
+#deg <- RAS_de
+deg <- myc_de
+target <- 'MYC'
+#target <- 'HRAS'
 
 # generate parameter grid
-pipeline_vec <- c('centrality')
-connected_filter <- c('TRUE', 'FALSE')
+pipeline_vec <- c('betweenness','strength','raw')
+connected_filter <- c('TRUE')
 threshold_vec <- c(950)
-logFC_vec <- seq(1.0, 2.0, 0.1)
-Adj.P_vec <- seq(0.005, 0.05, 0.005)
+Adj.P_vec <- c(0.05)
+logFC_vec <- seq(1.0, 2.0, 0.5)
+#Adj.P_vec <- seq(0.005, 0.05, 0.005)
 
 # single example
 # pipeline_vec <- c('centrality')
@@ -29,7 +33,7 @@ Adj.P_vec <- seq(0.005, 0.05, 0.005)
 # logFC_vec <- 2.0
 # Adj.P_vec <- 0.05
 
-parameter_grid <- expand.grid(pipeline = pipeline_vec,
+parameter_grid <- expand.grid(pipeline_method = pipeline_vec,
                               connected_filter = connected_filter,
                               threshold=threshold_vec,
                               logFC=logFC_vec,
@@ -38,12 +42,12 @@ parameter_grid <- expand.grid(pipeline = pipeline_vec,
 # run function for centrality
 
 tic()
-results <- parameter_grid(deg = RAS_de,
-                          target = 'HRAS',
+results <- parameter_grid(deg = deg,
+                          target = target,
                           grid = parameter_grid,
-                          n_cores = 2,
-                          n_cores = 4,
-                          weighted = FALSE)
+                          #n_cores = 2,
+                          #n_cores = 4,
+                          weighted = TRUE)
 toc()
 
 saveRDS(results, 'results/HRAS/parameter_grid_pvalue_logFC.RDS')

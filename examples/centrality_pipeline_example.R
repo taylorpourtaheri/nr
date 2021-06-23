@@ -16,7 +16,7 @@ myc_de <- de_string$MYC
 
 deg = myc_de
 edge_conf_score_min = 950
-logFC_min = 1.5
+logFC_min = 2.0
 pvalue_max = 0.05
 method = 'betweenness'
 causal_gene_symbol = 'MYC'
@@ -31,7 +31,7 @@ string_db = NULL
 # call wrapper
 results <- centrality_pipeline(deg = myc_de,
                             edge_conf_score_min = 950,
-                            logFC_min = 1.0,
+                            logFC_min = 2.0,
                             pvalue_max = 0.05,
                             method = 'betweenness',
                             causal_gene_symbol = 'MYC',

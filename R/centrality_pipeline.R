@@ -97,8 +97,40 @@ centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL,
                                      betweenness={
                                          calc_centrality(ppi_painted_filt_giant,
                                                          method = method, bt = TRUE, len = -1)
+                                     },
+                                     strength={
+                                         calc_centrality(ppi_painted_filt_giant,
+                                                         method = method)
+                                     },
+                                     degree={
+                                         calc_centrality(ppi_painted_filt_giant,
+                                                         method = method)
+                                     },
+                                     avg_strength={
+                                         calc_centrality(ppi_painted_filt_giant,
+                                                         method = method)
+                                     },
+                                     degree_frac={
+                                         calc_centrality(ppi_painted_filt_giant,
+                                                         method = method)
+                                     },
+                                     strength_scaled={
+                                         calc_centrality(ppi_painted_filt_giant,
+                                                         method = method)
+                                     },
+                                     avg_strength_scaled={
+                                         calc_centrality(ppi_painted_filt_giant,
+                                                         method = method)
+                                     },
+                                     evcent_w={
+                                         calc_centrality(ppi_painted_filt_giant,
+                                                         method = method)
+                                     },
+                                     evcent_uw={
+                                         calc_centrality(ppi_painted_filt_giant,
+                                                         method = method)
                                      })
-
+    
     # write final graph
     if (export_network){
         igraph::write_graph(ppi_painted_filt_giant,

@@ -126,7 +126,8 @@ propagation_pipeline <- function(deg, ppi = NULL, string_db = NULL,
                                      weighted = weighted)
 
     # evaluate scoring
-    performance_results <- evaluate_performance(network_df = scoring_output$network_df,
+    performance_results <- evaluate_performance(target = causal_gene_symbol,
+                                                network_df = scoring_output$network_df,
                                                 causal_sim = scoring_output$causal_sim,
                                                 method = 'propagation_score',
                                                 n_sim = n_sim,
