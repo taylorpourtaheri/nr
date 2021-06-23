@@ -31,5 +31,6 @@ Imports:
     STRINGdb,
     diffuStats,
     ggplot2,
-    ggnetwork
+    ggnetwork,
+    dnet
 VignetteBuilder: knitr
