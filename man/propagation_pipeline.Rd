@@ -15,9 +15,11 @@ propagation_pipeline(
   min_diff_score = 0.15,
   causal_gene_symbol,
   export_network = FALSE,
+  export_dir = NULL,
   sim_method = "jaccard",
   n_sim = 9999,
-  weighted = FALSE
+  weighted = FALSE,
+  ...
 )
 }
 \arguments{
@@ -53,6 +55,9 @@ the final network.}
 causal gene.}
 
 \item{export_network}{Logical. If TRUE, the network object will be returned.}
+
+\item{export_dir}{String. If export_network = TRUE, the network object will be
+saved using the file path provided in export_dir.}
 
 \item{sim_method}{String. The method for calculating the similarity between
 each gene in the final network and the causal gene. One of the following:
