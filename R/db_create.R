@@ -1,10 +1,13 @@
 #' db_create
 #' 
-#' add two numbers
+#' Download protein-protein interaction (ppi) network and return in the form of
+#' an iGraph object for processing.
 #' 
-#' @param vers stingDB version
-#' @param spec species code #9606 for human
-#' @param thresh score_threshold
+#' @param vers A string representing the stringDB version.
+#' @param spec A number specifying the species code (default is 9606 for humans.)
+#' @param thresh A number specifying score_threshold (a measure of interaction strength.)
+#' @return An iGraph object representing the ppi network.
+#' @example db_create()
 #' @export
 
 
