@@ -19,11 +19,12 @@ target <- 'MYC'
 #target <- 'HRAS'
 
 # generate parameter grid
-pipeline_vec <- c('betweenness','strength','raw')
+pipeline_vec <- c('strength','degree','avg_strength','evcent_w',
+                  'evcent_uw','betweenness')
 connected_filter <- c('TRUE')
 threshold_vec <- c(950)
-Adj.P_vec <- c(0.05)
-logFC_vec <- seq(1.0, 2.0, 0.5)
+Adj.P_vec <- seq(0.05, 0.25, 0.05)
+logFC_vec <- seq(0.0, 2.0, 0.5)
 #Adj.P_vec <- seq(0.005, 0.05, 0.005)
 
 # single example
@@ -50,7 +51,7 @@ results <- parameter_grid(deg = deg,
                           weighted = TRUE)
 toc()
 
-saveRDS(results, 'results/HRAS/parameter_grid_pvalue_logFC.RDS')
+saveRDS(results, 'results/parameter_grid_centrality_full_MYC.RDS')
 openxlsx::write.xlsx(results, 'results/HRAS/parameter_grid_pvalue_logFC.xlsx')
 
 # explore results ---------------------------------------------------------

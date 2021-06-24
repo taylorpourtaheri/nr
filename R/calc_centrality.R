@@ -13,6 +13,8 @@ calc_centrality <- function(graph, method = 'strength', bt = FALSE, len = 3) {
         igraph::V(graph)$degree <- igraph::degree(graph, v = igraph::V(graph), loops=F)
     }
     if (method == 'avg_strength'){
+        igraph::V(graph)$strength <- igraph::graph.strength(graph, vids = igraph::V(graph), loops=F)
+        igraph::V(graph)$degree <- igraph::degree(graph, v = igraph::V(graph), loops=F)
         igraph::V(graph)$avg_strength <- igraph::V(graph)$strength / igraph::V(graph)$degree
     }
     if ("baseline_degree" %in% igraph::vertex_attr_names(graph)) {

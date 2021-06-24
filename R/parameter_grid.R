@@ -80,6 +80,7 @@ parameter_grid <- function(deg, target, grid, pipeline_method = NULL,
                                                    causal_gene_symbol =  target,
 						   connected_filter = connected_filter,
                                                    ...)
+            pipeline <- 'centrality'
         }
 
         else if (pipeline_method %in% propagation_methods){
@@ -92,10 +93,13 @@ parameter_grid <- function(deg, target, grid, pipeline_method = NULL,
                                                     min_diff_score = 0.15,
                                                     causal_gene_symbol =  target,
                                                     ...)
+            pipeline <- 'propagation'
         }
 
 
-        x_df <- data.frame(pipeline_method = pipeline_method,
+        x_df <- data.frame('pipeline' = pipeline,
+                           pipeline_method = pipeline_method,
+                           'target' = target,
                            connected_filter = connected_filter,
                            'threshold' = x['threshold'],
                            'logFC' = x['logFC'],
