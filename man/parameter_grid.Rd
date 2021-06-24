@@ -8,7 +8,7 @@ parameter_grid(
   deg,
   target,
   grid,
-  pipeline = NULL,
+  pipeline_method = NULL,
   connected_filter = NULL,
   n_cores = 1,
   ...
@@ -24,11 +24,11 @@ i.e. the output of \code{topTable()} from limma or \code{results()} from DESeq2.
 \item{grid}{Object of class '\code{dataframe}', where each row corresponds to
 a combination of parameter values. i.e. the output of \code{expand.grid()}.}
 
+\item{n_cores}{Numeric. Number of cores to run on. Default value is 1.}
+
 \item{pipeline}{String. The workflow pipeline to be used. The value can be either
 'centrality' or 'propagation', corresponding the \code{centrality_pipeline()}
 and \code{propagation_pipeline()} functions.}
-
-\item{n_cores}{Numeric. Number of cores to run on. Default value is 1.}
 
 \item{method}{A string specifying the network analysis method for the pipeline.
 See ?\code{centrality_pipeline()} or ?\code{propagation_pipeline()} for more.}

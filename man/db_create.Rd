@@ -20,3 +20,9 @@ An iGraph object representing the ppi network.
 Download protein-protein interaction (ppi) network and return in the form of
 an iGraph object for processing.
 }
+\examples{
+\dontrun{
+ppi <- db_create()
+ppi_mouse <- db_create(spec = 10090, thresh = 975)
+}
+}

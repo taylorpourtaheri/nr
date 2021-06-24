@@ -9,7 +9,7 @@
 #' # generate a graph
 #' vertex_meta <- data.frame('name' = c('a','b','c','d'), value = c(1, 5, 10, 3))
 #' edge_list <- data.frame('v1' = c('a', 'a', 'd', 'd'), 'v2' = c('b', 'c', 'a', 'c'))
-#' graph <- igraph::graph_from_data_frame(d = edge_list, vertices = vertex_meta, directed = F)
+#' graph <- igraph::graph_from_data_frame(d = edge_list, vertices = vertex_meta, directed = FALSE)
 #'
 #' # examine initial graph
 #' igraph::vertex_attr(graph)

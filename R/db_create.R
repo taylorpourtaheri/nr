@@ -7,7 +7,11 @@
 #' @param spec A number specifying the species code (default is 9606 for humans.)
 #' @param thresh A number specifying score_threshold (a measure of interaction strength.)
 #' @return An iGraph object representing the ppi network.
-#' @example db_create()
+#' @examples
+#' \dontrun{
+#' ppi <- db_create()
+#' ppi_mouse <- db_create(spec = 10090, thresh = 975)
+#' }
 #' @export
 
 
