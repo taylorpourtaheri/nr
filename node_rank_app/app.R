@@ -1,14 +1,18 @@
 library(shiny)
 library(shinythemes)
+library(noderank)
 library(DT)
 
-devtools::load_all()
+# devtools::load_all()
 
-# save the deg results as an excel file
-de_string <- readRDS('data/de_string_v11.RDS')
-myc_de <- de_string$MYC
-openxlsx::write.xlsx(myc_de, 'data/de_string_v11_MYC.xlsx')
+# # save the deg results as an excel file
+# de_string <- readRDS('data/de_string_v11.RDS')
+# myc_de <- de_string$MYC
+# openxlsx::write.xlsx(myc_de, 'data/de_string_v11_MYC.xlsx')
 
+# string_db <- readRDS('data/string_db_v11.RDS')
+string_ppi <- readRDS('data/string_ppi_v11.RDS')
+sim <- readRDS('data/string_ppi_v11_jacc_sim_mat.RDS')
 
 # Define UI for application
 ui <- fluidPage(
@@ -55,13 +59,15 @@ ui <- fluidPage(
                        tabPanel('Method Performance',DT::dataTableOutput('targetPerformance')),
                        tabPanel('Ranked Genes',DT::dataTableOutput('topGenes')),
                        selectInput("dataset", "Choose a dataset:",
-                                   choices = c("Target Results","Table of Genes")),
-                       downloadButton("downloadData", "Download")
+                                   choices = c("Method Performance", "Ranked Genes")),
+                       downloadButton(outputId = "downloadData", label = "Download")
             )
 
         )
     )
 )
+
+
 
 # Define server logic
 server <- function(input, output) {
@@ -76,16 +82,16 @@ server <- function(input, output) {
         data <- openxlsx::read.xlsx(file$datapath)
 
         # generate results
-        results <- noderank::centrality_pipeline(
-                                                 # deg = myc_de,
-                                                 deg = data,
+        results <- noderank::centrality_pipeline(deg = data,
+                                                 # string_db = string_db,
+                                                 ppi = string_ppi,
+                                                 sim = sim,
                                                  edge_conf_score_min = 950,
                                                  logFC_min = as.numeric(input$logFC),
                                                  pvalue_max = as.numeric(input$pvalue),
                                                  method = input$method,
                                                  causal_gene_symbol = input$target,
                                                  export_network = FALSE,
-                                                 sim_method = 'jaccard',
                                                  n_sim = 9999,
                                                  weighted = as.logical(as.numeric(input$weighted)),
                                                  connected_filter = as.logical(as.numeric(input$connected)))
@@ -117,6 +123,25 @@ server <- function(input, output) {
 
         output$topGenes <- DT::renderDataTable({datatable(top_genes_display) %>%
                 formatRound(topGnames, 3)})
+
+        datasetInput <- reactive({
+            switch(input$dataset,
+                   "Method Performance" = performance_display,
+                   "Ranked Genes" = top_genes_display)
+        })
+
+        file <- input$dataset
+        file_string <- gsub(' ', '_', file)
+
+
+        output$downloadData <- downloadHandler(
+            filename = function() {
+                paste0(file_string, ".csv")
+            },
+            content = function(file) {
+                write.csv(datasetInput(file))
+            }
+        )
 
     })
 }

@@ -27,9 +27,16 @@ weighted = TRUE
 ppi = NULL
 string_db = NULL
 
+string_db <- readRDS('data/string_db_v11.RDS')
+ppi <- readRDS('data/string_ppi_v11.RDS')
+sim <- readRDS('data/string_ppi_v11_jacc_sim_mat.RDS')
+
 
 # call wrapper
 results <- centrality_pipeline(deg = myc_de,
+                               # string_db = string_db,
+                               ppi = ppi,
+                               sim = sim,
                             edge_conf_score_min = 950,
                             logFC_min = 2.0,
                             pvalue_max = 0.05,

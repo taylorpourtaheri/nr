@@ -1,4 +1,5 @@
-structural_sim <- function(network, ppi, string_db, method, sim_method, causal_gene_symbol, weighted = FALSE){
+structural_sim <- function(network, ppi, string_db, method, sim_method, causal_gene_symbol,
+                           sim = NULL, weighted = FALSE){
 
     output_list <- c()
 
@@ -11,7 +12,9 @@ structural_sim <- function(network, ppi, string_db, method, sim_method, causal_g
     xref <- string_db$map(xref, "symbol", removeUnmappedRows=T, quiet=T)
 
     # calculate similarity of each node and slice out the causal gene row
-    sim <- igraph::similarity(ppi, method = sim_method)
+    if(is.null(sim)){
+        sim <- igraph::similarity(ppi, method = sim_method)
+    }
     index <- which(igraph::V(ppi)$name == xref$STRING_id)
     causal_sim <- sim[index,]
 

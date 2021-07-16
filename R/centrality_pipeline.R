@@ -45,7 +45,7 @@
 #'   \item{pvalue}{The p-value associated with the \code{mean_score}.}
 #' }
 #' @export
-centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL,
+centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL, sim = NULL,
                                 edge_conf_score_min = NULL, logFC_min, pvalue_max,
                                 connected_filter = TRUE,
                                 method = 'betweenness', causal_gene_symbol,
@@ -58,12 +58,16 @@ centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL,
     # list to store results
     final_results <- c()
 
-    if (is.null(ppi) & is.null(string_db)){
+    if (is.null(string_db)){
 
         # generate protein association network
         string_db <- STRINGdb::STRINGdb$new(version="11",
                                             species=9606,
                                             score_threshold=edge_conf_score_min)
+    }
+
+    if (is.null(ppi)){
+
         ppi <- string_db$get_graph()
     }
 
@@ -130,7 +134,7 @@ centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL,
                                          calc_centrality(ppi_painted_filt_giant,
                                                          method = method)
                                      })
-    
+
     # write final graph
     if (export_network){
         igraph::write_graph(ppi_painted_filt_giant,
@@ -144,6 +148,7 @@ centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL,
                                      string_db = string_db,
                                      method = method,
                                      sim_method = sim_method,
+                                     sim = sim,
                                      causal_gene_symbol = causal_gene_symbol,
                                      weighted = weighted)
 
