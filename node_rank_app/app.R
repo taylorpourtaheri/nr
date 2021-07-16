@@ -4,57 +4,81 @@ library(DT)
 
 devtools::load_all()
 
-# load in the deg
-de_string <- readRDS('de_string_v11.RDS')
+# save the deg results as an excel file
+de_string <- readRDS('data/de_string_v11.RDS')
 myc_de <- de_string$MYC
+openxlsx::write.xlsx(myc_de, 'data/de_string_v11_MYC.xlsx')
 
 
 # Define UI for application
 ui <- fluidPage(
-    
+
     theme = shinytheme("flatly"),
-    
-    # Application title
-    titlePanel(h1("Differential Gene Expression Data Analysis", align = 'center')),
-    
-    # Sidebar 
+
+    titlePanel(h2("noderank\nA node prioritization tool for differential gene expression analysis", align = 'left')),
+
+    # Sidebar
     sidebarLayout(
         sidebarPanel(width = 3,
-                     textInput(inputId = 'target', label = 'Enter the target gene'),
-                     selectInput(inputId = 'method', label = 'Centrality method', choices = c('avg_strength',
-                                                                                              'betweenness',
-                                                                                              'degree',
-                                                                                              'evcent_w',
-                                                                                              'strength',
-                                                                                              'evcent_uw')),
-                     selectInput(inputId = 'logFC', label = 'Log fold change filter', choices = c(0.0, 0.5, 1.0, 1.5, 2.0)),
-                     selectInput(inputId = 'pvalue', label = 'P-value filter', choices = c(0.05, 0.10, 0.15, 0.20, 0.25)),
-                     selectInput(inputId = 'connected', label = 'Connected subgraph filter', choices = c("TRUE"=1,"FALSE"=0)),
-                     selectInput(inputId = 'weighted', label = 'Weighted scoring', choices = c("TRUE"=1,"FALSE"=0)),
-                     actionButton(inputId = "build", label = 'Build network')
-        )
+            fileInput(inputId = 'dge_data',
+                       label = 'Upload differential gene expression analysis results',
+                       multiple = TRUE,
+                       accept = c('.xlsx')),
+            textInput(inputId = 'target',
+                      label = 'Causal gene'),
+            selectInput(inputId = 'method',
+                        label = 'Centrality method',
+                        choices = c('avg_strength', 'betweenness', 'degree',
+                                    'evcent_uw', 'evcent_w', 'strength')),
+            sliderInput(inputId = 'logFC',
+                        label = 'Minimum log2 fold change',
+                        min = 0, max = 3,
+                        value = 1.5, step = 0.1),
+            sliderInput(inputId = 'pvalue', label = 'Maximum p-value',
+                        min = 0, max = 0.25,
+                        value = 0.05, step = 0.01),
+            selectInput(inputId = 'connected',
+                        label = 'Return connected component',
+                        choices = c("TRUE"=1,"FALSE"=0)),
+            selectInput(inputId = 'weighted',
+                        label = 'Return weighted score',
+                        choices = c("TRUE"=1,"FALSE"=0)),
+            actionButton(inputId = "build",
+                         label = 'Rank nodes')
+            )
         ,
-        
+
         mainPanel(
             width = 9,
-            navbarPage(title = 'Outputs:',
+            navbarPage(title = '',
                        tabPanel('Network Plot',plotOutput('nodePlot')),
-                       tabPanel('Target Results',DT::dataTableOutput('targetPerformance')),
-                       tabPanel('Table of Genes',DT::dataTableOutput('topGenes')),
+                       tabPanel('Method Performance',DT::dataTableOutput('targetPerformance')),
+                       tabPanel('Ranked Genes',DT::dataTableOutput('topGenes')),
                        selectInput("dataset", "Choose a dataset:",
                                    choices = c("Target Results","Table of Genes")),
                        downloadButton("downloadData", "Download")
             )
-            
+
         )
     )
 )
 
-# Define server logic 
+# Define server logic
 server <- function(input, output) {
-    
+
     observeEvent(input$build, {
-        results <- noderank::centrality_pipeline(deg = myc_de,
+
+        # read input file
+        file <- input$dge_data
+        ext <- tools::file_ext(file$datapath)
+        req(file)
+        validate(need(ext == "xlsx", "Please upload an xlsx file"))
+        data <- openxlsx::read.xlsx(file$datapath)
+
+        # generate results
+        results <- noderank::centrality_pipeline(
+                                                 # deg = myc_de,
+                                                 deg = data,
                                                  edge_conf_score_min = 950,
                                                  logFC_min = as.numeric(input$logFC),
                                                  pvalue_max = as.numeric(input$pvalue),
@@ -65,24 +89,37 @@ server <- function(input, output) {
                                                  n_sim = 9999,
                                                  weighted = as.logical(as.numeric(input$weighted)),
                                                  connected_filter = as.logical(as.numeric(input$connected)))
-        
+
         output$nodePlot <- renderPlot({
-            plot_graph(results[['network']], method = 'weighted_score', gene_list = c(input$target))
-        })
-        
-        
-        performanceNames <- c(names(results[['performance']])[-6])
-        
-        output$targetPerformance <- DT::renderDataTable({datatable(results[['performance']]) %>%
+            plot_graph(results[['network']],
+                       method = 'weighted_score',
+                       gene_list = c(input$target))
+            })
+
+
+        performance_display <- results[['performance']] %>%
+            .[,c('rank', 'mean_score', 'score_pval', 'z_score', 'sample_mean', 'sample_sd')] %>%
+            stats::setNames(c('Gene Rank', 'Mean Network Score', 'Network p-value',
+                            'Z Score', 'Null Mean Score', 'Null Standard Deviation'))
+
+        performanceNames <- c(names(performance_display))[-1]
+
+        output$targetPerformance <- DT::renderDataTable({datatable(performance_display) %>%
                 formatRound(performanceNames, 3)})
-        
-        topGnames <- c(names(results[['top_genes']])[-1:-3])
-        
-        output$topGenes <- DT::renderDataTable({datatable(results[['top_genes']]) %>%
-                formatRound(topGnames, 3)}) 
-        
+
+        top_genes_display <- results[['top_genes']] %>%
+            .[,c('Symbol', 'logFC', 'AveExpr', 'P.Value', 'adj.P.Val', input$method, 'causal_similarity', 'weighted_score')] %>%
+            stats::setNames(c('Symbol', 'Log Fold Change', 'Average Expression',
+                       'p-value', 'Adj. p-value', paste(tools::toTitleCase(input$method),' Score'),
+                       'Causal Similarity', 'Weighted Score'))
+
+        topGnames <- c(names(top_genes_display)[-1])
+
+        output$topGenes <- DT::renderDataTable({datatable(top_genes_display) %>%
+                formatRound(topGnames, 3)})
+
     })
 }
 
-# Run the application 
+# Run the application
 shinyApp(ui = ui, server = server)

@@ -19,16 +19,14 @@ myc_de <- de_string$MYC
 # call wrapper
 results <- propagation_pipeline(deg = myc_de,
                             edge_conf_score_min = 950,
-                            logFC_min = 1.5,
-                            pvalue_max = 0.05,
-                            method = 'random_walk',
-                            norm_method = 'column',
+                            logFC_min = 2.0,
+                            pvalue_max = 0.25,
+                            method = 'ml',
                             causal_gene_symbol = 'MYC',
                             export_network = FALSE,
                             sim_method = 'jaccard',
                             n_sim = 9999,
-                            weighted = TRUE,
-                            restart_value = 0.1)
+                            weighted = TRUE)
 
 # # plot output
 # set.seed(4)

@@ -8,7 +8,7 @@
 #' from the \code{dnet} package.
 #' @return Graph of class '\code{igraph}' with new attribute, '\code{propagation_score}'.
 #' @export
-calc_random_walk <- function(graph, restart_value = 0.75, norm_method = 'column') {
+calc_random_walk <- function(graph, restart_value = 0.05, norm_method = 'column') {
 
     dnet_seeds <- as.matrix(igraph::vertex.attributes(graph)$seed)
     rownames(dnet_seeds) <- igraph::vertex.attributes(graph)$name

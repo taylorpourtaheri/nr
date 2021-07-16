@@ -133,6 +133,17 @@ propagation_pipeline <- function(deg, ppi = NULL, string_db = NULL,
                                                 n_sim = n_sim,
                                                 weighted = weighted)
 
+    # check for target neighbors
+    # find the STRING ID for the causal gene
+    xref <- data.frame(symbol = causal_gene_symbol)
+    xref <- string_db$map(xref, "symbol", removeUnmappedRows=T, quiet=T)
+
+    total_neighbors <- igraph::neighbors(ppi, xref$STRING_id, 'all')
+    performance_results$target_neighbors_in_ppi <- length(total_neighbors)
+
+    neighbors_in_final <- sum(total_neighbors %in% V(scoring_output$network))
+    performance_results$target_neighbors_in_final <- neighbors_in_final
+
     # save results
     final_results[['network']] <- scoring_output$network
     final_results[['top_genes']] <- scoring_output$network_df
