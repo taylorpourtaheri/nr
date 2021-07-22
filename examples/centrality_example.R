@@ -33,13 +33,10 @@ weighted <- TRUE
 
 # generate protein association network
 
-#string_db <- STRINGdb::STRINGdb$new(version="11",
-#                                    species=9606,
-#                                    score_threshold=edge_conf_score_min)
-#ppi <- string_db$get_graph()
-
-
-ppi <- readRDS('data/ppi.RDS')
+string_db <- STRINGdb::STRINGdb$new(version="11",
+                                   species=9606,
+                                   score_threshold=edge_conf_score_min)
+ppi <- readRDS('data/string_ppi_v11.RDS')
 
 # map DEA results onto ppi network
 ppi_painted <- df_to_vert_attr(graph=ppi, df=deg, common="STRING_id",

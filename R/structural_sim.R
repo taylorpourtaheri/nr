@@ -1,3 +1,6 @@
+# sim - a named list of named similarity score vectors, each element corresponding
+    # to a gene. A similarity matrix that has been split row-wise. Missing values
+    # will be assigned a similarity score of zero.
 structural_sim <- function(network, ppi, string_db, method, sim_method, causal_gene_symbol,
                            sim = NULL, weighted = FALSE){
 
@@ -13,13 +16,32 @@ structural_sim <- function(network, ppi, string_db, method, sim_method, causal_g
 
     # calculate similarity of each node and slice out the causal gene row
     if(is.null(sim)){
-        sim <- igraph::similarity(ppi, method = sim_method)
-    }
-    index <- which(igraph::V(ppi)$name == xref$STRING_id)
-    causal_sim <- sim[index,]
 
-    # make scores a named vector
-    names(causal_sim) <- igraph::V(ppi)$name
+        sim <- igraph::similarity(ppi, method = sim_method)
+        index <- which(igraph::V(ppi)$name == xref$STRING_id)
+        causal_sim <- sim[index,]
+
+        # make scores a named vector
+        names(causal_sim) <- igraph::V(ppi)$name
+    }
+
+    # if list of dense similarity scores is given, select casual gene
+    if (is.list(sim)){
+
+        causal_vec <- sim[[xref$STRING_id]]
+
+        add_zeros <- function(sim_vec, gene_id){
+            if(!(gene_id %in% names(sim_vec))){
+                0
+            } else{
+                sim_vec[gene_id]
+            }
+        }
+
+        causal_sim <- unlist(purrr::map(igraph::V(ppi)$name, ~add_zeros(causal_vec, .)))
+        names(causal_sim) <- igraph::V(ppi)$name
+    }
+
 
     # get the scores associated with the subnetwork
     pred_scores <- causal_sim[igraph::V(network)$name]
