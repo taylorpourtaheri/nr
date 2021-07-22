@@ -3,12 +3,12 @@ library(shinythemes)
 library(noderank)
 library(DT)
 
-# devtools::load_all()
+devtools::load_all()
 
 # # save the deg results as an excel file
-# de_string <- readRDS('data/de_string_v11.RDS')
-# myc_de <- de_string$MYC
-# openxlsx::write.xlsx(myc_de, 'data/de_string_v11_MYC.xlsx')
+#de_string <- readRDS('data/de_string_v11.RDS')
+#myc_de <- de_string$MYC
+#openxlsx::write.xlsx(myc_de, 'data/de_string_v11_MYC.xlsx')
 
 # string_db <- readRDS('data/string_db_v11.RDS')
 string_ppi <- readRDS('data/string_ppi_v11.RDS')
@@ -57,21 +57,23 @@ ui <- fluidPage(
             navbarPage(title = '',
                        tabPanel('Network Plot',plotOutput('nodePlot')),
                        tabPanel('Method Performance',DT::dataTableOutput('targetPerformance')),
-                       tabPanel('Ranked Genes',DT::dataTableOutput('topGenes')),
-                       selectInput("dataset", "Choose a dataset:",
-                                   choices = c("Method Performance", "Ranked Genes")),
-                       downloadButton(outputId = "downloadData", label = "Download")
-            )
+                       tabPanel('Ranked Genes',DT::dataTableOutput('topGenes'))
+            ),
+            
+            #move this info out of the navbarPage
+            selectInput(inputId = "dataset",
+                        label = "Choose a dataset:",
+                        choices = c("Method Performance", "Ranked Genes")),
+            downloadButton("downloadData", label = "Download")
 
         )
     )
 )
 
 
-
 # Define server logic
 server <- function(input, output) {
-
+    
     observeEvent(input$build, {
 
         # read input file
@@ -118,32 +120,41 @@ server <- function(input, output) {
             stats::setNames(c('Symbol', 'Log Fold Change', 'Average Expression',
                        'p-value', 'Adj. p-value', paste(tools::toTitleCase(input$method),' Score'),
                        'Causal Similarity', 'Weighted Score'))
-
+        
+        #create a copy without the hyperlink for download
+        top_genes_download <- top_genes_display
+        
+        #update with hyperlink
+        top_genes_display$Symbol <- paste0("<a href = 'https://www.ncbi.nlm.nih.gov/gene/?term=",top_genes_display$Symbol,"'>",top_genes_display$Symbol,"</a>")
+        
         topGnames <- c(names(top_genes_display)[-1])
 
-        output$topGenes <- DT::renderDataTable({datatable(top_genes_display) %>%
+        output$topGenes <- DT::renderDataTable({datatable(top_genes_display, escape=FALSE) %>%
                 formatRound(topGnames, 3)})
 
+        
+        #download the results
         datasetInput <- reactive({
             switch(input$dataset,
                    "Method Performance" = performance_display,
-                   "Ranked Genes" = top_genes_display)
+                   "Ranked Genes" = top_genes_download)
         })
-
-        file <- input$dataset
-        file_string <- gsub(' ', '_', file)
-
-
+        
+        #file_name <- input$dataset
+        #file_string <- gsub(' ', '_', file_name)
+        
         output$downloadData <- downloadHandler(
+            
             filename = function() {
-                paste0(file_string, ".csv")
+                paste0("data-", Sys.Date(), ".csv")
             },
             content = function(file) {
-                write.csv(datasetInput(file))
+                write.csv(datasetInput(), file)
             }
         )
+        
+        })
 
-    })
 }
 
 # Run the application
