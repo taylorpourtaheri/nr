@@ -19,8 +19,10 @@ ui <- fluidPage(
 
     theme = shinytheme("flatly"),
 
-    titlePanel(h2("noderank\nA node prioritization tool for differential gene expression analysis", align = 'left')),
+    #titlePanel(h2("noderank\nA node prioritization tool for differential gene expression analysis", align = 'left')),
 
+    titlePanel(div(HTML("<h2><i><em>noderank</em></i> : A node prioritization tool for differential gene expression analysis</h2>"))),
+    
     # Sidebar
     sidebarLayout(
         sidebarPanel(width = 3,
@@ -61,10 +63,12 @@ ui <- fluidPage(
             ),
 
             #move this info out of the navbarPage
-            selectInput(inputId = "dataset",
-                        label = "Choose a dataset:",
-                        choices = c("Method Performance", "Ranked Genes")),
-            downloadButton("downloadData", label = "Download")
+            #selectInput(inputId = "dataset",
+            #            label = "Choose a dataset:",
+            #            choices = c("Method Performance", "Ranked Genes")),
+            uiOutput("datasetSelector"),
+            uiOutput("downloadButton")
+            #downloadButton("downloadData", label = "Download")
 
         )
     )
@@ -74,6 +78,18 @@ ui <- fluidPage(
 # Define server logic
 server <- function(input, output) {
 
+    observeEvent(input$build, {
+        
+        output$datasetSelector <- renderUI({
+            selectInput(inputId = "dataset",
+                        label = "Choose a dataset:",
+                        choices = c("Method Performance", "Ranked Genes"))
+        })
+        
+        output$downloadButton <- renderUI({
+        downloadButton('downloadData',label = 'Download')
+    })})
+    
     observeEvent(input$build, {
 
         # read input file
@@ -139,7 +155,7 @@ server <- function(input, output) {
                    "Method Performance" = performance_display,
                    "Ranked Genes" = top_genes_download)
         })
-
+        
         file_name <- input$dataset
         file_string <- tolower(gsub(' ', '_', file_name))
 
