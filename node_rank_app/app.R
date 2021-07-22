@@ -59,7 +59,7 @@ ui <- fluidPage(
                        tabPanel('Method Performance',DT::dataTableOutput('targetPerformance')),
                        tabPanel('Ranked Genes',DT::dataTableOutput('topGenes'))
             ),
-            
+
             #move this info out of the navbarPage
             selectInput(inputId = "dataset",
                         label = "Choose a dataset:",
@@ -73,7 +73,7 @@ ui <- fluidPage(
 
 # Define server logic
 server <- function(input, output) {
-    
+
     observeEvent(input$build, {
 
         # read input file
@@ -120,39 +120,39 @@ server <- function(input, output) {
             stats::setNames(c('Symbol', 'Log Fold Change', 'Average Expression',
                        'p-value', 'Adj. p-value', paste(tools::toTitleCase(input$method),' Score'),
                        'Causal Similarity', 'Weighted Score'))
-        
+
         #create a copy without the hyperlink for download
         top_genes_download <- top_genes_display
-        
+
         #update with hyperlink
         top_genes_display$Symbol <- paste0("<a href = 'https://www.ncbi.nlm.nih.gov/gene/?term=",top_genes_display$Symbol,"'>",top_genes_display$Symbol,"</a>")
-        
+
         topGnames <- c(names(top_genes_display)[-1])
 
         output$topGenes <- DT::renderDataTable({datatable(top_genes_display, escape=FALSE) %>%
                 formatRound(topGnames, 3)})
 
-        
+
         #download the results
         datasetInput <- reactive({
             switch(input$dataset,
                    "Method Performance" = performance_display,
                    "Ranked Genes" = top_genes_download)
         })
-        
-        #file_name <- input$dataset
-        #file_string <- gsub(' ', '_', file_name)
-        
+
+        file_name <- input$dataset
+        file_string <- tolower(gsub(' ', '_', file_name))
+
         output$downloadData <- downloadHandler(
-            
+
             filename = function() {
-                paste0("data-", Sys.Date(), ".csv")
+                paste0(file_string,'-',input$target,'-',Sys.Date(), ".csv")
             },
             content = function(file) {
                 write.csv(datasetInput(), file)
             }
         )
-        
+
         })
 
 }
