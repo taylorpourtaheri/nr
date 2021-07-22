@@ -61,7 +61,6 @@ ui <- fluidPage(
                        tabPanel('Network Plot',plotOutput('nodePlot')),
                        tabPanel('Method Performance',DT::dataTableOutput('targetPerformance')),
                        tabPanel('Ranked Genes',DT::dataTableOutput('topGenes')),
-                       # tabPanel('Authors',textOutput('authorText')),
                        tabPanel('Authors',fluidPage(
                            tags$h3('This application was authored by:'),
                            tags$a(href = 'https://www.linkedin.com/in/bradhowlett',
