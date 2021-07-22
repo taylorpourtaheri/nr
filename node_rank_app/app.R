@@ -3,7 +3,7 @@ library(shinythemes)
 library(noderank)
 library(DT)
 
-devtools::load_all()
+# devtools::load_all()
 
 # # save the deg results as an excel file
 #de_string <- readRDS('data/de_string_v11.RDS')
@@ -12,7 +12,7 @@ devtools::load_all()
 
 # string_db <- readRDS('data/string_db_v11.RDS')
 string_ppi <- readRDS('data/string_ppi_v11.RDS')
-sim <- readRDS('data/string_ppi_v11_jacc_sim_mat.RDS')
+sim <- readRDS('data/string_ppi_v11_jacc_sim_list_dense.RDS')
 
 # Define UI for application
 ui <- fluidPage(
