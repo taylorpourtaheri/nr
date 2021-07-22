@@ -22,10 +22,11 @@ ui <- fluidPage(
     #titlePanel(h2("noderank\nA node prioritization tool for differential gene expression analysis", align = 'left')),
 
     titlePanel(div(HTML("<h2><i><em>noderank</em></i> : A node prioritization tool for differential gene expression analysis</h2>"))),
-    
+
     # Sidebar
     sidebarLayout(
         sidebarPanel(width = 3,
+
             fileInput(inputId = 'dge_data',
                        label = 'Upload differential gene expression analysis results',
                        multiple = TRUE,
@@ -59,7 +60,23 @@ ui <- fluidPage(
             navbarPage(title = '',
                        tabPanel('Network Plot',plotOutput('nodePlot')),
                        tabPanel('Method Performance',DT::dataTableOutput('targetPerformance')),
-                       tabPanel('Ranked Genes',DT::dataTableOutput('topGenes'))
+                       tabPanel('Ranked Genes',DT::dataTableOutput('topGenes')),
+                       # tabPanel('Authors',textOutput('authorText')),
+                       tabPanel('Authors',fluidPage(
+                           tags$h3('This application was authored by:'),
+                           tags$a(href = 'https://www.linkedin.com/in/bradhowlett',
+                                  'Bradley Howlett'),
+                           tags$p('School of Data Science, University of Virginia'),
+                           tags$a(href = 'https://www.linkedin.com/in/taylorhderby',
+                                  'Taylor Derby Pourtaheri'),
+                           tags$p('School of Data Science, University of Virginia'),
+                           tags$a(href = 'https://www.linkedin.com/in/patrick-chatfield',
+                                  'Patrick Chatfield'),
+                           tags$p('School of Data Science, University of Virginia'),
+                           tags$a(href = 'www.linkedin.com/in/monish-dadlani-9423ab191',
+                                  'Monish Dadlani'),
+                           tags$p('School of Data Science, University of Virginia'))
+                       )
             ),
 
             #move this info out of the navbarPage
@@ -79,17 +96,17 @@ ui <- fluidPage(
 server <- function(input, output) {
 
     observeEvent(input$build, {
-        
+
         output$datasetSelector <- renderUI({
             selectInput(inputId = "dataset",
                         label = "Choose a dataset:",
                         choices = c("Method Performance", "Ranked Genes"))
         })
-        
+
         output$downloadButton <- renderUI({
         downloadButton('downloadData',label = 'Download')
     })})
-    
+
     observeEvent(input$build, {
 
         # read input file
@@ -149,13 +166,14 @@ server <- function(input, output) {
                 formatRound(topGnames, 3)})
 
 
+
         #download the results
         datasetInput <- reactive({
             switch(input$dataset,
                    "Method Performance" = performance_display,
                    "Ranked Genes" = top_genes_download)
         })
-        
+
         file_name <- input$dataset
         file_string <- tolower(gsub(' ', '_', file_name))
 
