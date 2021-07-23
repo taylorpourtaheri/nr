@@ -45,7 +45,7 @@
 #'   \item{pvalue}{The p-value associated with the \code{mean_score}.}
 #' }
 #' @export
-centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL, sim = NULL,
+centrality_pipeline <- function(deg, id_xref, ppi = NULL, string_db = NULL, sim = NULL,
                                 edge_conf_score_min = NULL, logFC_min, pvalue_max,
                                 connected_filter = TRUE,
                                 method = 'betweenness', causal_gene_symbol,
@@ -58,13 +58,13 @@ centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL, sim = NULL,
     # list to store results
     final_results <- c()
 
-    if (is.null(string_db)){
-
-        # generate protein association network
-        string_db <- STRINGdb::STRINGdb$new(version="11",
-                                            species=9606,
-                                            score_threshold=edge_conf_score_min)
-    }
+    # if (is.null(string_db)){
+    #
+    #     # generate protein association network
+    #     string_db <- STRINGdb::STRINGdb$new(version="11",
+    #                                         species=9606,
+    #                                         score_threshold=edge_conf_score_min)
+    # }
 
     if (is.null(ppi)){
 
@@ -145,7 +145,8 @@ centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL, sim = NULL,
     # generate network scores
     scoring_output <- structural_sim(network = ppi_painted_filt_giant,
                                      ppi = ppi,
-                                     string_db = string_db,
+                                     # string_db = string_db,
+                                     id_xref = id_xref,
                                      method = method,
                                      sim_method = sim_method,
                                      sim = sim,
@@ -161,10 +162,8 @@ centrality_pipeline <- function(deg, ppi = NULL, string_db = NULL, sim = NULL,
                                                 weighted = weighted)
 
     # check for target neighbors
-    # find the STRING ID for the causal gene
-    xref <- data.frame(symbol = causal_gene_symbol)
-    xref <- string_db$map(xref, "symbol", removeUnmappedRows=T, quiet=T)
-
+    # select the STRING ID for the causal gene
+    xref <- dplyr::filter(id_xref, symbol == causal_gene_symbol)
     total_neighbors <- igraph::neighbors(ppi, xref$STRING_id, 'all')
     performance_results$target_neighbors_in_ppi <- length(total_neighbors)
 

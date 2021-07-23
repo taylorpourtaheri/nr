@@ -1,7 +1,7 @@
 # sim - a named list of named similarity score vectors, each element corresponding
     # to a gene. A similarity matrix that has been split row-wise. Missing values
     # will be assigned a similarity score of zero.
-structural_sim <- function(network, ppi, string_db, method, sim_method, causal_gene_symbol,
+structural_sim <- function(network, ppi, id_xref, method, sim_method, causal_gene_symbol,
                            sim = NULL, weighted = FALSE){
 
     output_list <- c()
@@ -11,8 +11,8 @@ structural_sim <- function(network, ppi, string_db, method, sim_method, causal_g
     rownames(network_df) <- NULL
 
     # find the STRING ID for the causal gene
-    xref <- data.frame(symbol = causal_gene_symbol)
-    xref <- string_db$map(xref, "symbol", removeUnmappedRows=T, quiet=T)
+    xref <- dplyr::filter(id_xref, symbol == causal_gene_symbol)
+    # xref <- string_db$map(xref, "symbol", removeUnmappedRows=T, quiet=T)
 
     # calculate similarity of each node and slice out the causal gene row
     if(is.null(sim)){

@@ -3,7 +3,7 @@ library(shinythemes)
 library(noderank)
 library(DT)
 
-# devtools::load_all()
+devtools::load_all()
 
 # # save the deg results as an excel file
 #de_string <- readRDS('data/de_string_v11.RDS')
@@ -12,7 +12,14 @@ library(DT)
 
 # string_db <- readRDS('data/string_db_v11.RDS')
 string_ppi <- readRDS('data/string_ppi_v11.RDS')
+id_xref <- readRDS('data/biomart_xreference_ppi_genes.RDS')
 sim <- readRDS('data/string_ppi_v11_jacc_sim_list_dense.RDS')
+lobstr::mem_used()
+
+# sim_mat <- readRDS('data/string_ppi_v11_jacc_sim_mat.RDS')
+# lobstr::mem_used()
+# sim_mat <- NULL
+
 
 # Define UI for application
 ui <- fluidPage(
@@ -118,6 +125,7 @@ server <- function(input, output) {
         # generate results
         results <- noderank::centrality_pipeline(deg = data,
                                                  # string_db = string_db,
+                                                 id_xref = id_xref,
                                                  ppi = string_ppi,
                                                  sim = sim,
                                                  edge_conf_score_min = 950,
@@ -189,6 +197,8 @@ server <- function(input, output) {
         })
 
 }
+
+lobstr::mem_used()
 
 # Run the application
 shinyApp(ui = ui, server = server)

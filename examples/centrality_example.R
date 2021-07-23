@@ -15,28 +15,36 @@ de_string <- readRDS('data/de_string_v11.RDS')
 # select MYC condition as an example
 myc_de <- de_string$MYC
 
+# read gene ID xref
+id_xref <- readRDS('data/biomart_xreference_ppi_genes.RDS')
+
+# read similarity score list
+sim <- readRDS('data/string_ppi_v11_jacc_sim_list_dense.RDS')
+
+# read ppi
+ppi <- readRDS('data/string_ppi_v11.RDS')
+
 # define globals
 deg <- myc_de
 edge_conf_score_min <- 950
-logFC_min <- 1.0
+logFC_min <- 1.5
 pvalue_max <- 0.05
 causal_gene_symbol <- 'MYC'
 method <- 'betweenness'
-final_results <- c()
+connected_filter <- TRUE
 export_network <- FALSE
 n_sim <- 9999
-sim_method <- 'jaccard'
 weighted <- TRUE
 
 
 # network generation ------------------------------------------------------
 
 # generate protein association network
-
-string_db <- STRINGdb::STRINGdb$new(version="11",
-                                   species=9606,
-                                   score_threshold=edge_conf_score_min)
-ppi <- readRDS('data/string_ppi_v11.RDS')
+#
+# string_db <- STRINGdb::STRINGdb$new(version="11",
+#                                    species=9606,
+#                                    score_threshold=edge_conf_score_min)
+# ppi <- readRDS('data/string_ppi_v11.RDS')
 
 # map DEA results onto ppi network
 ppi_painted <- df_to_vert_attr(graph=ppi, df=deg, common="STRING_id",
@@ -65,19 +73,20 @@ ppi_painted_filt_giant <- calc_centrality(ppi_painted_filt_giant, method = metho
 # generate network scores
 scoring_output <- structural_sim(network = ppi_painted_filt_giant,
                                  ppi = ppi_painted,
-                                 string_db = string_db,
-                                 method = 'betweenness',
+                                 id_xref = id_xref,
+                                 # string_db = string_db,
+                                 method = method,
                                  sim_method = 'jaccard',
                                  causal_gene_symbol = causal_gene_symbol,
-                                 weighted = TRUE)
+                                 weighted = weighted)
 
 # evaluate scoring
 performance_results <- evaluate_performance(target = causal_gene_symbol,
                                             network_df = scoring_output$network_df,
                                             causal_sim = scoring_output$causal_sim,
-                                            method = 'betweenness',
+                                            method = method,
                                             n_sim = n_sim,
-                                            weighted = TRUE)
+                                            weighted = weighted)
 
 
 # save results
@@ -85,7 +94,7 @@ final_results[['network']] <- scoring_output$network
 final_results[['top_genes']] <- scoring_output$network_df
 final_results[['performance']] <- performance_results
 
-
+lobstr::mem_used()
 
 # plot results
 network <- final_results[['network']]
