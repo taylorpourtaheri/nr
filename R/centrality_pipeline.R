@@ -154,12 +154,15 @@ centrality_pipeline <- function(deg, id_xref, ppi = NULL, string_db = NULL, sim 
                                      weighted = weighted)
 
     # evaluate scoring
-    performance_results <- evaluate_performance(target = causal_gene_symbol,
+    performance <- evaluate_performance(target = causal_gene_symbol,
                                                 network_df = scoring_output$network_df,
                                                 causal_sim = scoring_output$causal_sim,
                                                 method = method,
                                                 n_sim = n_sim,
                                                 weighted = weighted)
+
+    performance_results <- performance[['performance_results']]
+    simulation_scores <- performance[['simulation_scores']]
 
     # check for target neighbors
     # select the STRING ID for the causal gene
@@ -175,6 +178,7 @@ centrality_pipeline <- function(deg, id_xref, ppi = NULL, string_db = NULL, sim 
     final_results[['network']] <- scoring_output$network
     final_results[['top_genes']] <- scoring_output$network_df
     final_results[['performance']] <- performance_results
+    final_results[['simulation_scores']] <- simulation_scores
 
     return(final_results)
 

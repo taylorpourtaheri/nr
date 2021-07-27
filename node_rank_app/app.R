@@ -66,7 +66,9 @@ ui <- fluidPage(
             width = 9,
             navbarPage(title = '',
                        tabPanel('Network Plot',plotOutput('nodePlot')),
-                       tabPanel('Method Performance',DT::dataTableOutput('targetPerformance')),
+                       tabPanel('Method Performance',
+                                DT::dataTableOutput('targetPerformance'),
+                                plotOutput('simulationPlot')),
                        tabPanel('Ranked Genes',DT::dataTableOutput('topGenes')),
                        tabPanel('Authors',fluidPage(
                            tags$h3('This application was authored by:'),
@@ -138,11 +140,32 @@ server <- function(input, output) {
                                                  weighted = as.logical(as.numeric(input$weighted)),
                                                  connected_filter = as.logical(as.numeric(input$connected)))
 
+        weightedInput <- reactive({
+            switch(input$weighted,
+                   "0" = input$method,
+                   "1" = 'weighted_score')
+        })
+
         output$nodePlot <- renderPlot({
             plot_graph(results[['network']],
-                       method = 'weighted_score',
+                       method = weightedInput(),
                        gene_list = c(input$target))
             })
+
+        output$simulationPlot <- renderPlot({
+            ggplot(data = results[['simulation_scores']],
+                   aes(x = simulation_mean_score)) +
+                geom_histogram() +
+                geom_vline(data = results[['performance']],
+                           aes(xintercept = mean_score),
+                           color = 'red') +
+                labs(title = 'Distribution of simulated network scores',
+                     subtitle = 'True network score represented by vertical line',
+                     x = 'Mean score',
+                     y = NULL)
+        })
+
+
 
 
         performance_display <- results[['performance']] %>%
@@ -155,11 +178,21 @@ server <- function(input, output) {
         output$targetPerformance <- DT::renderDataTable({datatable(performance_display) %>%
                 formatRound(performanceNames, 3)})
 
-        top_genes_display <- results[['top_genes']] %>%
-            .[,c('Symbol', 'logFC', 'AveExpr', 'P.Value', 'adj.P.Val', input$method, 'causal_similarity', 'weighted_score')] %>%
-            stats::setNames(c('Symbol', 'Log Fold Change', 'Average Expression',
-                       'p-value', 'Adj. p-value', paste(tools::toTitleCase(input$method),' Score'),
-                       'Causal Similarity', 'Weighted Score'))
+        if (as.logical(as.numeric(input$weighted))){
+
+            top_genes_display <- results[['top_genes']] %>%
+                .[,c('Symbol', 'logFC', 'AveExpr', 'P.Value', 'adj.P.Val', input$method, 'causal_similarity', 'weighted_score')] %>%
+                stats::setNames(c('Symbol', 'Log Fold Change', 'Average Expression',
+                           'p-value', 'Adj. p-value', paste(tools::toTitleCase(input$method),' Score'),
+                           'Causal Similarity', 'Weighted Score'))
+        } else{
+
+            top_genes_display <- results[['top_genes']] %>%
+                .[,c('Symbol', 'logFC', 'AveExpr', 'P.Value', 'adj.P.Val', input$method, 'causal_similarity')] %>%
+                stats::setNames(c('Symbol', 'Log Fold Change', 'Average Expression',
+                                  'p-value', 'Adj. p-value', paste(tools::toTitleCase(input$method),' Score'),
+                                  'Causal Similarity'))
+        }
 
         #create a copy without the hyperlink for download
         top_genes_download <- top_genes_display
@@ -181,8 +214,14 @@ server <- function(input, output) {
                    "Ranked Genes" = top_genes_download)
         })
 
-        file_name <- input$dataset
-        file_string <- tolower(gsub(' ', '_', file_name))
+        # file_name <- input$dataset
+        # file_string <- tolower(gsub(' ', '_', file_name))
+
+        datasetString <- reactive({
+            switch(input$dataset,
+                   "Method Performance" = 'method_performance',
+                   "Ranked Genes" = 'ranked_genes')
+        })
 
         output$downloadData <- downloadHandler(
 

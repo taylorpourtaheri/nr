@@ -50,6 +50,9 @@ structural_sim <- function(network, ppi, id_xref, method, sim_method, causal_gen
                              'name' = igraph::V(network)$name)
     network_df <- dplyr::left_join(network_df, sim_scores)
 
+    # sorted output
+    network_df <- dplyr::arrange(network_df, -eval(as.name(method)))
+
     # add vertex attributes to network
     network <- igraph::set_vertex_attr(network, 'causal_similarity',
                                        value = pred_scores)
