@@ -226,7 +226,7 @@ server <- function(input, output) {
         output$downloadData <- downloadHandler(
 
             filename = function() {
-                paste0(file_string,'-',input$target,'-',Sys.Date(), ".csv")
+                paste0(datasetString(),'-',input$target,'-',Sys.Date(), ".csv")
             },
             content = function(file) {
                 write.csv(datasetInput(), file)
