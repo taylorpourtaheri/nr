@@ -14,7 +14,7 @@ devtools::load_all()
 string_ppi <- readRDS('data/string_ppi_v11.RDS')
 id_xref <- readRDS('data/biomart_xreference_ppi_genes.RDS')
 sim <- readRDS('data/string_ppi_v11_jacc_sim_list_dense.RDS')
-lobstr::mem_used()
+#lobstr::mem_used()
 
 # sim_mat <- readRDS('data/string_ppi_v11_jacc_sim_mat.RDS')
 # lobstr::mem_used()
@@ -28,7 +28,8 @@ ui <- fluidPage(
 
     #titlePanel(h2("noderank\nA node prioritization tool for differential gene expression analysis", align = 'left')),
 
-    titlePanel(div(HTML("<h2><i><em>noderank</em></i> : A node prioritization tool for differential gene expression analysis</h2>"))),
+    titlePanel(div(HTML("<h2><i><em>noderank</em></i> : A node prioritization tool for differential gene expression analysis</h2>")),
+               HTML("noderank</title>")),
 
     # Sidebar
     sidebarLayout(
@@ -73,16 +74,16 @@ ui <- fluidPage(
                        tabPanel('Authors',fluidPage(
                            tags$h3('This application was authored by:'),
                            tags$a(href = 'https://www.linkedin.com/in/bradhowlett',
-                                  'Bradley Howlett'),
+                                  'Bradley Howlett', target='_blank', rel='noopener noreferrer'),
                            tags$p('School of Data Science, University of Virginia'),
                            tags$a(href = 'https://www.linkedin.com/in/taylorhderby',
-                                  'Taylor Derby Pourtaheri'),
+                                  'Taylor Derby Pourtaheri', target='_blank', rel='noopener noreferrer'),
                            tags$p('School of Data Science, University of Virginia'),
                            tags$a(href = 'https://www.linkedin.com/in/patrick-chatfield',
-                                  'Patrick Chatfield'),
+                                  'Patrick Chatfield', target='_blank', rel='noopener noreferrer'),
                            tags$p('School of Data Science, University of Virginia'),
-                           tags$a(href = 'www.linkedin.com/in/monish-dadlani-9423ab191',
-                                  'Monish Dadlani'),
+                           tags$a(href = 'https://www.linkedin.com/in/monish-dadlani-9423ab191',
+                                  'Monish Dadlani', target='_blank', rel='noopener noreferrer'),
                            tags$p('School of Data Science, University of Virginia'))
                        )
             ),
@@ -91,6 +92,7 @@ ui <- fluidPage(
             #selectInput(inputId = "dataset",
             #            label = "Choose a dataset:",
             #            choices = c("Method Performance", "Ranked Genes")),
+            uiOutput("h_line"),
             uiOutput("datasetSelector"),
             uiOutput("downloadButton")
             #downloadButton("downloadData", label = "Download")
@@ -104,10 +106,14 @@ ui <- fluidPage(
 server <- function(input, output) {
 
     observeEvent(input$build, {
+        
+        output$h_line <- renderUI({
+            hr()
+        })
 
         output$datasetSelector <- renderUI({
             selectInput(inputId = "dataset",
-                        label = "Choose a dataset:",
+                        label = "Choose data to download:",
                         choices = c("Method Performance", "Ranked Genes"))
         })
 
@@ -198,7 +204,7 @@ server <- function(input, output) {
         top_genes_download <- top_genes_display
 
         #update with hyperlink
-        top_genes_display$Symbol <- paste0("<a href = 'https://www.ncbi.nlm.nih.gov/gene/?term=",top_genes_display$Symbol,"'>",top_genes_display$Symbol,"</a>")
+        top_genes_display$Symbol <- paste0("<a href = 'https://www.ncbi.nlm.nih.gov/gene/?term=",top_genes_display$Symbol,"' target='_blank', rel='noopener noreferrer'>",top_genes_display$Symbol,"</a>")
 
         topGnames <- c(names(top_genes_display)[-1])
 
@@ -237,7 +243,7 @@ server <- function(input, output) {
 
 }
 
-lobstr::mem_used()
+#lobstr::mem_used()
 
 # Run the application
 shinyApp(ui = ui, server = server)
