@@ -25,6 +25,10 @@ sim <- readRDS('data/string_ppi_v11_jacc_sim_list_dense.RDS')
 ui <- fluidPage(
 
     theme = shinytheme("flatly"),
+    
+    tags$head(
+        tags$style(HTML("hr {border-top: 1px solid #000000;}"))
+    ),
 
     #titlePanel(h2("noderank\nA node prioritization tool for differential gene expression analysis", align = 'left')),
 
@@ -34,13 +38,10 @@ ui <- fluidPage(
     # Sidebar
     sidebarLayout(
         sidebarPanel(width = 3,
-
             fileInput(inputId = 'dge_data',
                        label = 'Upload differential gene expression analysis results',
                        multiple = TRUE,
                        accept = c('.xlsx')),
-            textInput(inputId = 'target',
-                      label = 'Causal gene'),
             selectInput(inputId = 'method',
                         label = 'Centrality method',
                         choices = c('avg_strength', 'betweenness', 'degree',
@@ -55,12 +56,14 @@ ui <- fluidPage(
             selectInput(inputId = 'connected',
                         label = 'Return connected component',
                         choices = c("TRUE"=1,"FALSE"=0)),
+            hr(),
+            textInput(inputId = 'target',
+                      label = 'Target gene'),
             selectInput(inputId = 'weighted',
                         label = 'Return weighted score',
                         choices = c("TRUE"=1,"FALSE"=0)),
             actionButton(inputId = "build",
-                         label = 'Rank nodes')
-            )
+                         label = 'Rank nodes'))
         ,
 
         mainPanel(
@@ -190,14 +193,14 @@ server <- function(input, output) {
                 .[,c('Symbol', 'logFC', 'AveExpr', 'P.Value', 'adj.P.Val', input$method, 'causal_similarity', 'weighted_score')] %>%
                 stats::setNames(c('Symbol', 'Log Fold Change', 'Average Expression',
                            'p-value', 'Adj. p-value', paste(tools::toTitleCase(input$method),' Score'),
-                           'Causal Similarity', 'Weighted Score'))
+                           'Similarity to Target', 'Weighted Score'))
         } else{
 
             top_genes_display <- results[['top_genes']] %>%
                 .[,c('Symbol', 'logFC', 'AveExpr', 'P.Value', 'adj.P.Val', input$method, 'causal_similarity')] %>%
                 stats::setNames(c('Symbol', 'Log Fold Change', 'Average Expression',
                                   'p-value', 'Adj. p-value', paste(tools::toTitleCase(input$method),' Score'),
-                                  'Causal Similarity'))
+                                  'Similarity to Target'))
         }
 
         #create a copy without the hyperlink for download
@@ -247,3 +250,4 @@ server <- function(input, output) {
 
 # Run the application
 shinyApp(ui = ui, server = server)
+
