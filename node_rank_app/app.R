@@ -20,15 +20,61 @@ sim <- readRDS('data/string_ppi_v11_jacc_sim_list_dense.RDS')
 # lobstr::mem_used()
 # sim_mat <- NULL
 
+# text inputs for documentation
+app_description <- HTML(paste('<i>noderank</i> maps differential gene expression results onto',
+                         'an established network of protein-protein associations',
+                         'and employs network analysis methods to select a ',
+                         'prioritized list of important nodes. For data in which',
+                         'the mechanism of perturbation is known, each ranked list',
+                         'result is scored by the position of the target gene.'))
+head1 <- 'Instructions'
+step1 <- paste('Upload an Excel file containing differential gene expression results',
+               'with gene identifiers represented in the HGNC format. The required columns',
+               'include Symbol, the gene symbols in HGNC format, STRING_id, with ',
+               'the STRING identifiers for the genes (ENSG)',
+               'logFC, containing log2 fold-changes for each gene, and adj.P.Val,',
+               'containing the associated p-values.',
+               'Specify the logFC and adjusted p-value thresholds for inclusion',
+               'in the final network and select the desired connected_component filter',
+               'setting. Optionally, a known or hypothesized target gene',
+               '(HGNC symbol) may be entered and',
+               'weighted=TRUE selected to generate a network score weighted by',
+               'structural similarity to the target gene. Select Build.')
+method_description <- 'Method'
+head2 <- 'Protein Association Network Construction and Pre-processing'
+step2 <- paste('First, the protein-protein interaction (ppl) network is downloaded',
+               'from the STRING database.',
+               'The differential gene expression analysis results are then mapped',
+               'onto the ppi network. The ppi network is then filtered to retain',
+               'only the nodes that fall within the range of user-defined thresholds.',
+               'Optionally, the giant component of the network may be selected to',
+               'remove disconnected nodes that may not be relevant to the biological',
+               'mechanisms represented in the DEA results. Finally, the network analysis',
+               'algorithms can be implemented to rank the nodes.')
+head3 <- 'Network and Method Evaluation'
+step3 <- paste('If a target gene is know (or suspected), the effectiveness of',
+                'the network in identifying nodes that are important to the',
+                'biological mechanism can be evaluated by scoring',
+               'the structural similarity of the nodes in the final network to',
+               'the known target gene. If the weighted argument is TRUE, a',
+               'weighted_score, which represents the product of the centrality',
+               'score and the similarity score for each node,',
+               'will be calculated. If the weighted option is FALSE, only the',
+               'centrality score will be reported.',
+               'Finally, the overall workflow is evaluated.',
+               'T mean performance score (weighted or unweighted) is calculated',
+               'across all nodes in the final network and compared to a null',
+               'distribution generated from a user-specified number of draws',
+               'of the full ppi network. The overall network score is compared',
+               'to the scores of the null hypothesis, allowing for the calculation',
+               'of a p-value to represent the significance of the score. ')
+
+
 
 # Define UI for application
 ui <- fluidPage(
 
     theme = shinytheme("flatly"),
-    
-    tags$head(
-        tags$style(HTML("hr {border-top: 1px solid #000000;}"))
-    ),
 
     #titlePanel(h2("noderank\nA node prioritization tool for differential gene expression analysis", align = 'left')),
 
@@ -38,10 +84,13 @@ ui <- fluidPage(
     # Sidebar
     sidebarLayout(
         sidebarPanel(width = 3,
+
             fileInput(inputId = 'dge_data',
                        label = 'Upload differential gene expression analysis results',
                        multiple = TRUE,
                        accept = c('.xlsx')),
+            textInput(inputId = 'target',
+                      label = 'Target gene'),
             selectInput(inputId = 'method',
                         label = 'Centrality method',
                         choices = c('avg_strength', 'betweenness', 'degree',
@@ -56,19 +105,27 @@ ui <- fluidPage(
             selectInput(inputId = 'connected',
                         label = 'Return connected component',
                         choices = c("TRUE"=1,"FALSE"=0)),
-            hr(),
-            textInput(inputId = 'target',
-                      label = 'Target gene'),
             selectInput(inputId = 'weighted',
                         label = 'Return weighted score',
                         choices = c("TRUE"=1,"FALSE"=0)),
             actionButton(inputId = "build",
-                         label = 'Rank nodes'))
+                         label = 'Rank nodes')
+            )
         ,
 
         mainPanel(
             width = 9,
             navbarPage(title = '',
+                       tabPanel('Documentation', fluidPage(
+                           tags$h4(app_description),
+                           tags$h3(head1),
+                           tags$p(step1),
+                           tags$h3(method_description),
+                           tags$h4(head2),
+                           tags$p(step2),
+                           tags$h4(head3),
+                           tags$p(step3)
+                       )),
                        tabPanel('Network Plot',plotOutput('nodePlot')),
                        tabPanel('Method Performance',
                                 DT::dataTableOutput('targetPerformance'),
@@ -109,7 +166,7 @@ ui <- fluidPage(
 server <- function(input, output) {
 
     observeEvent(input$build, {
-        
+
         output$h_line <- renderUI({
             hr()
         })
@@ -193,14 +250,14 @@ server <- function(input, output) {
                 .[,c('Symbol', 'logFC', 'AveExpr', 'P.Value', 'adj.P.Val', input$method, 'causal_similarity', 'weighted_score')] %>%
                 stats::setNames(c('Symbol', 'Log Fold Change', 'Average Expression',
                            'p-value', 'Adj. p-value', paste(tools::toTitleCase(input$method),' Score'),
-                           'Similarity to Target', 'Weighted Score'))
+                           'Causal Similarity', 'Weighted Score'))
         } else{
 
             top_genes_display <- results[['top_genes']] %>%
                 .[,c('Symbol', 'logFC', 'AveExpr', 'P.Value', 'adj.P.Val', input$method, 'causal_similarity')] %>%
                 stats::setNames(c('Symbol', 'Log Fold Change', 'Average Expression',
                                   'p-value', 'Adj. p-value', paste(tools::toTitleCase(input$method),' Score'),
-                                  'Similarity to Target'))
+                                  'Causal Similarity'))
         }
 
         #create a copy without the hyperlink for download
@@ -250,4 +307,3 @@ server <- function(input, output) {
 
 # Run the application
 shinyApp(ui = ui, server = server)
-
