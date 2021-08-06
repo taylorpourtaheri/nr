@@ -9,6 +9,8 @@ calc_centrality(graph, method = "strength", bt = FALSE, len = 3)
 \arguments{
 \item{graph}{Graph of class '\code{igraph}'}
 
+\item{method}{String indicating centrality method to use (i.e. 'strength', 'degree')}
+
 \item{bt}{Logical. Calculate betweenness centrality.}
 
 \item{len}{Path length to estimate betweenness centrality. Ignored if \code{bt=FALSE}.}

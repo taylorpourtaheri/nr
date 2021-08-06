@@ -4,7 +4,9 @@
 #' @import igraph
 #' @param graph Graph of class '\code{igraph}'. Must include node
 #' attributes '\code{name}' and '\code{seed}'.
-#' @param method String. Method for random walk. Passed to \code{dRWR()}
+#' @param restart_value Numeric with value between 0 and 1, representing probability of restart
+#' in random walk algorithm.
+#' @param norm_method String. Method for random walk. Passed to \code{dRWR()}
 #' from the \code{dnet} package.
 #' @return Graph of class '\code{igraph}' with new attribute, '\code{propagation_score}'.
 #' @export

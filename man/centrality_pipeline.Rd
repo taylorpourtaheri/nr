@@ -8,6 +8,7 @@ centrality_pipeline(
   deg,
   ppi = NULL,
   string_db = NULL,
+  sim = NULL,
   edge_conf_score_min = NULL,
   logFC_min,
   pvalue_max,

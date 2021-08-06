@@ -4,13 +4,16 @@
 \alias{calc_random_walk}
 \title{Calculate network propagation by random walk}
 \usage{
-calc_random_walk(graph, restart_value = 0.75, norm_method = "column")
+calc_random_walk(graph, restart_value = 0.05, norm_method = "column")
 }
 \arguments{
 \item{graph}{Graph of class '\code{igraph}'. Must include node
 attributes '\code{name}' and '\code{seed}'.}
 
-\item{method}{String. Method for random walk. Passed to \code{dRWR()}
+\item{restart_value}{Numeric with value between 0 and 1, representing probability of restart
+in random walk algorithm.}
+
+\item{norm_method}{String. Method for random walk. Passed to \code{dRWR()}
 from the \code{dnet} package.}
 }
 \value{

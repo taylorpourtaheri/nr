@@ -1,6 +1,7 @@
 #' @title Network centrality
 #' @description Calculate various measures of network centrality
 #' @param graph Graph of class '\code{igraph}'
+#' @param method String indicating centrality method to use (i.e. 'strength', 'degree')
 #' @param bt Logical. Calculate betweenness centrality.
 #' @param len Path length to estimate betweenness centrality. Ignored if \code{bt=FALSE}.
 #' @export
