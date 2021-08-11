@@ -48,7 +48,7 @@
 centrality_pipeline <- function(deg, id_xref, ppi = NULL, string_db = NULL, sim = NULL,
                                 edge_conf_score_min = NULL, logFC_min, pvalue_max,
                                 connected_filter = TRUE,
-                                method = 'betweenness', causal_gene_symbol,
+                                method = 'betweenness', causal_gene_symbol = NULL,
                                 export_network = FALSE, export_dir = NULL,
                                 sim_method = 'jaccard', n_sim = 9999, weighted = FALSE){
 
@@ -142,43 +142,60 @@ centrality_pipeline <- function(deg, id_xref, ppi = NULL, string_db = NULL, sim 
                             format = "graphml")
     }
 
-    # generate network scores
-    scoring_output <- structural_sim(network = ppi_painted_filt_giant,
-                                     ppi = ppi,
-                                     # string_db = string_db,
-                                     id_xref = id_xref,
-                                     method = method,
-                                     sim_method = sim_method,
-                                     sim = sim,
-                                     causal_gene_symbol = causal_gene_symbol,
-                                     weighted = weighted)
 
-    # evaluate scoring
-    performance <- evaluate_performance(target = causal_gene_symbol,
-                                                network_df = scoring_output$network_df,
-                                                causal_sim = scoring_output$causal_sim,
-                                                method = method,
-                                                n_sim = n_sim,
-                                                weighted = weighted)
+    if (length(causal_gene_symbol) != 0){
 
-    performance_results <- performance[['performance_results']]
-    simulation_scores <- performance[['simulation_scores']]
+        # generate network scores
+        scoring_output <- structural_sim(network = ppi_painted_filt_giant,
+                                         ppi = ppi,
+                                         # string_db = string_db,
+                                         id_xref = id_xref,
+                                         method = method,
+                                         sim_method = sim_method,
+                                         sim = sim,
+                                         causal_gene_symbol = causal_gene_symbol,
+                                         weighted = weighted)
 
-    # check for target neighbors
-    # select the STRING ID for the causal gene
-    xref <- dplyr::filter(id_xref, symbol == causal_gene_symbol)
-    total_neighbors <- igraph::neighbors(ppi, xref$STRING_id, 'all')
-    performance_results$target_neighbors_in_ppi <- length(total_neighbors)
+        # evaluate scoring
+        performance <- evaluate_performance(target = causal_gene_symbol,
+                                                    network_df = scoring_output$network_df,
+                                                    causal_sim = scoring_output$causal_sim,
+                                                    method = method,
+                                                    n_sim = n_sim,
+                                                    weighted = weighted)
 
-    neighbors_in_final <- sum(total_neighbors %in% V(scoring_output$network))
-    performance_results$target_neighbors_in_final <- neighbors_in_final
+        performance_results <- performance[['performance_results']]
+        simulation_scores <- performance[['simulation_scores']]
 
+        # check for target neighbors
+        # select the STRING ID for the causal gene
+        xref <- dplyr::filter(id_xref, symbol == causal_gene_symbol)
+        total_neighbors <- igraph::neighbors(ppi, xref$STRING_id, 'all')
+        performance_results$target_neighbors_in_ppi <- length(total_neighbors)
 
-    # save results
-    final_results[['network']] <- scoring_output$network
-    final_results[['top_genes']] <- scoring_output$network_df
-    final_results[['performance']] <- performance_results
-    final_results[['simulation_scores']] <- simulation_scores
+        neighbors_in_final <- sum(total_neighbors %in% V(scoring_output$network))
+        performance_results$target_neighbors_in_final <- neighbors_in_final
+
+        # save results
+        final_results[['network']] <- scoring_output$network
+        final_results[['top_genes']] <- scoring_output$network_df
+        final_results[['performance']] <- performance_results
+        final_results[['simulation_scores']] <- simulation_scores
+
+    } else{
+
+        # dataframe of final graph results
+        network <- ppi_painted_filt_giant
+        network_df <- igraph::as_data_frame(network, what = 'vertices')
+        rownames(network_df) <- NULL
+        network_df <- dplyr::arrange_(network_df, eval(method))
+        network_df <- purrr::map_df(network_df, rev)
+
+        # save results
+        final_results[['network']] <- network
+        final_results[['top_genes']] <- network_df
+
+    }
 
     return(final_results)
 

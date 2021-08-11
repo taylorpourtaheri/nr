@@ -22,11 +22,11 @@ sim <- readRDS('data/string_ppi_v11_jacc_sim_list_dense.RDS')
 
 # text inputs for documentation
 app_description <- HTML(paste('<i>noderank</i> maps differential gene expression results onto',
-                         'an established network of protein-protein associations',
-                         'and employs network analysis methods to select a ',
-                         'prioritized list of important nodes. For data in which',
-                         'the mechanism of perturbation is known, each ranked list',
-                         'result is scored by the position of the target gene.'))
+                              'an established network of protein-protein associations',
+                              'and employs network analysis methods to select a ',
+                              'prioritized list of important nodes. For data in which',
+                              'the mechanism of perturbation is known, each ranked list',
+                              'result is scored by the position of the target gene.'))
 head1 <- 'Instructions'
 step1 <- paste('Upload an Excel file containing differential gene expression results',
                'with gene identifiers represented in the HGNC format. The required columns',
@@ -53,8 +53,8 @@ step2 <- paste('First, the protein-protein interaction (ppl) network is download
                'algorithms can be implemented to rank the nodes.')
 head3 <- 'Network and Method Evaluation'
 step3 <- paste('If a target gene is know (or suspected), the effectiveness of',
-                'the network in identifying nodes that are important to the',
-                'biological mechanism can be evaluated by scoring',
+               'the network in identifying nodes that are important to the',
+               'biological mechanism can be evaluated by scoring',
                'the structural similarity of the nodes in the final network to',
                'the known target gene. If the weighted argument is TRUE, a',
                'weighted_score, which represents the product of the centrality',
@@ -85,32 +85,32 @@ ui <- fluidPage(
     sidebarLayout(
         sidebarPanel(width = 3,
 
-            fileInput(inputId = 'dge_data',
-                       label = 'Upload differential gene expression analysis results',
-                       multiple = TRUE,
-                       accept = c('.xlsx')),
-            textInput(inputId = 'target',
-                      label = 'Target gene'),
-            selectInput(inputId = 'method',
-                        label = 'Centrality method',
-                        choices = c('avg_strength', 'betweenness', 'degree',
-                                    'evcent_uw', 'evcent_w', 'strength')),
-            sliderInput(inputId = 'logFC',
-                        label = 'Minimum log2 fold change',
-                        min = 0, max = 3,
-                        value = 1.5, step = 0.1),
-            sliderInput(inputId = 'pvalue', label = 'Maximum p-value',
-                        min = 0, max = 0.25,
-                        value = 0.05, step = 0.01),
-            selectInput(inputId = 'connected',
-                        label = 'Return connected component',
-                        choices = c("TRUE"=1,"FALSE"=0)),
-            selectInput(inputId = 'weighted',
-                        label = 'Return weighted score',
-                        choices = c("TRUE"=1,"FALSE"=0)),
-            actionButton(inputId = "build",
-                         label = 'Rank nodes')
-            )
+                     fileInput(inputId = 'dge_data',
+                               label = 'Upload differential gene expression analysis results',
+                               multiple = TRUE,
+                               accept = c('.xlsx')),
+                     selectInput(inputId = 'method',
+                                 label = 'Centrality method',
+                                 choices = c('avg_strength', 'betweenness', 'degree',
+                                             'evcent_uw', 'evcent_w', 'strength')),
+                     sliderInput(inputId = 'logFC',
+                                 label = 'Minimum log2 fold change',
+                                 min = 0, max = 3,
+                                 value = 1.5, step = 0.1),
+                     sliderInput(inputId = 'pvalue', label = 'Maximum p-value',
+                                 min = 0, max = 0.25,
+                                 value = 0.05, step = 0.01),
+                     selectInput(inputId = 'connected',
+                                 label = 'Connected component',
+                                 choices = c("TRUE"=1,"FALSE"=0)),
+                     textInput(inputId = 'target',
+                               label = 'Target gene'),
+                     selectInput(inputId = 'weighted',
+                                 label = 'Weighted score',
+                                 choices = c("FALSE"=0,"TRUE"=1)),
+                     actionButton(inputId = "build",
+                                  label = 'Rank nodes')
+        )
         ,
 
         mainPanel(
@@ -127,24 +127,26 @@ ui <- fluidPage(
                            tags$p(step3)
                        )),
                        tabPanel('Network Plot',plotOutput('nodePlot')),
-                       tabPanel('Method Performance',
+                       tabPanel(title = 'Method Performance',
+                                textOutput('message'),
                                 DT::dataTableOutput('targetPerformance'),
                                 plotOutput('simulationPlot')),
                        tabPanel('Ranked Genes',DT::dataTableOutput('topGenes')),
-                       tabPanel('Authors',fluidPage(
-                           tags$h3('This application was authored by:'),
-                           tags$a(href = 'https://www.linkedin.com/in/bradhowlett',
-                                  'Bradley Howlett', target='_blank', rel='noopener noreferrer'),
-                           tags$p('School of Data Science, University of Virginia'),
-                           tags$a(href = 'https://www.linkedin.com/in/taylorhderby',
-                                  'Taylor Derby Pourtaheri', target='_blank', rel='noopener noreferrer'),
-                           tags$p('School of Data Science, University of Virginia'),
-                           tags$a(href = 'https://www.linkedin.com/in/patrick-chatfield',
-                                  'Patrick Chatfield', target='_blank', rel='noopener noreferrer'),
-                           tags$p('School of Data Science, University of Virginia'),
-                           tags$a(href = 'https://www.linkedin.com/in/monish-dadlani-9423ab191',
-                                  'Monish Dadlani', target='_blank', rel='noopener noreferrer'),
-                           tags$p('School of Data Science, University of Virginia'))
+                       tabPanel('Authors',
+                                fluidPage(
+                                    tags$h3('This application was authored by:'),
+                                    tags$a(href = 'https://www.linkedin.com/in/bradhowlett',
+                                           'Bradley Howlett', target='_blank', rel='noopener noreferrer'),
+                                    tags$p('School of Data Science, University of Virginia'),
+                                    tags$a(href = 'https://www.linkedin.com/in/taylorhderby',
+                                           'Taylor Derby Pourtaheri', target='_blank', rel='noopener noreferrer'),
+                                    tags$p('School of Data Science, University of Virginia'),
+                                    tags$a(href = 'https://www.linkedin.com/in/patrick-chatfield',
+                                           'Patrick Chatfield', target='_blank', rel='noopener noreferrer'),
+                                    tags$p('School of Data Science, University of Virginia'),
+                                    tags$a(href = 'https://www.linkedin.com/in/monish-dadlani-9423ab191',
+                                           'Monish Dadlani', target='_blank', rel='noopener noreferrer'),
+                                    tags$p('School of Data Science, University of Virginia'))
                        )
             ),
 
@@ -163,8 +165,9 @@ ui <- fluidPage(
 
 
 # Define server logic
-server <- function(input, output) {
+server <- function(input, output, session) {
 
+    # run
     observeEvent(input$build, {
 
         output$h_line <- renderUI({
@@ -178,8 +181,8 @@ server <- function(input, output) {
         })
 
         output$downloadButton <- renderUI({
-        downloadButton('downloadData',label = 'Download')
-    })})
+            downloadButton('downloadData',label = 'Download')
+        })})
 
     observeEvent(input$build, {
 
@@ -189,6 +192,16 @@ server <- function(input, output) {
         req(file)
         validate(need(ext == "xlsx", "Please upload an xlsx file"))
         data <- openxlsx::read.xlsx(file$datapath)
+
+        print(input$target)
+
+        if(input$target == ''){
+            x <- NULL
+        } else{
+            x <- input$target
+        }
+
+        print(is.null(x))
 
         # generate results
         results <- noderank::centrality_pipeline(deg = data,
@@ -200,11 +213,16 @@ server <- function(input, output) {
                                                  logFC_min = as.numeric(input$logFC),
                                                  pvalue_max = as.numeric(input$pvalue),
                                                  method = input$method,
-                                                 causal_gene_symbol = input$target,
+                                                 causal_gene_symbol = x,
                                                  export_network = FALSE,
-                                                 n_sim = 9999,
                                                  weighted = as.logical(as.numeric(input$weighted)),
                                                  connected_filter = as.logical(as.numeric(input$connected)))
+
+        # set display tab options - target specified
+        # output$cond4 = reactive({
+        #     length(results) == 4
+        # })
+        # outputOptions(output, "cond4", suspendWhenHidden = TRUE)
 
         weightedInput <- reactive({
             switch(input$weighted,
@@ -216,48 +234,64 @@ server <- function(input, output) {
             plot_graph(results[['network']],
                        method = weightedInput(),
                        gene_list = c(input$target))
-            })
-
-        output$simulationPlot <- renderPlot({
-            ggplot(data = results[['simulation_scores']],
-                   aes(x = simulation_mean_score)) +
-                geom_histogram() +
-                geom_vline(data = results[['performance']],
-                           aes(xintercept = mean_score),
-                           color = 'red') +
-                labs(title = 'Distribution of simulated network scores',
-                     subtitle = 'True network score represented by vertical line',
-                     x = 'Mean score',
-                     y = NULL)
         })
 
+        # if target gene specified
+        if (length(results) == 4){
+            output$simulationPlot <- renderPlot({
+                ggplot(data = results[['simulation_scores']],
+                       aes(x = simulation_mean_score)) +
+                    geom_histogram() +
+                    geom_vline(data = results[['performance']],
+                               aes(xintercept = mean_score),
+                               color = 'red') +
+                    labs(title = 'Distribution of simulated network scores',
+                         subtitle = 'True network score represented by vertical line',
+                         x = 'Mean score',
+                         y = NULL)
+            })
+
+            performance_display <- results[['performance']] %>%
+                .[,c('rank', 'mean_score', 'score_pval', 'z_score', 'sample_mean', 'sample_sd')] %>%
+                stats::setNames(c('Gene Rank', 'Mean Network Score', 'Network p-value',
+                                  'Z Score', 'Null Mean Score', 'Null Standard Deviation'))
+            performanceNames <- c(names(performance_display))[-1]
+            output$targetPerformance <- DT::renderDataTable({datatable(performance_display) %>%
+                    formatRound(performanceNames, 3)})
+
+            # specify columns for top gene table (weighted or not)
+            if (as.logical(as.numeric(input$weighted))){
+
+                top_genes_display <- results[['top_genes']] %>%
+                    .[,c('Symbol', 'logFC', 'AveExpr', 'P.Value', 'adj.P.Val', input$method, 'causal_similarity', 'weighted_score')] %>%
+                    stats::setNames(c('Symbol', 'Log Fold Change', 'Average Expression',
+                                      'p-value', 'Adj. p-value', paste(tools::toTitleCase(input$method),' Score'),
+                                      'Causal Similarity', 'Weighted Score'))
+            } else{
+
+                top_genes_display <- results[['top_genes']] %>%
+                    .[,c('Symbol', 'logFC', 'AveExpr', 'P.Value', 'adj.P.Val', input$method, 'causal_similarity')] %>%
+                    stats::setNames(c('Symbol', 'Log Fold Change', 'Average Expression',
+                                      'p-value', 'Adj. p-value', paste(tools::toTitleCase(input$method),' Score'),
+                                      'Causal Similarity'))
+
+                output$message <- NULL
+            }
 
 
 
-        performance_display <- results[['performance']] %>%
-            .[,c('rank', 'mean_score', 'score_pval', 'z_score', 'sample_mean', 'sample_sd')] %>%
-            stats::setNames(c('Gene Rank', 'Mean Network Score', 'Network p-value',
-                            'Z Score', 'Null Mean Score', 'Null Standard Deviation'))
-
-        performanceNames <- c(names(performance_display))[-1]
-
-        output$targetPerformance <- DT::renderDataTable({datatable(performance_display) %>%
-                formatRound(performanceNames, 3)})
-
-        if (as.logical(as.numeric(input$weighted))){
-
-            top_genes_display <- results[['top_genes']] %>%
-                .[,c('Symbol', 'logFC', 'AveExpr', 'P.Value', 'adj.P.Val', input$method, 'causal_similarity', 'weighted_score')] %>%
-                stats::setNames(c('Symbol', 'Log Fold Change', 'Average Expression',
-                           'p-value', 'Adj. p-value', paste(tools::toTitleCase(input$method),' Score'),
-                           'Causal Similarity', 'Weighted Score'))
+            # if no target gene specified
         } else{
 
+            output$simulationPlot <- NULL
+            output$targetPerformance <- NULL
+
             top_genes_display <- results[['top_genes']] %>%
-                .[,c('Symbol', 'logFC', 'AveExpr', 'P.Value', 'adj.P.Val', input$method, 'causal_similarity')] %>%
+                .[,c('Symbol', 'logFC', 'AveExpr', 'P.Value', 'adj.P.Val', input$method)] %>%
                 stats::setNames(c('Symbol', 'Log Fold Change', 'Average Expression',
-                                  'p-value', 'Adj. p-value', paste(tools::toTitleCase(input$method),' Score'),
-                                  'Causal Similarity'))
+                                  'p-value', 'Adj. p-value', paste(tools::toTitleCase(input$method),' Score')))
+
+            output$message <- renderText({'A target gene must be specified to evaluate method performance.'})
         }
 
         #create a copy without the hyperlink for download
@@ -270,7 +304,6 @@ server <- function(input, output) {
 
         output$topGenes <- DT::renderDataTable({datatable(top_genes_display, escape=FALSE) %>%
                 formatRound(topGnames, 3)})
-
 
 
         #download the results
@@ -299,7 +332,7 @@ server <- function(input, output) {
             }
         )
 
-        })
+    })
 
 }
 

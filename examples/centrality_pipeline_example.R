@@ -17,22 +17,21 @@ myc_de <- de_string$MYC
 # string_db <- readRDS('data/string_db_v11.RDS')
 ppi <- readRDS('data/string_ppi_v11.RDS')
 sim <- readRDS('data/string_ppi_v11_jacc_sim_list_dense.RDS')
-
+id_xref <- readRDS('data/biomart_xreference_ppi_genes.RDS')
 
 # call wrapper
 results <- centrality_pipeline(deg = myc_de,
                                # string_db = string_db,
                                ppi = ppi,
                                sim = sim,
+                               id_xref = id_xref,
                             edge_conf_score_min = 950,
                             logFC_min = 1.5,
                             pvalue_max = 0.05,
                             method = 'betweenness',
                             causal_gene_symbol = 'MYC',
-                            export_network = FALSE,
-                            n_sim = 9999,
                             weighted = TRUE,
-                            connected_filter = FALSE)
+                            connected_filter = TRUE)
 
 View(results)
 

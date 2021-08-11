@@ -65,6 +65,7 @@ structural_sim <- function(network, ppi, id_xref, method, sim_method, causal_gen
 
         # add vertex attribute
         network <- igraph::set_vertex_attr(network, 'weighted_score',
+                                           index = network_df$name,
                                            value = network_df$weighted_score)
 
         # sorted output
