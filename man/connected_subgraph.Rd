@@ -7,14 +7,14 @@
 connected_subgraph(graph, thresh = NA, method = "greater")
 }
 \arguments{
+\item{graph}{Graph of class '\code{igraph}'}
+
 \item{thresh}{Numeric. The threshold size for a connected component. If
 \code{NA} then only the giant (i.e., the largest) component is returned. All ties are returned.}
 
 \item{method}{Either "less" or "greater". The latter returns all connected
 components with greater than or equal to \code{thresh} nodes. Ignored if \code{thresh}
 is \code{NA}.}
-
-\item{G}{Graph of class '\code{igraph}'}
 }
 \description{
 Extract the connected components of a graph based on a size threshold
